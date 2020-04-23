@@ -8,7 +8,7 @@
         "form"
     ],
     "homepage": "https://github.com/tomsix/laravel-blade-components",
-    "license": "None",
+    "license": "MIT",
     "authors": [
         {
             "name": "Tom Six",
@@ -44,7 +44,7 @@
         }
     },
     "scripts": {
-        "test": "phpunit"
+        "test": "vendor/bin/phpunit"
     },
     "config": {
         "sort-packages": true
