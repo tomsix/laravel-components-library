@@ -5,7 +5,7 @@ namespace TomSix\Components;
 use Illuminate\Support\ServiceProvider;
 use TomSix\Components\View\Components\TextField;
 
-class ComponentServiceProvider extends ServiceProvider
+class LibraryServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
