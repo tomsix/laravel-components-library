@@ -3,63 +3,30 @@
 
 namespace TomSix\Components\View\Components;
 
-
-use Illuminate\View\Component;
-
-class TextField extends Component
+class TextField extends InputField
 {
     /**
-     * The input name
+     * Create a new component instance.
      *
-     * @var string $name
+     * @param string $name
+     * @param string|null $label
+     * @param string|null $placeholder
+     * @param bool $required
+     * @param bool $disabled
+     * @param bool $readonly
+     * @param mixed|null $value
+     * @param string|null $type
      */
-    public string $name;
-
-    /**
-     * The label text. There will no label rendered if it isn't provided
-     *
-     * @var string|null $label
-     */
-    public ?string $label;
-
-    /**
-     * The text for the placeholder
-     *
-     * @var string $placeholder
-     */
-    public string $placeholder;
-
-    /**
-     * Set the input as required
-     *
-     * @var string $required
-     */
-    public string $required;
-
-    /**
-     * Define a default value
-     *
-     * @var mixed $value
-     */
-    public $value;
-
-    /**
-     * Set the type of the input
-     *
-     * @var string $type
-     */
-    public string $type;
-
-    public function __construct(string $name, ?string $label = null, ?string $placeholder = null, bool $required = false, $value = null, string $type = null)
+    public function __construct(string $name, ?string $label = null, ?string $placeholder = null, bool $required = false, bool $disabled = false, bool $readonly = false, $value = null, string $type = null)
     {
-        $this->name = $name;
-        $this->label = $label;
-        $this->placeholder = $placeholder ?? '';
-        $this->required = $required ? 'required' : '';
-        $this->value = $value ?? '';
-        $this->type = $type ?? 'text';
+        parent::__construct($name, $label, $placeholder, $type, $required, $disabled, $readonly, $value);
     }
 
+    /**
+     * Get the view / contents that represent the component.
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
+     */
     public function render()
     {
         return view('library::text-field');

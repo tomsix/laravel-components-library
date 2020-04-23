@@ -16,7 +16,7 @@ class ComponentServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'library');
 
-        $this->loadViewComponentsAs('library', [
+        $this->loadViewComponentsAs('', [
             TextField::class
         ]);
     }
