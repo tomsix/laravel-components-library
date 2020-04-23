@@ -1,6 +1,8 @@
 # Laravel Components Library
 A collection of pre-made Blade components
 
+    composer require tomsix/laravel-components-library
+
 ## Documentation
 
 Use the normal Blade Component syntax from Laravel 7 with the prefix ´library´.
