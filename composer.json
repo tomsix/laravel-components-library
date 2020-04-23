@@ -33,7 +33,13 @@
             "TomSix\\Components\\Test": "tests"
         }
     },
-    "extra": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TomSix\\Components\\ComponentServiceProvider"
+            ]
+        }
+    },
     "scripts": {
         "test": "phpunit"
     },
