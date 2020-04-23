@@ -18,19 +18,20 @@
         }
     ],
     "require": {
-
+        "php": "^7.4"
     },
     "require-dev": {
-
+        "orchestra/testbench": "^5.1",
+        "phpunit/phpunit": "^8.0"
     },
     "autoload": {
         "psr-4": {
-            "TomSix\\Components": "src"
+            "TomSix\\Components\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "TomSix\\Components\\Test": "tests"
+            "TomSix\\Components\\Test\\": "tests/"
         }
     },
     "extra": {
