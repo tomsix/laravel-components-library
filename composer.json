@@ -1,5 +1,5 @@
 {
-    "name": "tomsix/laravel-blade-components",
+    "name": "tomsix/laravel-components-library",
     "description": "A collection of pre-made Blade components for Laravel 7.x and up",
     "keywords": [
         "laravel",
@@ -18,7 +18,10 @@
         }
     ],
     "require": {
-        "php": "^7.4"
+        "php": "^7.4",
+        "illuminate/support": "^7.*",
+        "illuminate/view": "^7.*",
+        "appstract/laravel-bootstrap-components": "^2.0"
     },
     "require-dev": {
         "orchestra/testbench": "^5.1",

@@ -3,7 +3,7 @@
 namespace TomSix\Components;
 
 use Illuminate\Support\ServiceProvider;
-use TomSix\Components\Form\TextFieldComponent;
+use TomSix\Components\View\Components\TextField;
 
 class ComponentServiceProvider extends ServiceProvider
 {
@@ -14,10 +14,10 @@ class ComponentServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources', 'blade-components');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'library');
 
-        $this->loadViewComponentsAs('form', [
-            TextFieldComponent::class
+        $this->loadViewComponentsAs('library', [
+            TextField::class
         ]);
     }
 
