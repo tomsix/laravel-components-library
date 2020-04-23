@@ -1,0 +1,45 @@
+{
+    "name": "tomsix/laravel-blade-components",
+    "description": "A collection of pre-made Blade components for Laravel 7.x and up",
+    "keywords": [
+        "laravel",
+        "blade",
+        "components",
+        "form"
+    ],
+    "homepage": "https://github.com/tomsix/laravel-blade-components",
+    "license": "None",
+    "authors": [
+        {
+            "name": "Tom Six",
+            "email": "tom@webatvantage.be",
+            "homepage": "webatvantage.be",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+
+    },
+    "require-dev": {
+
+    },
+    "autoload": {
+        "psr-4": {
+            "TomSix\\Components": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TomSix\\Components\\Test": "tests"
+        }
+    },
+    "extra": {},
+    "scripts": {
+        "test": "phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
