@@ -3,8 +3,8 @@
 namespace TomSix\Components;
 
 use Illuminate\Support\ServiceProvider;
-use TomSix\Components\View\Components\SelectField;
-use TomSix\Components\View\Components\TextField;
+use TomSix\Components\View\Components\Select;
+use TomSix\Components\View\Components\Input;
 
 class LibraryServiceProvider extends ServiceProvider
 {
@@ -24,9 +24,9 @@ class LibraryServiceProvider extends ServiceProvider
             self::PATH_VIEWS => resource_path('views/vendor/library'),
         ], 'views');
 
-        $this->loadViewComponentsAs('', [
-            TextField::class,
-            SelectField::class
+        $this->loadViewComponentsAs('form', [
+            Input::class,
+            Select::class
         ]);
     }
 

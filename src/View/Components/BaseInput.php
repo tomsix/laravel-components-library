@@ -4,7 +4,7 @@
 namespace TomSix\Components\View\Components;
 
 
-abstract class InputField extends FromGroup
+abstract class BaseInput extends FromGroup
 {
     /**
      * Specifies the placeholder

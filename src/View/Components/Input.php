@@ -3,7 +3,7 @@
 
 namespace TomSix\Components\View\Components;
 
-class TextField extends InputField
+class Input extends BaseInput
 {
     /**
      * Create a new component instance.
@@ -29,6 +29,6 @@ class TextField extends InputField
      */
     public function render()
     {
-        return view('library::text-field');
+        return view('library::form.input');
     }
 }
