@@ -3,6 +3,7 @@
 namespace TomSix\Components;
 
 use Illuminate\Support\ServiceProvider;
+use TomSix\Components\View\Components\ModelSelect;
 use TomSix\Components\View\Components\Select;
 use TomSix\Components\View\Components\Input;
 
@@ -20,14 +21,7 @@ class LibraryServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(self::PATH_VIEWS, 'library');
 
-        $this->publishes([
-            self::PATH_VIEWS => resource_path('views/vendor/library'),
-        ], 'views');
-
-        $this->loadViewComponentsAs('form', [
-            Input::class,
-            Select::class
-        ]);
+        $this->registerFormComponents();
     }
 
     /**
@@ -38,5 +32,18 @@ class LibraryServiceProvider extends ServiceProvider
     public function register(): void
     {
         //
+    }
+
+    private function registerFormComponents(): void
+    {
+        $this->loadViewComponentsAs('form', [
+            Input::class,
+            Select::class,
+            ModelSelect::class
+        ]);
+
+        $this->publishes([
+            self::PATH_VIEWS . '/form' => resource_path('views/components/library/form'),
+        ], 'form-components');
     }
 }
