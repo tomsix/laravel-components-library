@@ -8,7 +8,7 @@
         {{ $slot }}
 
         @foreach ($options as $key => $option)
-            <option value="{{ $key }}" {{ $key == old($name, $value) ? 'selected' : '' }}>
+            <option value="{{ $key }}" {{ $isSelected($key) }}>
                 {{ $option }}
             </option>
         @endforeach

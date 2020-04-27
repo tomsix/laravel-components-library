@@ -38,4 +38,15 @@ class Select extends FromGroup
 	{
 		return view('library::form.select');
 	}
+
+    /**
+     * Determine if the given option is the current selected option.
+     *
+     * @param  string|int  $option
+     * @return string
+     */
+    public function isSelected($option): string
+    {
+        return $option == old($this->name, $this->value) ? 'selected' : '';
+    }
 }
