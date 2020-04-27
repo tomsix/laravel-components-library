@@ -49,7 +49,7 @@ abstract class FromGroup extends Component
      * @param string|null $label
      * @param bool $disabled
      * @param bool $readonly
-     * @param mixed|null $value
+     * @param mixed $value
      */
     public function __construct(string $name, ?string $label = null, bool $disabled = false, bool $readonly = false, $value = null)
     {
@@ -57,6 +57,6 @@ abstract class FromGroup extends Component
         $this->label = $label;
         $this->disabled = $disabled ? 'disabled' : '';
         $this->readonly = $readonly ? 'readonly' : '';
-        $this->value = $value ?? '';
+        $this->value = old(str_replace('[]', '', $this->name), $value) ?? '';
     }
 }

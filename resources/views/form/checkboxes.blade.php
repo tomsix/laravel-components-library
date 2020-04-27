@@ -4,9 +4,7 @@
     @endisset
 
     @foreach($options as $key => $option)
-
-        <x-form-checkbox :name="$name" :id-name="$name . $loop->iteration" :value="$key" :label="$option" :inline="$inline" :disabled="$disabled" :readonly="$readonly"/>
-
+        <x-form-checkbox :name="$name" :id-name="$name . $loop->iteration" :value="$key" :label="$option" :checked="$isChecked($key)" :inline="$inline" :disabled="$disabled" :readonly="$readonly"/>
     @endforeach
 
     {{ $slot }}

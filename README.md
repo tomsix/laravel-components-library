@@ -29,7 +29,7 @@ All components has standaard attributes:
 
 - name
 - label
-- value (makes use of old() helper)
+- value (makes use of the old() helper)
 - disabled
 - readonly
 
@@ -89,7 +89,7 @@ A second options is to use the checkbox component in the slot. Both can be combi
 </x-form-checkboxes>
 ```
 
-The `inline` attribute enable the Bootstrap inline-class.
+The `inline` attribute enables the Bootstrap inline-class.
 
 ### Customisation
 
