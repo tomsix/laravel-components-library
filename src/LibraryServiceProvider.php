@@ -2,10 +2,12 @@
 
 namespace TomSix\Components;
 
+
 use Illuminate\Support\ServiceProvider;
 use TomSix\Components\View\Components\ModelSelect;
 use TomSix\Components\View\Components\Select;
 use TomSix\Components\View\Components\Input;
+use TomSix\Components\View\Components\TextArea;
 
 class LibraryServiceProvider extends ServiceProvider
 {
@@ -39,7 +41,8 @@ class LibraryServiceProvider extends ServiceProvider
         $this->loadViewComponentsAs('form', [
             Input::class,
             Select::class,
-            ModelSelect::class
+            ModelSelect::class,
+            TextArea::class
         ]);
 
         $this->publishes([
