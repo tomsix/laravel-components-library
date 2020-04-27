@@ -39,7 +39,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "LibraryServiceProvider"
+                "TomSix\\Components\\LibraryServiceProvider"
             ]
         }
     },
