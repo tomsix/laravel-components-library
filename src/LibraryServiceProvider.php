@@ -3,6 +3,7 @@
 namespace TomSix\Components;
 
 use Illuminate\Support\ServiceProvider;
+use TomSix\Components\View\Components\SelectField;
 use TomSix\Components\View\Components\TextField;
 
 class LibraryServiceProvider extends ServiceProvider
@@ -24,7 +25,8 @@ class LibraryServiceProvider extends ServiceProvider
         ], 'views');
 
         $this->loadViewComponentsAs('', [
-            TextField::class
+            TextField::class,
+            SelectField::class
         ]);
     }
 

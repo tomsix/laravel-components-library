@@ -1,6 +1,8 @@
-@extends('library::form-group')
+<div {{ $attributes->merge(['class' => 'form-group']) }}>
+    @isset($label)
+        <label for="{{ $name }}">{{ $label }}</label>
+    @endisset
 
-@section('input')
     <input
         autocomplete="off"
         type="{{ $type }}"
@@ -11,4 +13,10 @@
         value="{{ old($name, $value) }}"
         {{ $required }} {{ $disabled }} {{ $readonly }}
     />
-@endsection()
+        
+    @error($name)
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+    @enderror
+</div>
