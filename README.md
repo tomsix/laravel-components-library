@@ -25,19 +25,33 @@ Use the normal Blade Component syntax from Laravel 7. The form components can be
 <x-form-input name="Title" />
 ```
 
+All components has standaard attributes:
+
+- name
+- label
+- value (makes use of old() helper)
+- disabled
+- readonly
+
 #### Input
 
 ```blade
-<x-form-input name="first-name" label="First Name" placeholder="Enter your first name" type="text" value="Tom" required disabled readonly/>
+<x-form-input name="first-name" label="First Name" placeholder="Enter your first name" type="text" />
+```
+
+#### Textarea
+    
+```blade
+<x-form-textarea name="description" label="Description" placeholder="Typ here ..." />
 ```
     
 #### Select
 
 ```blade
-<x-form-select name="animal" :options="[1 => 'cat', 2 => 'dog', 4 => 'cow']" label="Favorite animal" value="1" disabled readonly/>
+<x-form-select name="animal" :options="[1 => 'cat', 2 => 'dog', 4 => 'cow']" label="Favorite animal" />
 ```
     
-It is possible to add extra options or a default option by using slots.
+It is possible to add extra options or a default option with slots.
 
 ```blade
 <x-form-select name="animal" :options="[1 => 'cat', 2 => 'dog', 4 => 'cow']" label="Favorite animal">
@@ -54,6 +68,28 @@ With the `model-select` component you can use a collection of Eloquent models. T
     <option value="">Select your friend</option>
 </x-form-model-select>
 ```
+
+#### Checkboxes
+
+Checkboxes need a array with options. The key is used for the checkbox value and the value is used as label text.
+
+```php 
+$options = ['lieven' => 'Lieven Scheire', 'jelle' => 'Jelle De Beule', 'jonas' => 'Jonas Geinaart']; 
+```
+
+```blade
+<x-form-checkboxes name="user" label="Gebruiker" :options="$options" inline />
+```
+
+A second options is to use the checkbox component in the slot. Both can be combined.
+
+```blade
+<x-form-checkboxes name="user" label="Gebruiker" :options="$options" inline>
+    <x-form-checkbox name="user" id-name="user4" value="koen" label="Koen De Poorter" />
+</x-form-checkboxes>
+```
+
+The `inline` attribute enable the Bootstrap inline-class.
 
 ### Customisation
 

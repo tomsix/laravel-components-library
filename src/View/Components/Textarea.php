@@ -2,7 +2,7 @@
 
 namespace TomSix\Components\View\Components;
 
-class TextArea extends BaseInput
+class Textarea extends BaseInput
 {
     /**
      * TextArea constructor.
@@ -27,6 +27,6 @@ class TextArea extends BaseInput
      */
     public function render()
     {
-        return view('library::form.text-area');
+        return view('library::form.textarea');
     }
 }
