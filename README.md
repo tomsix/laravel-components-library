@@ -22,12 +22,12 @@ The package will automatically register its service provider.
 Use the normal Blade Component syntax from Laravel 7. The form components can be used with the `form` prefix.
 
 ```blade
-<x-form-input name="Title" />
+<x-form-input name="title" />
 ```
 
 All components has standaard attributes:
 
-- name
+- name (required)
 - label
 - value (makes use of the old() helper)
 - input-attributes
@@ -36,8 +36,8 @@ All components has standaard attributes:
 
 You can provide extra attributes to the input-tag in a component. This property will accept a string in the right html-format or you can use a array. The key is the attribute name and the value as attribute value. Attributes that doesn't need a value can't have a key.
 
-```php
-['required', 'data-browse' => 'Open File'];
+```blade
+<x-form-input name="title" :input-attributes="['required', 'data-name' => 'Custom name']"/>
 ```
 
 #### Input
