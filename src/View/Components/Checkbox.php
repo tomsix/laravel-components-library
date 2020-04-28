@@ -70,4 +70,17 @@ class Checkbox extends BaseInput
 
         return $this->idName;
     }
+
+    /**
+     * Renders the classes
+     *
+     * @return string
+     */
+    public function class(): string
+    {
+        if($this->type === 'checkbox')
+            return config('library.css.form.checkbox.group') . $this->inline;
+
+        return config('library.css.form.checkbox.radio') . $this->inline;
+    }
 }

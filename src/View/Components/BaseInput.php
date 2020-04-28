@@ -29,7 +29,8 @@ abstract class BaseInput extends FromGroup
 
 
     /**
-     * InputField constructor.
+     * Create a new component instance.
+     *
      * @param string $name
      * @param string|null $label
      * @param string|null $placeholder

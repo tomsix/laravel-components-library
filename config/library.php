@@ -17,12 +17,19 @@ return [
         'form' => [
             'group' => 'form-group',
             'input' => 'form-control',
-            'label' => '',
+            'label' => 'custom-control-label',
+            'select' => 'custom-control-select',
             'checkbox' => [
-                'group' => 'form-check',
-                'input' => 'form-check-input',
-                'inline' => 'form-check-inline',
-                'label' => 'form-check-label'
+                'group' => 'custom-control custom-checkbox',
+                'radio' => 'custom-control custom-radio',
+                'input' => 'custom-control-input',
+                'label' => 'custom-control-label',
+                'inline' => 'custom-control-inline',
+            ],
+            'file' => [
+                'group' => 'custom-file',
+                'input' => 'custom-file-input',
+                'label' => 'custom-file-label'
             ]
         ],
         'error' => [
