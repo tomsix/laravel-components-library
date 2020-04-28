@@ -11,7 +11,7 @@ class TextFieldTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $this->blade->compileString('<x-text-field  />');
+        $this->blade->compileString('<x-form-input  />');
 
         $this->assertTrue(true);
     }

@@ -109,6 +109,6 @@ class Checkboxes extends FromGroup
             return $result . '[\'' . $key . '\']';
         }
 
-        return $this->name;
+        return $key;
     }
 }
