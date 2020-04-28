@@ -134,6 +134,13 @@ Changing the `type` attribute to `radio` will work to use radiobuttons.
 <x-form-file name="file" label="Choose file" />
 ```
 
+##### Multiple files
+
+There are some notes when using multiple files:
+- `enctype="multipart/form-data"` must added in the form tag
+- Add the multiline attribute: `input-attributes="multiple"`
+- Errors will not shown inline. Use a global error bag for the messages.
+
 #### Button
 
 ```blade
@@ -141,13 +148,6 @@ Changing the `type` attribute to `radio` will work to use radiobuttons.
 ```
 
 The label attribute wil not result in a label-tag. The value will renders as button text. When there is label given, the value will be used and when the value is null the name will be used.
-
-##### Multiple files
-
-There are some notes when using multiple files:
-- `enctype="multipart/form-data"` must added in the form tag
-- Add the multiline attribute: `input-attributes="multiple"`
-- Errors will not shown inline. Use a global error bag for the messages.
 
 #### Errors
 
