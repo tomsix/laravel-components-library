@@ -52,11 +52,11 @@ class Checkbox extends FromGroup
      * @param string $type
      * @param bool $checked
      */
-    public function __construct(string $name, string $idName, ?string $label = null, bool $disabled = false, ?bool $readonly = false, $value = null, bool $inline = false, string $type = 'checkbox', ?bool $checked = false)
+    public function __construct(string $name, string $idName = null, ?string $label = null, bool $disabled = false, ?bool $readonly = false, $value = null, bool $inline = false, string $type = 'checkbox', ?bool $checked = false)
     {
         parent::__construct($name, $label, $disabled, $readonly);
 
-        $this->idName = $idName;
+        $this->idName = $idName ? $idName : $this->name;
         $this->value = $value;
         $this->inline = $inline ? ' form-check-inline' : '';
         $this->checked = $checked ? 'checked' : '';

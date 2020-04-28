@@ -69,27 +69,50 @@ With the `model-select` component you can use a collection of Eloquent models. T
 </x-form-model-select>
 ```
 
-#### Checkboxes
+#### Checkboxes (or radiobuttons)
 
-Checkboxes need a array with options. The key is used for the checkbox value and the value is used as label text.
-
-```php 
-$options = ['lieven' => 'Lieven Scheire', 'jelle' => 'Jelle De Beule', 'jonas' => 'Jonas Geinaart']; 
-```
+A group of checkboxes make use of the checkboxes component. It is possible to give an array of options or use the single checkbox component within the slot.
 
 ```blade
-<x-form-checkboxes name="user" label="Gebruiker" :options="$options" inline />
-```
-
-A second options is to use the checkbox component in the slot. Both can be combined.
-
-```blade
-<x-form-checkboxes name="user" label="Gebruiker" :options="$options" inline>
-    <x-form-checkbox name="user" id-name="user4" value="koen" label="Koen De Poorter" />
+<x-form-checkboxes name="terms" >
+    <x-form-checkbox name="terms" value="yes" label="Agree to terms and conditions" />
 </x-form-checkboxes>
 ```
 
+##### Arrays
+
+Checkboxes need a array with options. The array key is used for the checkbox value attribute and the value of the array is used as label text. An array without keys will use numbers starting from 1.
+
+###### With keys
+
+Array:
+```php 
+$options = ['lieven' => 'Lieven Scheire', 'jelle' => 'Jelle De Beule', 'jonas' => 'Jonas Geinaart']; 
+```
+Result:
+```html
+<input class="form-check-input" type="checkbox" name="user[]" id="user['tom']" value="tom" />
+```
+
+###### Without keys
+
+Array:
+```php 
+$options = ['Lieven Scheire', 'jelle' => 'Jelle De Beule', 'jonas' => 'Jonas Geinaart']; 
+```
+
+Result:
+```html
+<input class="form-check-input " type="checkbox" name="user[]" id="user[1]" value="1">
+```
+
+##### Inline
+
 The `inline` attribute enables the Bootstrap inline-class.
+
+##### Radio
+
+Changing the `type` attribute to `radio` will work to use radiobuttons.
 
 ### Customisation
 
