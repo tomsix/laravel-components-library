@@ -81,6 +81,10 @@ A group of checkboxes make use of the checkboxes component. It is possible to gi
 
 ##### Arrays
 
+```blade
+<x-form-checkboxes name="user[]" label="Favorite actors" :options="$options" type="checkbox" />
+```
+
 Checkboxes need a array with options. The array key is used for the checkbox value attribute and the value of the array is used as label text. An array without keys will use numbers starting from 1.
 
 ###### With keys
@@ -91,7 +95,7 @@ $options = ['lieven' => 'Lieven Scheire', 'jelle' => 'Jelle De Beule', 'jonas' =
 ```
 Result:
 ```html
-<input class="form-check-input" type="checkbox" name="user[]" id="user['tom']" value="tom" />
+<input class="form-check-input" type="checkbox" name="user[]" id="user['lieven']" value="lieven" />
 ```
 
 ###### Without keys
