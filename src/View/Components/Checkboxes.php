@@ -4,6 +4,9 @@
 namespace TomSix\Components\View\Components;
 
 
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+
 class Checkboxes extends FromGroup
 {
     /**
@@ -16,9 +19,9 @@ class Checkboxes extends FromGroup
     /**
      * A list of given options
      *
-     * @var iterable $options
+     * @var array $options
      */
-    public iterable $options;
+    public array $options;
 
     /**
      * The type of the checkbox/radio button
@@ -28,23 +31,31 @@ class Checkboxes extends FromGroup
     public string $type;
 
     /**
+     * Checks if the options ar a associative array
+     *
+     * @var bool $optionsAreAssoc
+     */
+    public bool $optionsAreAssoc;
+
+    /**
      * Create a new component instance.
      *
      * @param string $name
      * @param string|null $label
-     * @param array|iterable $options
+     * @param array $options
      * @param bool $inline
      * @param bool $disabled
      * @param bool $readonly
      * @param iterable|string|int $value
      * @param string $type
      */
-    public function __construct(string $name, ?string $label = null, iterable $options = [], bool $inline = false, bool $disabled = false, bool $readonly = false, $value = null, string $type = 'checkbox')
+    public function __construct(string $name, ?string $label = null, array $options = [], bool $inline = false, bool $disabled = false, bool $readonly = false, $value = null, string $type = 'checkbox')
     {
         parent::__construct($name, $label, $disabled, $readonly, $value);
 
         $this->inline = $inline;
         $this->options = $options;
+        $this->optionsAreAssoc = Arr::isAssoc($this->options);
         $this->type = $type;
     }
 
@@ -77,5 +88,27 @@ class Checkboxes extends FromGroup
         }
 
         return false;
+    }
+
+    /**
+     *
+     * @param string|int $key
+     * @return string
+     */
+    public function getIdName($key): string
+    {
+        if(Str::endsWith($this->name, '[]'))
+        {
+            $result = $this->nameWithoutBrackets();
+
+            if(is_int($key))
+            {
+                return $result . '[' . $key . ']';
+            }
+
+            return $result . '[\'' . $key . '\']';
+        }
+
+        return $this->name;
     }
 }

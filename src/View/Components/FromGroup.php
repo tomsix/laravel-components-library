@@ -57,6 +57,11 @@ abstract class FromGroup extends Component
         $this->label = $label;
         $this->disabled = $disabled ? 'disabled' : '';
         $this->readonly = $readonly ? 'readonly' : '';
-        $this->value = old(str_replace('[]', '', $this->name), $value) ?? '';
+        $this->value = old($this->nameWithoutBrackets(), $value) ?? '';
+    }
+
+    public function nameWithoutBrackets()
+    {
+        return str_replace('[]', '', $this->name);
     }
 }

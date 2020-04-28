@@ -4,7 +4,16 @@
     @endisset
 
     @foreach($options as $key => $option)
-        <x-form-checkbox :name="$name" :id-name="$name . $loop->iteration" :value="$key" :label="$option" :checked="$isChecked($key)" :inline="$inline" :disabled="$disabled" :readonly="$readonly"/>
+
+        @php $i = $optionsAreAssoc ? $key : $loop->iteration @endphp
+
+        <x-form-checkbox :name="$name"
+                         :id-name="$getIdName($i)"
+                         :value="$i"
+                         :label="$option"
+                         :checked="$isChecked($i)"
+                         :inline="$inline" :disabled="$disabled" :readonly="$readonly"
+        />
     @endforeach
 
     {{ $slot }}

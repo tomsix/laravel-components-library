@@ -4,6 +4,8 @@
 namespace TomSix\Components\View\Components;
 
 
+use Illuminate\Support\Str;
+
 class Checkbox extends FromGroup
 {
     /**
@@ -50,7 +52,7 @@ class Checkbox extends FromGroup
      * @param string $type
      * @param bool $checked
      */
-    public function __construct(string $name, string $idName, ?string $label = null, bool $disabled = false, bool $readonly = false, $value = null, bool $inline = false, string $type = 'checkbox', bool $checked = false)
+    public function __construct(string $name, string $idName, ?string $label = null, bool $disabled = false, ?bool $readonly = false, $value = null, bool $inline = false, string $type = 'checkbox', ?bool $checked = false)
     {
         parent::__construct($name, $label, $disabled, $readonly);
 
@@ -69,5 +71,15 @@ class Checkbox extends FromGroup
     public function render()
     {
         return view('library::form.checkbox');
+    }
+
+    public function errorName(): string
+    {
+        if(Str::endsWith($this->name, '[]'))
+        {
+            return $this->nameWithoutBrackets() . '.' . $this->value;
+        }
+
+        return $this->idName;
     }
 }
