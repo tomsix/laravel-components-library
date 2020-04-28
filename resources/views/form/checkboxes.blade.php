@@ -18,7 +18,7 @@
                          :value="$key"
                          :label="$option"
                          :checked="$isChecked($key)"
-                         :inline="$inline" :disabled="$disabled" :readonly="$readonly" :type="$type"
+                         :inline="$inline" :required="$required" :disabled="$disabled" :readonly="$readonly" :type="$type"
         />
     @endforeach
 

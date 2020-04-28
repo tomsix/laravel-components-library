@@ -39,7 +39,7 @@ abstract class BaseInput extends FromGroup
      * @param bool $readonly
      * @param mixed $value
      */
-    public function __construct(string $name, ?string $label = null, ?string $placeholder = null, ?string $type = null, bool $required = false, bool $disabled = false, bool $readonly = false, $value = null)
+    public function __construct(string $name, ?string $label = null, bool $required = false, bool $disabled = false, bool $readonly = false, $value = null, ?string $placeholder = null, ?string $type = null)
     {
         parent::__construct($name, $label, $disabled, $readonly, $value);
 

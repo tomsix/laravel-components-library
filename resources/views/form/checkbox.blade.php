@@ -1,7 +1,7 @@
 <div {{ $attributes->merge(['class' => 'form-check ' . $inline]) }}>
 
     <input class="form-check-input @error($errorName) is-invalid @enderror"
-           type="{{ $type }}" name="{{ $name }}" id="{{ $idName }}" value="{{ $value }}" {{ $checked }} {{ $disabled }} {{ $readonly }}
+           type="{{ $type }}" name="{{ $name }}" id="{{ $idName }}" value="{{ $value }}" {{ $checked }} {{ $required }} {{ $disabled }} {{ $readonly }}
     />
 
     @isset($label)

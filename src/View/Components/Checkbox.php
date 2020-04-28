@@ -6,7 +6,7 @@ namespace TomSix\Components\View\Components;
 
 use Illuminate\Support\Str;
 
-class Checkbox extends FromGroup
+class Checkbox extends BaseInput
 {
     /**
      * @var string
@@ -14,23 +14,11 @@ class Checkbox extends FromGroup
     public string $idName;
 
     /**
-     * @var mixed
-     */
-    public $value;
-
-    /**
      * Add the bootstrap inline class when enabled
      *
      * @var string $inline
      */
     public string $inline;
-
-    /**
-     * The type of the checkbox/radio button
-     *
-     * @var string $type
-     */
-    public string $type;
 
     /**
      * Set the 'checked' attribute if checked
@@ -45,6 +33,7 @@ class Checkbox extends FromGroup
      * @param string $name
      * @param string $idName
      * @param string|null $label
+     * @param bool $required
      * @param bool $disabled
      * @param bool $readonly
      * @param mixed $value
@@ -52,15 +41,14 @@ class Checkbox extends FromGroup
      * @param string $type
      * @param bool $checked
      */
-    public function __construct(string $name, string $idName = null, ?string $label = null, bool $disabled = false, ?bool $readonly = false, $value = null, bool $inline = false, string $type = 'checkbox', ?bool $checked = false)
+    public function __construct(string $name, string $idName = null, ?string $label = null, bool $required = false, bool $disabled = false, ?bool $readonly = false, $value = null, bool $inline = false, string $type = 'checkbox', ?bool $checked = false)
     {
-        parent::__construct($name, $label, $disabled, $readonly);
+        parent::__construct($name, $label, $required, $disabled, $readonly, $value, null, $type);
 
         $this->idName = $idName ? $idName : $this->name;
         $this->value = $value;
         $this->inline = $inline ? ' form-check-inline' : '';
         $this->checked = $checked ? 'checked' : '';
-        $this->type = $type;
     }
 
     /**

@@ -19,7 +19,7 @@ class Input extends BaseInput
      */
     public function __construct(string $name, ?string $label = null, ?string $placeholder = null, bool $required = false, bool $disabled = false, bool $readonly = false, $value = null, string $type = null)
     {
-        parent::__construct($name, $label, $placeholder, $type, $required, $disabled, $readonly, $value);
+        parent::__construct($name, $label, $required, $disabled, $readonly, $value, $placeholder, $type);
     }
 
     /**
