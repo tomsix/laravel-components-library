@@ -14,12 +14,12 @@ class ModelSelect extends Select
      * @param string $name
      * @param Collection|null $models
      * @param string|null $label
-     * @param array|string $selectAttributes
+     * @param array|string $inputAttributes
      * @param Model|string|int $value
      * @param string $keyAttribute
      * @param string $valueAttribute
      */
-	public function __construct(string $name, ?Collection $models = null, ?string $label = null, $selectAttributes = [], $value = null, string $keyAttribute = 'id', string $valueAttribute = 'name')
+	public function __construct(string $name, ?Collection $models = null, ?string $label = null, $inputAttributes = [], $value = null, string $keyAttribute = 'id', string $valueAttribute = 'name')
     {
         $options = $models ? $models->pluck($valueAttribute, $keyAttribute) : [];
 
@@ -28,6 +28,6 @@ class ModelSelect extends Select
             $value = $value->getAttribute($keyAttribute);
         }
 
-        parent::__construct($name, $options, $label, $selectAttributes, $value);
+        parent::__construct($name, $options, $label, $inputAttributes, $value);
     }
 }

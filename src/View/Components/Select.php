@@ -18,12 +18,12 @@ class Select extends FormGroup
      * @param string $name
      * @param iterable $options
      * @param string|null $label
-     * @param array|string $selectAttributes
+     * @param array|string $inputAttributes
      * @param string|int|null $value
      */
-	public function __construct(string $name, iterable $options, ?string $label = null, $selectAttributes = [], $value = null)
+	public function __construct(string $name, iterable $options, ?string $label = null, $inputAttributes = [], $value = null)
     {
-        parent::__construct($name, $label, $selectAttributes, $value);
+        parent::__construct($name, $label, $inputAttributes, $value);
 
         $this->options = $options;
     }

@@ -40,8 +40,6 @@ You can provide extra attributes to the input-tag in a component. This property 
 ['required', 'data-browse' => 'Open File'];
 ```
 
-**Note:** For een select component use `select-attributes`
-
 #### Input
 
 ```blade
@@ -67,8 +65,6 @@ It is possible to add extra options or a default option with slots.
     <option value="">Choose an animal</option>
 </x-form-select>
 ```
-
-**Note:** Use `select-attributes` instead of the default name.
 
 #### Model Select
 
