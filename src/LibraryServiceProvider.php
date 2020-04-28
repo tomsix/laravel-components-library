@@ -4,6 +4,7 @@ namespace TomSix\Components;
 
 
 use Illuminate\Support\ServiceProvider;
+use TomSix\Components\View\Components\Button;
 use TomSix\Components\View\Components\Checkbox;
 use TomSix\Components\View\Components\Checkboxes;
 use TomSix\Components\View\Components\Errors;
@@ -58,6 +59,7 @@ class LibraryServiceProvider extends ServiceProvider
             Checkboxes::class,
             Checkbox::class,
             File::class,
+            Button::class,
             Errors::class
         ]);
 

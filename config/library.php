@@ -30,7 +30,8 @@ return [
                 'group' => 'custom-file',
                 'input' => 'custom-file-input',
                 'label' => 'custom-file-label'
-            ]
+            ],
+            'button' => 'btn'
         ],
         'error' => [
             'inline' => [

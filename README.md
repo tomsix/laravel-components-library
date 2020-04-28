@@ -25,12 +25,14 @@ Use the normal Blade Component syntax from Laravel 7. The form components can be
 <x-form-input name="title" />
 ```
 
-All components has standaard attributes:
+These attributes are usable. Use input-attributes for extra's. 
 
-- name (required)
-- label
-- value (makes use of the old() helper)
-- input-attributes
+- **name** (required)
+- **label** (not shown when null)
+- **type** (if it's possible)
+- **placeholder** (if it's possible)
+- **value** (makes use of the old() helper)
+- **input-attributes**
 
 #### Input-attributes
 
@@ -132,6 +134,14 @@ Changing the `type` attribute to `radio` will work to use radiobuttons.
 <x-form-file name="file" label="Choose file" />
 ```
 
+#### Button
+
+```blade
+<x-form-button name="submit" label="Save" value="save" color="secondary"/>
+```
+
+The label attribute wil not result in a label-tag. The value will renders as button text. When there is label given, the value will be used and when the value is null the name will be used.
+
 ##### Multiple files
 
 There are some notes when using multiple files:
@@ -149,9 +159,9 @@ It's also possible to add a error bag in a view.
 <x-form-errors title="There are some incorrect fields" color="warning"/>
 ```
 
-### Customisation
+## Customisation
 
-#### Config
+### Config
 
 You can optionally publish the config file with:
 
@@ -159,7 +169,7 @@ You can optionally publish the config file with:
     
 The css classes of the elements in a component can be change in the config file. By default, all components use Bootstrap 4 classes.
     
-#### Components
+### Components
 
 Optionally you can also publish the components and edit then. They will copy to `resources/views/components/library/form`.
 
