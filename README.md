@@ -30,8 +30,17 @@ All components has standaard attributes:
 - name
 - label
 - value (makes use of the old() helper)
-- disabled
-- readonly
+- input-attributes
+
+#### Input-attributes
+
+You can provide extra attributes to the input-tag in a component. This property will accept a string in the right html-format or you can use a array. The key is the attribute name and the value as attribute value. Attributes that doesn't need a value can't have a key.
+
+```php
+['required', 'data-browse' => 'Open File'];
+```
+
+**Note:** For een select component use `select-attributes`
 
 #### Input
 
@@ -59,17 +68,19 @@ It is possible to add extra options or a default option with slots.
 </x-form-select>
 ```
 
+**Note:** Use `select-attributes` instead of the default name.
+
 #### Model Select
 
 With the `model-select` component you can use a collection of Eloquent models. The `models` attribute accepts the collection. It is also possible to use a Eloquent model as the selected value
 
 ```blade
-<x-form-model-select name="user" :models="$users" label="Your friend">
+<x-form-model-select name="user" :models="$users" label="Your friend" key-attribute="id" value-attribute="fullName">
     <option value="">Select your friend</option>
 </x-form-model-select>
 ```
 
-By default, `id` and `name` are used as option value and text. This can be changed with `key-attribute` and `value-attribute`.
+By default, `id` and `name` are used for the option value and text. This can be changed with `key-attribute` and `value-attribute`.
 #### Checkboxes (or radiobuttons)
 
 A group of checkboxes make use of the checkboxes component. It is possible to give an array of options or use the single checkbox component within the slot.
