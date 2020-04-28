@@ -1,17 +1,21 @@
-<div {{ $attributes->merge(['class' => 'form-group']) }}>
+<div {{ $attributes->merge(['class' => config('library.css.form.group')]) }}>
     @isset($label)
-        <label for="{{ $name }}">{{ $label }}</label>
+        <label class="{{ config('library.css.form.label') }}" for="{{ $name }}">{{ $label }}</label>
     @endisset
+
     <textarea
             name="{{ $name }}"
             id="{{ $name }}"
-            class="form-control @error($name) is-invalid @enderror"
+            class="{{ config('library.css.form.input') }} @error($name) {{ config('library.css.error.inline.input') }} @enderror"
             placeholder="{{ $placeholder }}"
             {{ $required }} {{ $disabled }} {{ $readonly }}
     >{{ old($name, $value) }}</textarea>
-    @error($value)
-        <div class="invalid-feedback">
+
+    @if(config('library.inline_errors'))
+        @error($name)
+        <div class="{{ config('library.css.error.inline.div') }}">
             {{ $message }}
         </div>
-    @enderror
+        @enderror
+    @endif
 </div>

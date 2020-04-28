@@ -5,7 +5,7 @@
 ![PHP from Packagist](https://img.shields.io/packagist/php-v/tomsix/laravel-components-library)
 
 # Laravel Components Library
-A collection of pre-made Blade components. All components use Bootstrap 4 css-classes. 
+A collection of pre-made Blade components. 
 
 ## Installation & setup
 
@@ -118,13 +118,31 @@ The `inline` attribute enables the Bootstrap inline-class.
 
 Changing the `type` attribute to `radio` will work to use radiobuttons.
 
+#### Errors
+
+Form errors has 2 option to render. By default, they are displayed in a component. This can be disabled in the config file.
+
+It's also possible to add a error bag in a view.
+
+```blade
+<x-form-errors title="There are some incorrect fields" color="warning"/>
+```
+
 ### Customisation
 
-You can customize the css classes on each element by editing the blade components once they are published. Publish the components with this command
+#### Config
+
+You can optionally publish the config file with:
+
+    php artisan vendor:publish --provider="TomSix\Components\LibraryServiceProvider" --tag=config
+    
+The css classes of the elements in a component can be change in the config file. By default, all components use Bootstrap 4 classes.
+    
+#### Components
+
+Optionally you can also publish the components and edit then. They will copy to `resources/views/components/library/form`.
 
     php artisan vendor:publish --provider="TomSix\Components\LibraryServiceProvider" --tag=form-components
-
-By default, each element use the Bootstrap 4 classes.
 
 ## License
 

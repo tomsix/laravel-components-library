@@ -47,7 +47,7 @@ class Checkbox extends BaseInput
 
         $this->idName = $idName ? $idName : $this->name;
         $this->value = $value;
-        $this->inline = $inline ? ' form-check-inline' : '';
+        $this->inline = $inline ? ' ' . config('library.css.form.checkbox.inline') : '';
         $this->checked = $checked ? 'checked' : '';
     }
 

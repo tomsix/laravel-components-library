@@ -1,11 +1,11 @@
 @if ($errors->any())
-    <div class="alert alert-{{ $color }}">
+    <div class="{{ config('library.css.error.component.group') }} {{ config('library.css.error.component.group') . '-' . $color }}">
         @isset($title)
-            <h4 class="alert-heading">{{ $title }}</h4>
+            <h4 class="{{ config('library.css.error.component.header') }}">{{ $title }}</h4>
         @endisset
-        <ul>
+        <ul class="{{ config('library.css.error.component.ul') }}">
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                <li class="{{ config('library.css.error.component.li') }}">{{ $error }}</li>
             @endforeach
         </ul>
     </div>

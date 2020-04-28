@@ -14,6 +14,8 @@ use TomSix\Components\View\Components\Textarea;
 
 class LibraryServiceProvider extends ServiceProvider
 {
+    private const CONFIG_FILE = __DIR__.'/../config/library.php';
+
     /** @var string  */
     private const PATH_VIEWS = __DIR__ . '/../resources/views';
 
@@ -24,6 +26,12 @@ class LibraryServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if (function_exists('config_path')) { // function not available and 'publish' not relevant in Lumen
+            $this->publishes([
+                self::CONFIG_FILE => config_path('library.php')
+            ], 'config');
+        }
+
         $this->loadViewsFrom(self::PATH_VIEWS, 'library');
 
         $this->registerFormComponents();
@@ -36,7 +44,7 @@ class LibraryServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->mergeConfigFrom(self::CONFIG_FILE, 'library');
     }
 
     private function registerFormComponents(): void

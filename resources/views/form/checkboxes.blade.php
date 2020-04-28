@@ -1,6 +1,6 @@
-<div {{ $attributes->merge(['class' => 'form-group']) }}>
+<div {{ $attributes->merge(['class' => config('library.css.form.group')]) }}>
     @isset($label)
-        <label for="{{ $name }}">{{ $label }}</label>
+        <label class="{{ config('library.css.form.label') }}" for="{{ $name }}">{{ $label }}</label>
     @endisset
 
     @foreach($options as $i => $option)
@@ -24,7 +24,7 @@
 
     {{ $slot }}
 
-    @if($type === 'radio')
+    @if(config('library.inline_errors') && $type === 'radio')
         <input type="hidden" class="form-control @error($name) is-invalid @enderror">
         @error($name)
             <div class="invalid-feedback">
