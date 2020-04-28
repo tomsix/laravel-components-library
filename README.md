@@ -126,6 +126,19 @@ The `inline` attribute enables the Bootstrap inline-class.
 
 Changing the `type` attribute to `radio` will work to use radiobuttons.
 
+#### File
+
+```blade
+<x-form-file name="file" label="Choose file" />
+```
+
+##### Multiple files
+
+There are some notes when using multiple files:
+- `enctype="multipart/form-data"` must added in the form tag
+- Add the multiline attribute: `input-attributes="multiple"`
+- Errors will not shown inline. Use a global error bag for the messages.
+
 #### Errors
 
 Form errors has 2 option to render. By default, they are displayed in a component. This can be disabled in the config file.
