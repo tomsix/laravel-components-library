@@ -17,7 +17,7 @@ return [
         'form' => [
             'group' => 'form-group',
             'input' => 'form-control',
-            'label' => 'custom-control-label',
+            'label' => '',
             'select' => 'custom-control-select',
             'checkbox' => [
                 'group' => 'custom-control custom-checkbox',

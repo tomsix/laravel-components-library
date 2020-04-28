@@ -11,7 +11,7 @@
         class="{{ config('library.css.form.input') }} @error($name) {{ config('library.css.error.inline.input') }} @enderror"
         placeholder="{{ $placeholder }}"
         value="{{ old($name, $value) }}"
-        {{ $required }} {{ $disabled }} {{ $readonly }}
+        {{ $inputAttributes }}
     />
 
     @if(config('library.inline_errors'))

@@ -4,7 +4,7 @@
 namespace TomSix\Components\View\Components;
 
 
-abstract class BaseInput extends FromGroup
+abstract class BaseInput extends FormGroup
 {
     /**
      * Specifies the placeholder
@@ -20,32 +20,22 @@ abstract class BaseInput extends FromGroup
      */
     public string $type;
 
-    /**
-     * Specifies the required attribute
-     *
-     * @var string $required
-     */
-    public string $required;
-
 
     /**
      * Create a new component instance.
      *
      * @param string $name
      * @param string|null $label
+     * @param array|string $attributes
+     * @param mixed $value
      * @param string|null $placeholder
      * @param string|null $type
-     * @param bool $required
-     * @param bool $disabled
-     * @param bool $readonly
-     * @param mixed $value
      */
-    public function __construct(string $name, ?string $label = null, bool $required = false, bool $disabled = false, bool $readonly = false, $value = null, ?string $placeholder = null, ?string $type = null)
+    public function __construct(string $name, ?string $label = null, $attributes = [], $value = null, ?string $placeholder = null, ?string $type = null)
     {
-        parent::__construct($name, $label, $disabled, $readonly, $value);
+        parent::__construct($name, $label, $attributes, $value);
 
         $this->placeholder = $placeholder ?? '';
-        $this->required = $required ? 'required' : '';
         $this->type = $type ?? 'text';
     }
 }

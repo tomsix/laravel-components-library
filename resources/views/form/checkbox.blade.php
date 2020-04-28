@@ -1,7 +1,7 @@
 <div {{ $attributes->merge(['class' => $class]) }}>
 
     <input class="{{ config('library.css.form.checkbox.input') }} @error($errorName) {{ config('library.css.error.inline.input') }} @enderror"
-           type="{{ $type }}" name="{{ $name }}" id="{{ $idName }}" value="{{ $value }}" {{ $checked }} {{ $required }} {{ $disabled }} {{ $readonly }}
+           type="{{ $type }}" name="{{ $name }}" id="{{ $idName }}" value="{{ $value }}" {{ $checked }} {{ $inputAttributes }}
     />
 
     @isset($label)

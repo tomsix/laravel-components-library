@@ -3,7 +3,7 @@
 namespace TomSix\Components\View\Components;
 
 
-class Select extends FromGroup
+class Select extends FormGroup
 {
     /**
      * A list with the value and text of the select options
@@ -18,13 +18,12 @@ class Select extends FromGroup
      * @param string $name
      * @param iterable $options
      * @param string|null $label
-     * @param bool $disabled
-     * @param bool $readonly
+     * @param array|string $selectAttributes
      * @param string|int|null $value
      */
-	public function __construct(string $name, iterable $options, ?string $label = null, bool $disabled = false, bool $readonly = false, $value = null)
+	public function __construct(string $name, iterable $options, ?string $label = null, $selectAttributes = [], $value = null)
     {
-        parent::__construct($name, $label, $disabled, $readonly, $value);
+        parent::__construct($name, $label, $selectAttributes, $value);
 
         $this->options = $options;
     }

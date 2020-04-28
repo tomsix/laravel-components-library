@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use TomSix\Components\View\Components\Checkbox;
 use TomSix\Components\View\Components\Checkboxes;
 use TomSix\Components\View\Components\Errors;
+use TomSix\Components\View\Components\File;
 use TomSix\Components\View\Components\ModelSelect;
 use TomSix\Components\View\Components\Select;
 use TomSix\Components\View\Components\Input;
@@ -56,6 +57,7 @@ class LibraryServiceProvider extends ServiceProvider
             Textarea::class,
             Checkboxes::class,
             Checkbox::class,
+            File::class,
             Errors::class
         ]);
 

@@ -6,7 +6,7 @@ namespace TomSix\Components\View\Components;
 
 use Illuminate\Support\Str;
 
-class Checkbox extends BaseInput
+class Checkbox extends FormGroup
 {
     /**
      * @var string
@@ -28,27 +28,33 @@ class Checkbox extends BaseInput
     public string $checked;
 
     /**
+     * Set the type of the input
+     *
+     * @var string $type
+     */
+    public string $type;
+
+    /**
      * Create a new component instance.
      *
      * @param string $name
      * @param string $idName
      * @param string|null $label
-     * @param bool $required
-     * @param bool $disabled
-     * @param bool $readonly
+     * @param array|string $inputAttributes
      * @param mixed $value
      * @param bool $inline
      * @param string $type
      * @param bool $checked
      */
-    public function __construct(string $name, string $idName = null, ?string $label = null, bool $required = false, bool $disabled = false, ?bool $readonly = false, $value = null, bool $inline = false, string $type = 'checkbox', ?bool $checked = false)
+    public function __construct(string $name, string $idName = null, ?string $label = null, $inputAttributes = [], $value = null, bool $inline = false, string $type = 'checkbox', ?bool $checked = false)
     {
-        parent::__construct($name, $label, $required, $disabled, $readonly, $value, null, $type);
+        parent::__construct($name, $label, $inputAttributes, $value);
 
         $this->idName = $idName ? $idName : $this->name;
         $this->value = $value;
         $this->inline = $inline ? ' ' . config('library.css.form.checkbox.inline') : '';
         $this->checked = $checked ? 'checked' : '';
+        $this->type = $type;
     }
 
     /**

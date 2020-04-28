@@ -3,23 +3,38 @@
 
 namespace TomSix\Components\View\Components;
 
-class Input extends BaseInput
+class Input extends FormGroup
 {
+    /**
+     * Specifies the placeholder
+     *
+     * @var string $placeholder
+     */
+    public string $placeholder;
+
+    /**
+     * Set the type of the input
+     *
+     * @var string $type
+     */
+    public string $type;
+
     /**
      * Create a new component instance.
      *
      * @param string $name
      * @param string|null $label
-     * @param string|null $placeholder
-     * @param bool $required
-     * @param bool $disabled
-     * @param bool $readonly
+     * @param array|string $inputAttributes
      * @param mixed $value
-     * @param string|null $type
+     * @param string $placeholder
+     * @param string $type
      */
-    public function __construct(string $name, ?string $label = null, ?string $placeholder = null, bool $required = false, bool $disabled = false, bool $readonly = false, $value = null, string $type = null)
+    public function __construct(string $name, ?string $label = null, $inputAttributes = [], $value = null, string $placeholder = '', string $type = 'text')
     {
-        parent::__construct($name, $label, $required, $disabled, $readonly, $value, $placeholder, $type);
+        parent::__construct($name, $label, $inputAttributes, $value);
+
+        $this->placeholder =$placeholder;
+        $this->type = $type;
     }
 
     /**
