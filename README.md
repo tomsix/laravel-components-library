@@ -1,6 +1,7 @@
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/tomsix/laravel-components-library/master)
-![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/tomsix/laravel-components-library?include_prereleases&label=pre-release)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/tomsix/laravel-components-library?label=latest)
 ![Packagist (custom server)](https://img.shields.io/packagist/dm/tomsix/laravel-components-library)
+![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/tomsix/laravel-components-library?include_prereleases&label=pre-release)
 ![Packagist](https://img.shields.io/packagist/l/tomsix/laravel-components-library)
 ![PHP from Packagist](https://img.shields.io/packagist/php-v/tomsix/laravel-components-library)
 
