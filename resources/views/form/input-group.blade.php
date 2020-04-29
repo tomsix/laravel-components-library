@@ -1,16 +1,16 @@
-<div class="input-group">
+<div class="{{ config('library.css.form.input.group') }}">
 
     @isset($prepend)
-        <div class="input-group-prepend">
-            <div class="input-group-text">{{ $prepend }}</div>
+        <div class="{{ config('library.css.form.input.prepend') }}">
+            <div class="{{ config('library.css.form.input.text') }}">{{ $prepend }}</div>
         </div>
     @endisset
 
     {{ $slot }}
 
     @isset($append)
-        <div class="input-group-append">
-            <div class="input-group-text">{{ $append }}</div>
+        <div class="{{ config('library.css.form.input.append') }}">
+            <div class="{{ config('library.css.form.input.text') }}">{{ $append }}</div>
         </div>
     @endisset
 

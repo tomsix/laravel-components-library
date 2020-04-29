@@ -16,7 +16,14 @@ return [
     'css' => [
         'form' => [
             'group' => 'form-group',
-            'input' => 'form-control',
+            'input' => [
+                'group' => 'input-group',
+                'input' => 'form-control',
+                'label' => '',
+                'prepend' => 'input-group-prepend',
+                'append' => 'input-group-append',
+                'text' => 'input-group-text'
+            ],
             'label' => '',
             'select' => 'custom-select',
             'checkbox' => [
