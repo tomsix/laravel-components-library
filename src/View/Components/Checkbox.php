@@ -38,7 +38,7 @@ class Checkbox extends FormComponent
      * Create a new component instance.
      *
      * @param string $name
-     * @param string $idName
+     * @param string|null $idName
      * @param string|null $label
      * @param array|string $inputAttributes
      * @param mixed $value
@@ -46,7 +46,7 @@ class Checkbox extends FormComponent
      * @param string $type
      * @param bool $checked
      */
-    public function __construct(string $name, string $idName = null, ?string $label = null, $inputAttributes = [], $value = null, bool $inline = false, string $type = 'checkbox', ?bool $checked = false)
+    public function __construct(string $name, ?string $idName = null, ?string $label = null, $inputAttributes = [], $value = null, bool $inline = false, string $type = 'checkbox', ?bool $checked = false)
     {
         parent::__construct($name, $label, $inputAttributes, $value);
 
@@ -64,7 +64,7 @@ class Checkbox extends FormComponent
      */
     public function render()
     {
-        return view('library::form.checkbox');
+        return view('laravel-components-library::form.checkbox');
     }
 
     public function errorName(): string
@@ -82,7 +82,7 @@ class Checkbox extends FormComponent
      *
      * @return string
      */
-    public function class(): string
+    public function cssClass(): string
     {
         if($this->type === 'checkbox')
             return config('library.css.form.checkbox.group') . $this->inline;

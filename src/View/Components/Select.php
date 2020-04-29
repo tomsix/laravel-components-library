@@ -37,7 +37,7 @@ class Select extends BaseInput
 	 */
 	public function render()
 	{
-		return view('library::form.select');
+		return view('laravel-components-library::form.select');
 	}
 
     /**

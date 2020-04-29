@@ -50,6 +50,6 @@ class InputGroup extends Component
      */
     public function render()
     {
-        return view('library::form.input-group');
+        return view('laravel-components-library::form.input-group');
     }
 }

@@ -1,6 +1,6 @@
-<div {{ $attributes->merge(['class' => $class]) }}>
+<div {{ $attributes->merge(['class' => $cssClass]) }}>
 
-    <input class="{{ config('library.css.form.checkbox.input') }} @error($errorName) {{ config('library.css.error.inline.input') }} @enderror"
+    <input class="{{ config('library.css.form.checkbox.input') }} @error($errorName()) {{ config('library.css.error.inline.input') }} @enderror"
            type="{{ $type }}" name="{{ $name }}" id="{{ $idName }}" value="{{ $value }}" {{ $checked }} {{ $inputAttributes }}
     />
 
@@ -10,11 +10,5 @@
         </label>
     @endisset()
 
-    @if(config('library.inline_errors'))
-        @error($errorName)
-            <div class="invalid-feedback">
-                {{ $message }}
-            </div>
-        @enderror
-    @endif
+    <x-form-error :name="$errorName" />
 </div>

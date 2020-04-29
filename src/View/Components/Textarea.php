@@ -35,6 +35,6 @@ class Textarea extends BaseInput
      */
     public function render()
     {
-        return view('library::form.textarea');
+        return view('laravel-components-library::form.textarea');
     }
 }

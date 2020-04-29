@@ -36,7 +36,7 @@ class LibraryServiceProvider extends ServiceProvider
             ], 'config');
         }
 
-        $this->loadViewsFrom(self::PATH_VIEWS, 'library');
+        $this->loadViewsFrom(self::PATH_VIEWS, 'laravel-components-library');
 
         $this->registerFormComponents();
     }
@@ -68,7 +68,7 @@ class LibraryServiceProvider extends ServiceProvider
         ]);
 
         $this->publishes([
-            self::PATH_VIEWS . '/form' => resource_path('views/components/library/form'),
+            self::PATH_VIEWS . '/form' => resource_path('views/components/laravel-components-library/form'),
         ], 'form-components');
     }
 }

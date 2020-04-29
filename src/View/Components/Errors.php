@@ -27,6 +27,6 @@ class Errors extends Component
 
     public function render()
     {
-        return view('library::form.errors');
+        return view('laravel-components-library::form.errors');
     }
 }
