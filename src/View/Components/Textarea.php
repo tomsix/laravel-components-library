@@ -2,7 +2,7 @@
 
 namespace TomSix\Components\View\Components;
 
-class Textarea extends FormGroup
+class Textarea extends Group
 {
     /**
      * Specifies the placeholder

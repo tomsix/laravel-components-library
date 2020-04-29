@@ -3,7 +3,7 @@
 
 namespace TomSix\Components\View\Components;
 
-class Input extends FormGroup
+class Input extends Group
 {
     /**
      * Specifies the placeholder

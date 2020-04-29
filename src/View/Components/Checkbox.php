@@ -6,7 +6,7 @@ namespace TomSix\Components\View\Components;
 
 use Illuminate\Support\Str;
 
-class Checkbox extends FormGroup
+class Checkbox extends Group
 {
     /**
      * @var string

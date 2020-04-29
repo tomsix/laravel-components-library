@@ -3,7 +3,7 @@
 namespace TomSix\Components\View\Components;
 
 
-class Select extends FormGroup
+class Select extends Group
 {
     /**
      * A list with the value and text of the select options

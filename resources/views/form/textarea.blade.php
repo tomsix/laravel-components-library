@@ -1,7 +1,6 @@
-<div {{ $attributes->merge(['class' => config('library.css.form.group')]) }}>
-    @isset($label)
-        <label class="{{ config('library.css.form.label') }}" for="{{ $name }}">{{ $label }}</label>
-    @endisset
+<x-form-group :name="$name" :label="$label" >
+
+    @slot('attributes'){{ $attributes->merge(['class' => config('library.css.form.group')]) }}@endslot
 
     <textarea
             name="{{ $name }}"
@@ -11,11 +10,4 @@
             {{ $inputAttributes }}
     >{{ old($name, $value) }}</textarea>
 
-    @if(config('library.inline_errors'))
-        @error($name)
-        <div class="{{ config('library.css.error.inline.div') }}">
-            {{ $message }}
-        </div>
-        @enderror
-    @endif
-</div>
+</x-form-group>

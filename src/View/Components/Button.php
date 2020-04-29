@@ -4,7 +4,7 @@
 namespace TomSix\Components\View\Components;
 
 
-class Button extends FormGroup
+class Button extends Group
 {
     /**
      * Set the type of the button

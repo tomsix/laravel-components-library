@@ -7,7 +7,7 @@ namespace TomSix\Components\View\Components;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
-class Checkboxes extends FormGroup
+class Checkboxes extends Group
 {
     /**
      * If the checkboxes must be inline
