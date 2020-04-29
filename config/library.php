@@ -25,7 +25,7 @@ return [
                 'text' => 'input-group-text'
             ],
             'label' => '',
-            'select' => 'custom-select',
+            'select' => 'custom-select', // style="flex: 1 1 0"; is added because of a fault in het Bootstrap class
             'checkbox' => [
                 'group' => 'custom-control custom-checkbox',
                 'radio' => 'custom-control custom-radio',

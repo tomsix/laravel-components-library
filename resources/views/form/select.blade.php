@@ -10,6 +10,7 @@
             name="{{ $name }}"
             id="{{ $name }}"
             class="{{ config('library.css.form.select') }} @error($name) {{ config('library.css.error.inline.input') }} @enderror"
+            style="flex: 1 1 0;"
             {{ $inputAttributes }}
         >
 
