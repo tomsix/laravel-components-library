@@ -7,9 +7,9 @@ use Illuminate\Support\ServiceProvider;
 use TomSix\Components\View\Components\Button;
 use TomSix\Components\View\Components\Checkbox;
 use TomSix\Components\View\Components\Checkboxes;
+use TomSix\Components\View\Components\Error;
 use TomSix\Components\View\Components\Errors;
 use TomSix\Components\View\Components\File;
-use TomSix\Components\View\Components\Group;
 use TomSix\Components\View\Components\InputGroup;
 use TomSix\Components\View\Components\ModelSelect;
 use TomSix\Components\View\Components\Select;
@@ -54,7 +54,6 @@ class LibraryServiceProvider extends ServiceProvider
     private function registerFormComponents(): void
     {
         $this->loadViewComponentsAs('form', [
-            Group::class,
             Input::class,
             InputGroup::class,
             Select::class,
@@ -64,7 +63,8 @@ class LibraryServiceProvider extends ServiceProvider
             Checkbox::class,
             File::class,
             Button::class,
-            Errors::class
+            Errors::class,
+            Error::class
         ]);
 
         $this->publishes([

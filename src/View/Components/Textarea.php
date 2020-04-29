@@ -2,7 +2,7 @@
 
 namespace TomSix\Components\View\Components;
 
-class Textarea extends Group
+class Textarea extends BaseInput
 {
     /**
      * Specifies the placeholder
@@ -18,10 +18,12 @@ class Textarea extends Group
      * @param array|string $inputAttributes
      * @param mixed $value
      * @param string $placeholder
+     * @param string|null $prepend
+     * @param string|null $append
      */
-    public function __construct(string $name, ?string $label = null, $inputAttributes = [], $value = null, string $placeholder = '')
+    public function __construct(string $name, ?string $label = null, $inputAttributes = [], $value = null, string $placeholder = '', ?string $prepend = null, ?string $append = null)
     {
-        parent::__construct($name, $label, $inputAttributes, $value);
+        parent::__construct($name, $label, $inputAttributes, $value, $prepend, $append);
 
         $this->placeholder = $placeholder;
     }

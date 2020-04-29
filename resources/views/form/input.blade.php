@@ -1,10 +1,10 @@
-<x-form-group :name="$name" :label="$label" >
+<div {{ $attributes->merge(['class' => config('library.css.form.group')]) }} >
 
-    @slot('attributes')
-        {{ $attributes->merge(['class' => config('library.css.form.group')]) }}
-    @endslot
+    @isset($label)
+        <label class="{{ config('library.css.form.label') }}" for="{{ $name }}">{{ $label }}</label>
+    @endisset
 
-    <x-form-input-group :prepend="$prepend" :append="$append">
+    <x-form-input-group :name="$name" :prepend="$prepend" :append="$append">
 
         <input
             autocomplete="off"
@@ -19,4 +19,5 @@
 
     </x-form-input-group>
 
-</x-form-group>
+    <x-form-error :name="$name" />
+</div>

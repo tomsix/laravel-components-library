@@ -6,7 +6,7 @@ namespace TomSix\Components\View\Components;
 
 use Illuminate\View\Component;
 
-class Group extends Component
+abstract class FormComponent extends Component
 {
     /**
      * Specifies the name
@@ -50,16 +50,6 @@ class Group extends Component
         $this->label = $label;
         $this->inputAttributes = is_string($inputAttributes) ? $inputAttributes : $this->renderAttributes($inputAttributes);
         $this->value = old($this->nameWithoutBrackets(), $value) ?? '';
-    }
-
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
-     */
-    public function render()
-    {
-        return view('library::form.group');
     }
 
     /**

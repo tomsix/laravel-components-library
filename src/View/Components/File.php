@@ -12,11 +12,12 @@ class File extends Input
      * @param string $name
      * @param string|null $label
      * @param array|string $inputAttributes
-     * @param string $placeholder
+     * @param string|null $prepend
+     * @param string|null $append
      */
-    public function __construct(string $name, ?string $label = null, $inputAttributes = [], string $placeholder = '')
+    public function __construct(string $name, ?string $label = null, $inputAttributes = [], ?string $prepend = null, ?string $append = null)
     {
-        parent::__construct($name, $label, $inputAttributes, null, $placeholder, 'file');
+        parent::__construct($name, $label, $inputAttributes, null, '', 'file', $prepend, $append);
     }
 
     /**

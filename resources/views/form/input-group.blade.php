@@ -1,5 +1,3 @@
-@props(['prepend', 'append'])
-
 <div class="input-group">
 
     @isset($prepend)
@@ -15,5 +13,7 @@
             <div class="input-group-text">{{ $append }}</div>
         </div>
     @endisset
+
+    <x-form-error :name="$name" />
 
 </div>

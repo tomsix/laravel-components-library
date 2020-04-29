@@ -1,8 +1,4 @@
-<x-form-group :name="$name" >
-
-    @slot('attributes')
-        {{ $attributes->merge(['class' => config('library.css.form.group')]) }}
-    @endslot
+<div {{ $attributes }}>
 
     <button name="{{ $name }}"
             type="{{ $type }}"
@@ -12,4 +8,4 @@
         {{ $label ?? ($value ? $value : $name) }}
     </button>
 
-</x-form-group>
+</div>

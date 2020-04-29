@@ -27,9 +27,9 @@ return [
                 'inline' => 'custom-control-inline',
             ],
             'file' => [
-                'group' => 'custom-file',
-                'input' => 'custom-file-input',
-                'label' => 'custom-file-label'
+                'group' => 'form-group',
+                'input' => 'form-control form-control-file',
+                'label' => ''
             ],
             'button' => 'btn'
         ],

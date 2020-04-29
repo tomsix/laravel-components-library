@@ -1,13 +1,21 @@
-<x-form-group :name="$name" :label="$label" >
+<div {{ $attributes->merge(['class' => config('library.css.form.group')]) }} >
 
-    @slot('attributes'){{ $attributes->merge(['class' => config('library.css.form.group')]) }}@endslot
+    @isset($label)
+        <label class="{{ config('library.css.form.label') }}" for="{{ $name }}">{{ $label }}</label>
+    @endisset
 
-    <textarea
+    <x-form-input-group :name="$name" :prepend="$prepend" :append="$append">
+
+        <textarea
             name="{{ $name }}"
             id="{{ $name }}"
             class="{{ config('library.css.form.input') }} @error($name) {{ config('library.css.error.inline.input') }} @enderror"
             placeholder="{{ $placeholder }}"
             {{ $inputAttributes }}
-    >{{ old($name, $value) }}</textarea>
+        >{{ old($name, $value) }}</textarea>
 
-</x-form-group>
+    </x-form-input-group>
+
+    <x-form-error :name="$name" />
+
+</div>

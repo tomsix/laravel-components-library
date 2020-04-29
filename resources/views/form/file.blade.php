@@ -1,19 +1,16 @@
-<div {{ $attributes->merge(['class' => 'custom-file']) }}>
+<div {{ $attributes->merge(['class' => config('library.css.form.file.group')]) }}>
 
-    <label class="{{ 'custom-file-label' }}" for="{{ $name }}">@isset($label){{ $label }}@endisset</label>
+    <label class="{{ config('library.css.form.file.label') }}" for="{{ $name }}">@isset($label){{ $label }}@endisset</label>
 
-    <input type="file"
-        name="{{ $name }}"
-        id="{{ $name }}"
-        class="{{ 'custom-file-input' }} @error($name) {{ config('library.css.error.inline.input') }} @enderror"
-        {{ $inputAttributes }}
-    />
+    <x-form-input-group :name="$name" :prepend="$prepend" :append="$append">
 
-    @if(config('library.inline_errors'))
-        @error($name)
-            <div class="{{ config('library.css.error.inline.div') }}">
-                {{ $message }}
-            </div>
-        @enderror
-    @endif
+        <input type="file"
+               name="{{ $name }}"
+               id="{{ $name }}"
+               class="{{ config('library.css.form.file.input') }} @error($name) {{ config('library.css.error.inline.input') }} @enderror"
+            {{ $inputAttributes }}
+        />
+
+    </x-form-input-group>
+
 </div>

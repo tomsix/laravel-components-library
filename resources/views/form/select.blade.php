@@ -1,23 +1,29 @@
-<x-form-group :name="$name" :label="$label" >
+<div {{ $attributes->merge(['class' => config('library.css.form.group')]) }} >
 
-    @slot('attributes')
-        {{ $attributes->merge(['class' => config('library.css.form.group')]) }}
-    @endslot
+    @isset($label)
+        <label class="{{ config('library.css.form.label') }}" for="{{ $name }}">{{ $label }}</label>
+    @endisset
 
-    <select name="{{ $name }}"
+    <x-form-input-group :name="$name" :prepend="$prepend" :append="$append">
+
+        <select
+            name="{{ $name }}"
             id="{{ $name }}"
             class="{{ config('library.css.form.select') }} @error($name) {{ config('library.css.error.inline.input') }} @enderror"
             {{ $inputAttributes }}
-    >
+        >
 
-        {{ $slot }}
+            {{ $slot }}
 
-        @foreach ($options as $key => $option)
-            <option value="{{ $key }}" {{ $isSelected($key) }}>
-                {{ $option }}
-            </option>
-        @endforeach
+            @foreach ($options as $key => $option)
+                <option value="{{ $key }}" {{ $isSelected($key) }}>
+                    {{ $option }}
+                </option>
+            @endforeach
 
-    </select>
+        </select>
 
-</x-form-group>
+    </x-form-input-group>
+
+    <x-form-error :name="$name" />
+</div>

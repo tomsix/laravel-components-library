@@ -3,7 +3,7 @@
 
 namespace TomSix\Components\View\Components;
 
-class Input extends Group
+class Input extends BaseInput
 {
     /**
      * Specifies the placeholder
@@ -20,20 +20,6 @@ class Input extends Group
     public string $type;
 
     /**
-     * Set a Bootstrap prepend to the input
-     *
-     * @var string|null $prepend
-     */
-    public ?string $prepend;
-
-    /**
-     * Set a Bootstrap append to the input
-     *
-     * @var string|null $append
-     */
-    public ?string $append;
-
-    /**
      * Create a new component instance.
      *
      * @param string $name
@@ -47,12 +33,10 @@ class Input extends Group
      */
     public function __construct(string $name, ?string $label = null, $inputAttributes = [], $value = null, string $placeholder = '', string $type = 'text', ?string $prepend = null, ?string $append = null)
     {
-        parent::__construct($name, $label, $inputAttributes, $value);
+        parent::__construct($name, $label, $inputAttributes, $value, $prepend, $append);
 
         $this->placeholder =$placeholder;
         $this->type = $type;
-        $this->prepend = $prepend;
-        $this->append = $append;
     }
 
     /**
