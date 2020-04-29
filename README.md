@@ -186,7 +186,7 @@ The css classes of the elements in a component can be change in the config file.
     
 ### Components
 
-Optionally you can also publish the components and edit then. They will copy to `resources/views/components/library/form`.
+Optionally you can also publish the components and edit then. They will copy to `resources/views/vendor/laravel-components-library/form`.
 
     php artisan vendor:publish --provider="TomSix\Components\LibraryServiceProvider" --tag=form-components
 
