@@ -17,7 +17,7 @@ The package will automatically register its service provider.
 
 ## Usage
 
-### Form Components
+### Usages From Components
 
 Use the normal Blade Component syntax from Laravel 7. The form components can be used with the `form` prefix.
 
@@ -36,16 +36,30 @@ These attributes are usable. Use input-attributes for extra's.
 
 #### Input-attributes
 
+All extra attributes will rendered in the div-tag of the form-group. 
+
 You can provide extra attributes to the input-tag in a component. This property will accept a string in the right html-format or you can use a array. The key is the attribute name and the value as attribute value. Attributes that doesn't need a value can't have a key.
 
 ```blade
 <x-form-input name="title" :input-attributes="['required', 'data-name' => 'Custom name']"/>
 ```
 
+#### Prepend & append
+
+The input, select, textarea and file components are rendered in a extra `div` with the Bootstrap `input-group`class. With this extra it's possible to add a prepend and append.
+
+```blade
+<x-form-input name="username" label="Username" prepend="@" />
+```
+
+### Form Components
+
 #### Input
 
 ```blade
 <x-form-input name="first-name" label="First Name" placeholder="Enter your first name" type="text" />
+
+##
 ```
 
 #### Textarea
