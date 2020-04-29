@@ -7,7 +7,6 @@
     <x-form-input-group :name="$name" :prepend="$prepend" :append="$append">
 
         <input
-            autocomplete="off"
             type="{{ $type }}"
             name="{{ $name }}"
             id="{{ $name }}"

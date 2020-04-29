@@ -10,7 +10,7 @@
              * @var bool $optionsAreAssoc
              * @var $loop
              */
-            $key = $optionsAreAssoc ? $i : $loop->iteration
+            $key = $optionsAreAssoc ? $i : $loop->index
         @endphp
 
         <x-form-checkbox :name="$name"

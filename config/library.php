@@ -19,7 +19,7 @@ return [
             'input' => [
                 'group' => 'input-group',
                 'input' => 'form-control',
-                'label' => '',
+                'label' => 'form-label',
                 'prepend' => 'input-group-prepend',
                 'append' => 'input-group-append',
                 'text' => 'input-group-text'

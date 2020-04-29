@@ -110,7 +110,7 @@ A group of checkboxes make use of the checkboxes component. It is possible to gi
 <x-form-checkboxes name="user[]" label="Favorite actors" :options="$options" type="checkbox" />
 ```
 
-Checkboxes need a array with options. The array key is used for the checkbox value attribute and the value of the array is used as label text. An array without keys will use numbers starting from 1.
+Checkboxes need a array with options. The array key is used for the checkbox value attribute and the value of the array is used as label text. An array without keys will use numbers starting from 0.
 
 ###### With keys
 
