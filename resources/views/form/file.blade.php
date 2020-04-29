@@ -6,7 +6,6 @@
         name="{{ $name }}"
         id="{{ $name }}"
         class="{{ 'custom-file-input' }} @error($name) {{ config('library.css.error.inline.input') }} @enderror"
-        placeholder="{{ $placeholder }}"
         {{ $inputAttributes }}
     />
 

@@ -6,7 +6,7 @@
 
     <select name="{{ $name }}"
             id="{{ $name }}"
-            class="{{ config('library.css.form.input') }} @error($name) {{ config('library.css.error.inline.input') }} @enderror"
+            class="{{ config('library.css.form.select') }} @error($name) {{ config('library.css.error.inline.input') }} @enderror"
             {{ $inputAttributes }}
     >
 

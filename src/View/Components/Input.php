@@ -20,6 +20,20 @@ class Input extends Group
     public string $type;
 
     /**
+     * Set a Bootstrap prepend to the input
+     *
+     * @var string|null $prepend
+     */
+    public ?string $prepend;
+
+    /**
+     * Set a Bootstrap append to the input
+     *
+     * @var string|null $append
+     */
+    public ?string $append;
+
+    /**
      * Create a new component instance.
      *
      * @param string $name
@@ -28,13 +42,17 @@ class Input extends Group
      * @param mixed $value
      * @param string $placeholder
      * @param string $type
+     * @param string|null $prepend
+     * @param string|null $append
      */
-    public function __construct(string $name, ?string $label = null, $inputAttributes = [], $value = null, string $placeholder = '', string $type = 'text')
+    public function __construct(string $name, ?string $label = null, $inputAttributes = [], $value = null, string $placeholder = '', string $type = 'text', ?string $prepend = null, ?string $append = null)
     {
         parent::__construct($name, $label, $inputAttributes, $value);
 
         $this->placeholder =$placeholder;
         $this->type = $type;
+        $this->prepend = $prepend;
+        $this->append = $append;
     }
 
     /**

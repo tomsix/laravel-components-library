@@ -37,7 +37,8 @@ class Group extends Component
     public string $inputAttributes;
 
     /**
-     * InputField constructor.
+     * Create a new component instance.
+     *
      * @param string $name
      * @param string|null $label
      * @param array|string $inputAttributes
