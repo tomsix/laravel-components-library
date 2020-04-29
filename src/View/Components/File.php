@@ -27,6 +27,6 @@ class File extends Input
      */
     public function render()
     {
-        return view('library::form.file');
+        return view('laravel-components-library::form.file');
     }
 }

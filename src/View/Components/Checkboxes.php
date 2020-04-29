@@ -65,7 +65,7 @@ class Checkboxes extends FormComponent
      */
     public function render()
     {
-        return view('library::form.checkboxes');
+        return view('laravel-components-library::form.checkboxes');
     }
 
     /**

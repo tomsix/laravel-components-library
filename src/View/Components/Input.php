@@ -46,6 +46,6 @@ class Input extends BaseInput
      */
     public function render()
     {
-        return view('library::form.input');
+        return view('laravel-components-library::form.input');
     }
 }
