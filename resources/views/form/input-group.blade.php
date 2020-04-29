@@ -1,4 +1,4 @@
-<div class="{{ config('library.css.form.input.group') }}">
+<div {{ $attributes->merge(['class' => config('library.css.form.input.group')]) }} >
 
     @isset($prepend)
         <div class="{{ config('library.css.form.input.prepend') }}">
