@@ -18,6 +18,7 @@ use TomSix\Components\View\Components\Textarea;
 
 class LibraryServiceProvider extends ServiceProvider
 {
+    /** @var string  */
     private const CONFIG_FILE = __DIR__.'/../config/library.php';
 
     /** @var string  */
@@ -51,7 +52,12 @@ class LibraryServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(self::CONFIG_FILE, 'library');
     }
 
-    private function registerFormComponents(): void
+    /**
+     * Register the Blade form components
+     *
+     * @return $this
+     */
+    private function registerFormComponents(): self
     {
         $this->loadViewComponentsAs('form', [
             Input::class,
@@ -70,5 +76,7 @@ class LibraryServiceProvider extends ServiceProvider
         $this->publishes([
             self::PATH_VIEWS . '/form' => resource_path('views/vendor/laravel-components-library/form'),
         ], 'form-components');
+
+        return $this;
     }
 }
