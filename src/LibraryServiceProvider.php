@@ -4,17 +4,18 @@ namespace TomSix\Components;
 
 
 use Illuminate\Support\ServiceProvider;
-use TomSix\Components\View\Components\Button;
-use TomSix\Components\View\Components\Checkbox;
-use TomSix\Components\View\Components\Checkboxes;
-use TomSix\Components\View\Components\Error;
-use TomSix\Components\View\Components\Errors;
-use TomSix\Components\View\Components\File;
-use TomSix\Components\View\Components\InputGroup;
-use TomSix\Components\View\Components\ModelSelect;
-use TomSix\Components\View\Components\Select;
-use TomSix\Components\View\Components\Input;
-use TomSix\Components\View\Components\Textarea;
+use Illuminate\View\Compilers\BladeCompiler;
+use TomSix\Components\View\Components\Form\Button;
+use TomSix\Components\View\Components\Form\Checkbox;
+use TomSix\Components\View\Components\Form\Checkboxes;
+use TomSix\Components\View\Components\Form\Error;
+use TomSix\Components\View\Components\Form\Errors;
+use TomSix\Components\View\Components\Form\File;
+use TomSix\Components\View\Components\Form\Input;
+use TomSix\Components\View\Components\Form\InputGroup;
+use TomSix\Components\View\Components\Form\ModelSelect;
+use TomSix\Components\View\Components\Form\Select;
+use TomSix\Components\View\Components\Form\Textarea;
 
 class LibraryServiceProvider extends ServiceProvider
 {
@@ -60,17 +61,17 @@ class LibraryServiceProvider extends ServiceProvider
     private function registerFormComponents(): self
     {
         $this->loadViewComponentsAs('form', [
-            Input::class,
-            InputGroup::class,
-            Select::class,
-            ModelSelect::class,
-            Textarea::class,
-            Checkboxes::class,
-            Checkbox::class,
-            File::class,
-            Button::class,
-            Errors::class,
-            Error::class
+            'input' => Input::class,
+            'input-group' => InputGroup::class,
+            'select' => Select::class,
+            'model-select' => ModelSelect::class,
+            'textarea' => Textarea::class,
+            'checkboxes' => Checkboxes::class,
+            'checkbox' => Checkbox::class,
+            'file' => File::class,
+            'button' => Button::class,
+            'errors' => Errors::class,
+            'error' => Error::class
         ]);
 
         $this->publishes([
@@ -78,5 +79,21 @@ class LibraryServiceProvider extends ServiceProvider
         ], 'form-components');
 
         return $this;
+    }
+
+    /**
+     * Register the given view components with a custom prefix.
+     *
+     * @param  string  $prefix
+     * @param  array  $components
+     * @return void
+     */
+    protected function loadViewComponentsAs($prefix, array $components)
+    {
+        $this->callAfterResolving(BladeCompiler::class, function ($blade) use ($prefix, $components) {
+            foreach ($components as $alias => $component) {
+                $blade->component($component, is_numeric($alias) ? null : $alias, $prefix);
+            }
+        });
     }
 }

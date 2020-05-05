@@ -1,6 +1,6 @@
 <?php
 
-namespace TomSix\Components\View\Components;
+namespace TomSix\Components\View\Components\Form;
 
 
 use Illuminate\Database\Eloquent\Collection;

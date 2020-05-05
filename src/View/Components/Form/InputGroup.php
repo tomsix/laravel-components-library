@@ -1,10 +1,20 @@
 <?php
 
 
-namespace TomSix\Components\View\Components;
+namespace TomSix\Components\View\Components\Form;
 
-abstract class BaseInput extends FormComponent
+
+use Illuminate\View\Component;
+
+class InputGroup extends Component
 {
+    /**
+     * Specifies the name
+     *
+     * @var string $name
+     */
+    public string $name;
+
     /**
      * Set a Bootstrap prepend to the input
      *
@@ -23,18 +33,12 @@ abstract class BaseInput extends FormComponent
      * Create a new component instance.
      *
      * @param string $name
-     * @param string|null $label
-     * @param array|string $inputAttributes
-     * @param mixed $value
-     * @param string $placeholder
-     * @param string $type
      * @param string|null $prepend
      * @param string|null $append
      */
-    public function __construct(string $name, ?string $label = null, $inputAttributes = [], $value = null, ?string $prepend = null, ?string $append = null)
+    public function __construct(string $name, ?string $prepend = null, ?string $append = null)
     {
-        parent::__construct($name, $label, $inputAttributes, $value);
-
+        $this->name = $name;
         $this->prepend = $prepend;
         $this->append = $append;
     }
@@ -46,6 +50,6 @@ abstract class BaseInput extends FormComponent
      */
     public function render()
     {
-        return view('laravel-components-library::form.input');
+        return view('laravel-components-library::form.input-group');
     }
 }

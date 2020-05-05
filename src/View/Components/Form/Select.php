@@ -1,6 +1,6 @@
 <?php
 
-namespace TomSix\Components\View\Components;
+namespace TomSix\Components\View\Components\Form;
 
 
 class Select extends BaseInput
