@@ -2,7 +2,6 @@
 
 namespace TomSix\Components;
 
-
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use TomSix\Components\View\Components\Form\Button;
@@ -17,6 +16,7 @@ use TomSix\Components\View\Components\Form\ModelSelect;
 use TomSix\Components\View\Components\Form\Select;
 use TomSix\Components\View\Components\Form\Textarea;
 use TomSix\Components\View\Components\Navigation\Item;
+use TomSix\Components\View\Components\Navigation\Label;
 
 class LibraryServiceProvider extends ServiceProvider
 {
@@ -93,6 +93,7 @@ class LibraryServiceProvider extends ServiceProvider
     {
         $this->loadViewComponentsAs('navigation', [
             'item' => Item::class,
+            'label' => Label::class
         ]);
 
         $this->publishes([

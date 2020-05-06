@@ -27,6 +27,7 @@ class ComponentsTest extends TestCase
     public function it_find_all_navigation_components()
     {
         $this->blade->compileString('<x-navigation-item  />');
+        $this->blade->compileString('<x-navigation-label  />');
 
         $this->assertTrue(true);
     }

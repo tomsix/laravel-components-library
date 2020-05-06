@@ -59,6 +59,12 @@ return [
                 'ul' => '',
                 'li' => '',
             ]
+        ],
+        'navigation' => [
+            'item' => 'nav-item',
+            'active' => 'active',
+            'link' => 'nav-link',
+            'icon' => ''
         ]
     ]
 ];
