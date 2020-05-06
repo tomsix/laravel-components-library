@@ -7,7 +7,7 @@ use TomSix\Components\Test\TestCase;
 class ComponentsTest extends TestCase
 {
     /** @test */
-    public function it_find_all_components()
+    public function it_find_all_form_components()
     {
         $this->blade->compileString('<x-form-input  />');
         $this->blade->compileString('<x-form-input-group  />');
@@ -19,6 +19,14 @@ class ComponentsTest extends TestCase
         $this->blade->compileString('<x-form-errors  />');
         $this->blade->compileString('<x-form-error  />');
         $this->blade->compileString('<x-form-file  />');
+
+        $this->assertTrue(true);
+    }
+
+    /** @test */
+    public function it_find_all_navigation_components()
+    {
+        $this->blade->compileString('<x-navigation-item  />');
 
         $this->assertTrue(true);
     }

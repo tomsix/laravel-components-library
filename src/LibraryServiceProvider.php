@@ -16,6 +16,7 @@ use TomSix\Components\View\Components\Form\InputGroup;
 use TomSix\Components\View\Components\Form\ModelSelect;
 use TomSix\Components\View\Components\Form\Select;
 use TomSix\Components\View\Components\Form\Textarea;
+use TomSix\Components\View\Components\Navigation\Item;
 
 class LibraryServiceProvider extends ServiceProvider
 {
@@ -40,7 +41,9 @@ class LibraryServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(self::PATH_VIEWS, 'laravel-components-library');
 
-        $this->registerFormComponents();
+        $this
+            ->registerFormComponents()
+            ->registerNavigationComponents();
     }
 
     /**
@@ -77,6 +80,24 @@ class LibraryServiceProvider extends ServiceProvider
         $this->publishes([
             self::PATH_VIEWS . '/form' => resource_path('views/vendor/laravel-components-library/form'),
         ], 'form-components');
+
+        return $this;
+    }
+
+    /**
+     * Register the Blade navigation components
+     *
+     * @return $this
+     */
+    private function registerNavigationComponents(): self
+    {
+        $this->loadViewComponentsAs('navigation', [
+            'item' => Item::class,
+        ]);
+
+        $this->publishes([
+            self::PATH_VIEWS . '/navigation' => resource_path('views/vendor/laravel-components-library/navigation'),
+        ], 'navigation-components');
 
         return $this;
     }
