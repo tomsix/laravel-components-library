@@ -93,7 +93,8 @@ With the `model-select` component you can use a collection of Eloquent models. T
 </x-form-model-select>
 ```
 
-By default, `id` and `name` are used for the option value and text. This can be changed with `key-attribute` and `value-attribute`.
+By default, `id` and `name` are used for the option value and text. This can be changed with `key-attribute` and `value-attribute`. The default names can be changed in the config file.
+
 #### Checkboxes (or radiobuttons)
 
 A group of checkboxes make use of the checkboxes component. It is possible to give an array of options or use the single checkbox component within the slot.

@@ -21,8 +21,11 @@ class ModelSelect extends Select
      * @param string $keyAttribute
      * @param string $valueAttribute
      */
-	public function __construct(string $name, ?Collection $models = null, ?string $label = null, $inputAttributes = [], $value = null, ?string $prepend = null, ?string $append = null, string $keyAttribute = 'id', string $valueAttribute = 'name')
+	public function __construct(string $name, ?Collection $models = null, ?string $label = null, $inputAttributes = [], $value = null, ?string $prepend = null, ?string $append = null, string $keyAttribute = null, string $valueAttribute = null)
     {
+        $keyAttribute = $keyAttribute ? $keyAttribute : config('library.model_select.key_attribute');
+        $valueAttribute = $valueAttribute ? $valueAttribute : config('library.model_select.value_attribute');
+
         $options = $models ? $models->pluck($valueAttribute, $keyAttribute) : [];
 
         if(isset($value) && $value instanceof Model)
