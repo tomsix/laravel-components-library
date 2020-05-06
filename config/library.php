@@ -10,6 +10,14 @@ return [
     'inline_errors' => true,
 
     /*
+     * Define the default attributes for a model select component.
+     */
+    'model_select' => [
+        'key_attribute' => 'id',
+        'value_attribute' => 'name'
+    ],
+
+    /*
      * Customize the name of css-classes
      */
 
