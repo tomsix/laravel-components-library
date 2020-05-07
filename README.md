@@ -175,6 +175,38 @@ It's also possible to add a error bag in a view.
 <x-form-errors title="There are some incorrect fields" color="warning"/>
 ```
 
+### Navigation components
+
+The intention is to use these components inside a navigation bar
+
+```blade
+    <nav class="navbar navbar-light bg-light">
+        <ul class="navbar-nav mr-auto">
+            <x-navigation-item :href="route('home')" >
+                <x-navigation-label text="Home" icon="fas fa-globe" />
+            </x-navigation-item>
+        </ul>
+    </nav>
+```
+
+#### Navigation item
+
+The url must be included in the component. The 'active' class will be added automatically.
+
+```blade
+<x-navigation-item :href="route('home')" >
+    <p>About</p>
+</x-navigation-item>
+```
+
+#### Navigation label
+
+The label component provides text or an icon. Both props are optional.
+
+```blade
+<x-navigation-label text="Home" icon="fas fa-globe" />
+```
+
 ## Customisation
 
 ### Config
@@ -187,9 +219,19 @@ The css classes of the elements in a component can be change in the config file.
     
 ### Components
 
-Optionally you can also publish the components and edit then. They will copy to `resources/views/vendor/laravel-components-library/form`.
+Optionally you can also publish the components and edit then. They will copy to `resources/views/vendor/laravel-components-library`.
+
+#### Form components
 
     php artisan vendor:publish --provider="TomSix\Components\LibraryServiceProvider" --tag=form-components
+    
+#### Navigation components
+
+    php artisan vendor:publish --provider="TomSix\Components\LibraryServiceProvider" --tag=navigation-components
+    
+#### All components
+
+    php artisan vendor:publish --provider="TomSix\Components\LibraryServiceProvider" --tag=components
 
 ## License
 

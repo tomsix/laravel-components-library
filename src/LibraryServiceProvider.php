@@ -2,7 +2,6 @@
 
 namespace TomSix\Components;
 
-
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use TomSix\Components\View\Components\Form\Button;
@@ -16,6 +15,8 @@ use TomSix\Components\View\Components\Form\InputGroup;
 use TomSix\Components\View\Components\Form\ModelSelect;
 use TomSix\Components\View\Components\Form\Select;
 use TomSix\Components\View\Components\Form\Textarea;
+use TomSix\Components\View\Components\Navigation\Item;
+use TomSix\Components\View\Components\Navigation\Label;
 
 class LibraryServiceProvider extends ServiceProvider
 {
@@ -40,7 +41,10 @@ class LibraryServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(self::PATH_VIEWS, 'laravel-components-library');
 
-        $this->registerFormComponents();
+        $this
+            ->registerFormComponents()
+            ->registerNavigationComponents()
+            ->registerComponetsPublishers();
     }
 
     /**
@@ -74,15 +78,48 @@ class LibraryServiceProvider extends ServiceProvider
             'error' => Error::class
         ]);
 
-        $this->publishes([
-            self::PATH_VIEWS . '/form' => resource_path('views/vendor/laravel-components-library/form'),
-        ], 'form-components');
+        return $this;
+    }
+
+    /**
+     * Register the Blade navigation components
+     *
+     * @return $this
+     */
+    private function registerNavigationComponents(): self
+    {
+        $this->loadViewComponentsAs('navigation', [
+            'item' => Item::class,
+            'label' => Label::class
+        ]);
 
         return $this;
     }
 
     /**
-     * Register the given view components with a custom prefix.
+     * Register the publishers of the component resources
+     *
+     * @return $this
+     */
+    public function registerComponetsPublishers(): self
+    {
+        $this->publishes([
+            self::PATH_VIEWS => resource_path('views/vendor/laravel-components-library'),
+        ], 'components');
+
+        $this->publishes([
+            self::PATH_VIEWS . '/form' => resource_path('views/vendor/laravel-components-library/form'),
+        ], 'form-components');
+
+        $this->publishes([
+            self::PATH_VIEWS . '/navigation' => resource_path('views/vendor/laravel-components-library/navigation'),
+        ], 'navigation-components');
+
+        return $this;
+    }
+
+    /**
+     * Register the given view components with a custom prefix and alias.
      *
      * @param  string  $prefix
      * @param  array  $components
