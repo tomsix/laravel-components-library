@@ -43,7 +43,8 @@ class LibraryServiceProvider extends ServiceProvider
 
         $this
             ->registerFormComponents()
-            ->registerNavigationComponents();
+            ->registerNavigationComponents()
+            ->registerPublishers();
     }
 
     /**
@@ -77,10 +78,6 @@ class LibraryServiceProvider extends ServiceProvider
             'error' => Error::class
         ]);
 
-        $this->publishes([
-            self::PATH_VIEWS . '/form' => resource_path('views/vendor/laravel-components-library/form'),
-        ], 'form-components');
-
         return $this;
     }
 
@@ -95,6 +92,19 @@ class LibraryServiceProvider extends ServiceProvider
             'item' => Item::class,
             'label' => Label::class
         ]);
+
+        return $this;
+    }
+
+    public function registerPublishers(): self
+    {
+        $this->publishes([
+            self::PATH_VIEWS => resource_path('views/vendor/laravel-components-library'),
+        ], 'components');
+
+        $this->publishes([
+            self::PATH_VIEWS . '/form' => resource_path('views/vendor/laravel-components-library/form'),
+        ], 'form-components');
 
         $this->publishes([
             self::PATH_VIEWS . '/navigation' => resource_path('views/vendor/laravel-components-library/navigation'),
