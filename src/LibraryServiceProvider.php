@@ -44,7 +44,7 @@ class LibraryServiceProvider extends ServiceProvider
         $this
             ->registerFormComponents()
             ->registerNavigationComponents()
-            ->registerPublishers();
+            ->registerComponetsPublishers();
     }
 
     /**
@@ -96,7 +96,12 @@ class LibraryServiceProvider extends ServiceProvider
         return $this;
     }
 
-    public function registerPublishers(): self
+    /**
+     * Register the publishers of the component resources
+     *
+     * @return $this
+     */
+    public function registerComponetsPublishers(): self
     {
         $this->publishes([
             self::PATH_VIEWS => resource_path('views/vendor/laravel-components-library'),
@@ -114,7 +119,7 @@ class LibraryServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the given view components with a custom prefix.
+     * Register the given view components with a custom prefix and alias.
      *
      * @param  string  $prefix
      * @param  array  $components
