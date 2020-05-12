@@ -1,6 +1,6 @@
 <div {{ $attributes }}>
 
-    <button @isset($name) name="{{ $name }}" @endisset
+    <button name="{{ $name }}"
             type="{{ $type }}"
             value="{{ $value }}"
             class="{{ config('library.css.form.button') }} {{ config('library.css.form.button') . '-' . $color }}"
