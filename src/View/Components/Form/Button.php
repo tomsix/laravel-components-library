@@ -30,9 +30,10 @@ class Button extends FormComponent
      * @param string $type
      * @param string $color
      */
-    public function __construct(string $name = 'submit', ?string $label = null, $inputAttributes = [], $value = null, string $type = 'submit', string $color = 'primary')
+    public function __construct(?string $name = null, ?string $label = null, $inputAttributes = [], $value = null, string $type = 'submit', string $color = 'primary')
     {
         parent::__construct($name, $label, $inputAttributes, $value);
+
 
         $this->type = $type;
         $this->color = $color;

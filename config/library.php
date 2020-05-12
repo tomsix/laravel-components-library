@@ -32,7 +32,7 @@ return [
                 'append' => 'input-group-append',
                 'text' => 'input-group-text'
             ],
-            'label' => '',
+            'label' => 'form-label',
             'select' => 'custom-select', // style="flex: 1 1 0"; is added in the select-tag because of a fault in het Bootstrap class. Changing this class wil disable the style attribute
             'checkbox' => [
                 'group' => 'custom-control custom-checkbox',
@@ -44,7 +44,7 @@ return [
             'file' => [
                 'group' => 'form-group',
                 'input' => 'form-control form-control-file',
-                'label' => ''
+                'label' => 'form-label'
             ],
             'button' => 'btn'
         ],
@@ -64,7 +64,7 @@ return [
             'item' => 'nav-item',
             'active' => 'active',
             'link' => 'nav-link',
-            'icon' => ''
+            'icon' => 'icon'
         ]
     ]
 ];
