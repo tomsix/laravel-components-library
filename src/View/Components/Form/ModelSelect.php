@@ -15,11 +15,11 @@ class ModelSelect extends Select
      * @param Collection|null $models
      * @param string|null $label
      * @param array|string $inputAttributes
-     * @param Model|string|int $value
+     * @param Model|string|int|null $value
      * @param string|null $prepend
      * @param string|null $append
-     * @param string $keyAttribute
-     * @param string $valueAttribute
+     * @param string|null $keyAttribute
+     * @param string|null $valueAttribute
      */
 	public function __construct(string $name, ?Collection $models = null, ?string $label = null, $inputAttributes = [], $value = null, ?string $prepend = null, ?string $append = null, string $keyAttribute = null, string $valueAttribute = null)
     {
