@@ -27,12 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "TomSix\\Components\\": "src/"
+            "TomSix\\Components\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "TomSix\\Components\\Test\\": "tests/"
+            "TomSix\\Components\\Test\\": "tests"
         }
     },
     "extra": {
