@@ -8,7 +8,7 @@ class Select extends BaseInput
     /**
      * A list with the value and text of the select options
      *
-     * @var iterable $options
+     * @var array $options
      */
 	public iterable $options;
 
@@ -16,7 +16,7 @@ class Select extends BaseInput
      * Create a new component instance.
      *
      * @param string $name
-     * @param iterable $options
+     * @param array $options
      * @param string|null $label
      * @param array|string $inputAttributes
      * @param string|int|null $value
