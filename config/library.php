@@ -1,7 +1,5 @@
 <?php
 
-/* This line will test project automatisation */
-
 return [
 
     /*
