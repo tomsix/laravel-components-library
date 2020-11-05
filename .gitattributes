@@ -8,3 +8,4 @@
 /tests              export-ignore
 /.editorconfig      export-ignore
 /composer.lock      export-ignore
+/.github            export-ignore
