@@ -20,7 +20,6 @@ return [
     /*
      * Customize the name of css-classes
      */
-
     'css' => [
         'form' => [
             'group' => 'form-group',
