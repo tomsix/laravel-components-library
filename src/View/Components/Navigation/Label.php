@@ -1,8 +1,6 @@
 <?php
 
-
 namespace TomSix\Components\View\Components\Navigation;
-
 
 use Illuminate\View\Component;
 
@@ -19,7 +17,7 @@ class Label extends Component
     }
 
     /**
-     * Renders the classes
+     * Renders the classes.
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
      */
