@@ -1,19 +1,17 @@
 <?php
 
-
 namespace TomSix\Components\View\Components\Form;
-
 
 class File extends Input
 {
     /**
      * Create a new component instance.
      *
-     * @param string $name
-     * @param string|null $label
+     * @param string       $name
+     * @param string|null  $label
      * @param array|string $inputAttributes
-     * @param string|null $prepend
-     * @param string|null $append
+     * @param string|null  $prepend
+     * @param string|null  $append
      */
     public function __construct(string $name, ?string $label = null, $inputAttributes = [], ?string $prepend = null, ?string $append = null)
     {

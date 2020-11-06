@@ -1,8 +1,6 @@
 <?php
 
-
 namespace TomSix\Components\View\Components\Form;
-
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
@@ -10,43 +8,43 @@ use Illuminate\Support\Str;
 class Checkboxes extends FormComponent
 {
     /**
-     * If the checkboxes must be inline
+     * If the checkboxes must be inline.
      *
-     * @var bool $inline
+     * @var bool
      */
     public bool $inline;
 
     /**
-     * A list of given options
+     * A list of given options.
      *
-     * @var array $options
+     * @var array
      */
     public array $options;
 
     /**
-     * Checks if the options ar a associative array
+     * Checks if the options ar a associative array.
      *
-     * @var bool $optionsAreAssoc
+     * @var bool
      */
     public bool $optionsAreAssoc;
 
     /**
-     * Set the type of the input
+     * Set the type of the input.
      *
-     * @var string $type
+     * @var string
      */
     public string $type;
 
     /**
      * Create a new component instance.
      *
-     * @param string $name
-     * @param string|null $label
-     * @param array $options
-     * @param bool $inline
-     * @param array|string $inputAttributes
+     * @param string              $name
+     * @param string|null         $label
+     * @param array               $options
+     * @param bool                $inline
+     * @param array|string        $inputAttributes
      * @param iterable|string|int $value
-     * @param string $type
+     * @param string              $type
      */
     public function __construct(string $name, ?string $label = null, array $options = [], bool $inline = false, $inputAttributes = [], $value = null, string $type = 'checkbox')
     {
@@ -69,20 +67,19 @@ class Checkboxes extends FormComponent
     }
 
     /**
-     * Determine if the value is checked
+     * Determine if the value is checked.
      *
      * @param $option
+     *
      * @return bool
      */
     public function isChecked($option): bool
     {
-        if(is_string($this->value) || is_numeric($this->value))
-        {
+        if (is_string($this->value) || is_numeric($this->value)) {
             return $option == $this->value;
         }
 
-        if (is_array($this->value))
-        {
+        if (is_array($this->value)) {
             return in_array($option, $this->value);
         }
 
@@ -90,24 +87,22 @@ class Checkboxes extends FormComponent
     }
 
     /**
-     *
      * @param string|int $key
+     *
      * @return string
      */
     public function getIdName($key): string
     {
-        if(Str::endsWith($this->name, '[]'))
-        {
+        if (Str::endsWith($this->name, '[]')) {
             $result = $this->nameWithoutBrackets();
 
-            if(is_int($key))
-            {
-                return $result . '[' . $key . ']';
+            if (is_int($key)) {
+                return $result.'['.$key.']';
             }
 
-            return $result . '[\'' . $key . '\']';
+            return $result.'[\''.$key.'\']';
         }
 
-        return $this->name . $key;
+        return $this->name.$key;
     }
 }

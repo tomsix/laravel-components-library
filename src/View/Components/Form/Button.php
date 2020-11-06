@@ -1,39 +1,36 @@
 <?php
 
-
 namespace TomSix\Components\View\Components\Form;
-
 
 class Button extends FormComponent
 {
     /**
-     * Set the type of the button
+     * Set the type of the button.
      *
-     * @var string $type
+     * @var string
      */
     public string $type;
 
     /**
-     * The color class-name
+     * The color class-name.
      *
-     * @var string $color
+     * @var string
      */
     public string $color;
 
     /**
      * Create a new component instance.
      *
-     * @param string $name
+     * @param string      $name
      * @param string|null $label
-     * @param array $inputAttributes
-     * @param string $value
-     * @param string $type
-     * @param string $color
+     * @param array       $inputAttributes
+     * @param string      $value
+     * @param string      $type
+     * @param string      $color
      */
     public function __construct(string $name = 'submit', ?string $label = null, $inputAttributes = [], $value = null, string $type = 'submit', string $color = 'primary')
     {
         parent::__construct($name, $label, $inputAttributes, $value);
-
 
         $this->type = $type;
         $this->color = $color;

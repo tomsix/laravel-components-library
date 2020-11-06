@@ -5,21 +5,22 @@ namespace TomSix\Components\View\Components\Form;
 class Textarea extends BaseInput
 {
     /**
-     * Specifies the placeholder
+     * Specifies the placeholder.
      *
-     * @var string $placeholder
+     * @var string
      */
     public string $placeholder;
 
     /**
      * TextArea constructor.
-     * @param string $name
-     * @param string|null $label
+     *
+     * @param string       $name
+     * @param string|null  $label
      * @param array|string $inputAttributes
-     * @param mixed $value
-     * @param string $placeholder
-     * @param string|null $prepend
-     * @param string|null $append
+     * @param mixed        $value
+     * @param string       $placeholder
+     * @param string|null  $prepend
+     * @param string|null  $append
      */
     public function __construct(string $name, ?string $label = null, $inputAttributes = [], $value = null, string $placeholder = '', ?string $prepend = null, ?string $append = null)
     {
