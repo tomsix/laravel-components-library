@@ -1,38 +1,36 @@
 <?php
 
-
 namespace TomSix\Components\View\Components\Form;
-
 
 use Illuminate\View\Component;
 
 class InputGroup extends Component
 {
     /**
-     * Specifies the name
+     * Specifies the name.
      *
-     * @var string $name
+     * @var string
      */
     public string $name;
 
     /**
-     * Set a Bootstrap prepend to the input
+     * Set a Bootstrap prepend to the input.
      *
-     * @var string|null $prepend
+     * @var string|null
      */
     public ?string $prepend;
 
     /**
-     * Set a Bootstrap append to the input
+     * Set a Bootstrap append to the input.
      *
-     * @var string|null $append
+     * @var string|null
      */
     public ?string $append;
 
     /**
      * Create a new component instance.
      *
-     * @param string $name
+     * @param string      $name
      * @param string|null $prepend
      * @param string|null $append
      */
