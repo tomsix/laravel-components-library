@@ -118,14 +118,7 @@ class LibraryServiceProvider extends ServiceProvider
         return $this;
     }
 
-    /**
-     * Register the given view components with a custom prefix and alias.
-     *
-     * @param string $prefix
-     * @param array  $components
-     *
-     * @return void
-     */
+    /** @inheritDoc */
     protected function loadViewComponentsAs($prefix, array $components)
     {
         $this->callAfterResolving(BladeCompiler::class, function ($blade) use ($prefix, $components) {
