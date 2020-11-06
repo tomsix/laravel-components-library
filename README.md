@@ -1,9 +1,10 @@
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/tomsix/laravel-components-library/master)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/tomsix/laravel-components-library?label=latest)
-![Packagist (custom server)](https://img.shields.io/packagist/dm/tomsix/laravel-components-library)
-![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/tomsix/laravel-components-library?include_prereleases&label=pre-release)
-![Packagist](https://img.shields.io/packagist/l/tomsix/laravel-components-library)
-![PHP from Packagist](https://img.shields.io/packagist/php-v/tomsix/laravel-components-library)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/tomsix/laravel-components-library/master?style=flat-square)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/tomsix/laravel-components-library?label=latest&style=flat-square)
+![Packagist (custom server)](https://img.shields.io/packagist/dm/tomsix/laravel-components-library?style=flat-square)
+![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/tomsix/laravel-components-library?include_prereleases&label=pre-release&style=flat-square)
+![Packagist](https://img.shields.io/packagist/l/tomsix/laravel-components-library?style=flat-square)
+![PHP from Packagist](https://img.shields.io/packagist/php-v/tomsix/laravel-components-library?style=flat-square)
+![StyleIC](https://github.styleci.io/repos/258134683/shield)
 
 # Laravel Components Library
 A collection of pre-made Blade components. 
@@ -59,8 +60,6 @@ The input, select, textarea and file components are rendered in a extra `div` wi
 
 ```blade
 <x-form-input name="first-name" label="First Name" placeholder="Enter your first name" type="text" />
-
-##
 ```
 
 #### Textarea
