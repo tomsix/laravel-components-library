@@ -67,6 +67,7 @@ abstract class FormComponent extends Component
         foreach ($attributes as $attribute => $value) {
             if (is_int($attribute)) {
                 $attributeStrings[] = $value;
+
                 continue;
             }
 

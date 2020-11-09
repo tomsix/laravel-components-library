@@ -9,4 +9,4 @@
 /.editorconfig      export-ignore
 /composer.lock      export-ignore
 /.github            export-ignore
-/.styleci.yml       export-ignore
+/.php_cs_dist       export-ignore

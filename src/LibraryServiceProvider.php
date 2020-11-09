@@ -65,17 +65,17 @@ class LibraryServiceProvider extends ServiceProvider
     private function registerFormComponents(): self
     {
         $this->loadViewComponentsAs('form', [
-            'input'        => Input::class,
-            'input-group'  => InputGroup::class,
-            'select'       => Select::class,
+            'input' => Input::class,
+            'input-group' => InputGroup::class,
+            'select' => Select::class,
             'model-select' => ModelSelect::class,
-            'textarea'     => Textarea::class,
-            'checkboxes'   => Checkboxes::class,
-            'checkbox'     => Checkbox::class,
-            'file'         => File::class,
-            'button'       => Button::class,
-            'errors'       => Errors::class,
-            'error'        => Error::class,
+            'textarea' => Textarea::class,
+            'checkboxes' => Checkboxes::class,
+            'checkbox' => Checkbox::class,
+            'file' => File::class,
+            'button' => Button::class,
+            'errors' => Errors::class,
+            'error' => Error::class,
         ]);
 
         return $this;
@@ -89,7 +89,7 @@ class LibraryServiceProvider extends ServiceProvider
     private function registerNavigationComponents(): self
     {
         $this->loadViewComponentsAs('navigation', [
-            'item'  => Item::class,
+            'item' => Item::class,
             'label' => Label::class,
         ]);
 
