@@ -4,7 +4,6 @@
 ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/tomsix/laravel-components-library?include_prereleases&label=pre-release&style=flat-square)
 ![Packagist](https://img.shields.io/packagist/l/tomsix/laravel-components-library?style=flat-square)
 ![PHP from Packagist](https://img.shields.io/packagist/php-v/tomsix/laravel-components-library?style=flat-square)
-![StyleIC](https://github.styleci.io/repos/258134683/shield)
 
 # Laravel Components Library
 A collection of pre-made Blade components. 
