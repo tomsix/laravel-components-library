@@ -7,7 +7,7 @@ use Illuminate\View\Component;
 class Errors extends Component
 {
     /**
-     * @var string
+     * @var ?string
      */
     public ?string $title;
 

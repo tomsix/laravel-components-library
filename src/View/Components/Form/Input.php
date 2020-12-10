@@ -2,6 +2,10 @@
 
 namespace TomSix\Components\View\Components\Form;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\View\View;
+
 class Input extends BaseInput
 {
     /**
@@ -41,7 +45,7 @@ class Input extends BaseInput
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
+     * @return Application|Factory|View|string
      */
     public function render()
     {
