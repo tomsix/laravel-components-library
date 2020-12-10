@@ -3,7 +3,7 @@
 namespace TomSix\Components\View\Components\Form;
 
 use Illuminate\View\View;
-use Ramsey\Collection\Collection;
+use Illuminate\Support\Collection;
 
 class Select extends BaseInput
 {
