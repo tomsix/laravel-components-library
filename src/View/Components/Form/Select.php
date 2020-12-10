@@ -2,6 +2,9 @@
 
 namespace TomSix\Components\View\Components\Form;
 
+use Illuminate\View\View;
+use Ramsey\Collection\Collection;
+
 class Select extends BaseInput
 {
     /**
@@ -9,30 +12,30 @@ class Select extends BaseInput
      *
      * @var array
      */
-    public iterable $options;
+    public array $options;
 
     /**
      * Create a new component instance.
      *
-     * @param string          $name
-     * @param array           $options
-     * @param string|null     $label
-     * @param array|string    $inputAttributes
-     * @param string|int|null $value
-     * @param string|null     $prepend
-     * @param string|null     $append
+     * @param string           $name
+     * @param array|Collection $options
+     * @param string|null      $label
+     * @param array|string     $inputAttributes
+     * @param string|int|null  $value
+     * @param string|null      $prepend
+     * @param string|null      $append
      */
-    public function __construct(string $name, iterable $options, ?string $label = null, $inputAttributes = [], $value = null, ?string $prepend = null, ?string $append = null)
+    public function __construct(string $name, $options, ?string $label = null, $inputAttributes = [], $value = null, ?string $prepend = null, ?string $append = null)
     {
         parent::__construct($name, $label, $inputAttributes, $value, $prepend, $append);
 
-        $this->options = $options;
+        $this->options = $options instanceof Collection ? $options->toArray() : $options;
     }
 
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\View\View|string
+     * @return View|string
      */
     public function render()
     {

@@ -3,7 +3,9 @@
 namespace TomSix\Components\View\Components\Form;
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class Checkboxes extends FormComponent
 {
@@ -40,18 +42,18 @@ class Checkboxes extends FormComponent
      *
      * @param string              $name
      * @param string|null         $label
-     * @param array               $options
+     * @param array|Collection    $options
      * @param bool                $inline
      * @param array|string        $inputAttributes
      * @param iterable|string|int $value
      * @param string              $type
      */
-    public function __construct(string $name, ?string $label = null, array $options = [], bool $inline = false, $inputAttributes = [], $value = null, string $type = 'checkbox')
+    public function __construct(string $name, ?string $label = null, $options = [], bool $inline = false, $inputAttributes = [], $value = null, string $type = 'checkbox')
     {
         parent::__construct($name, $label, $inputAttributes, $value);
 
         $this->inline = $inline;
-        $this->options = $options;
+        $this->options = $options instanceof Collection ? $options->toArray() : $options;
         $this->optionsAreAssoc = Arr::isAssoc($this->options);
         $this->type = $type;
     }
@@ -59,7 +61,7 @@ class Checkboxes extends FormComponent
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\View\View|string
+     * @return View|string
      */
     public function render()
     {
