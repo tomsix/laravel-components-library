@@ -9,10 +9,10 @@
         <textarea
             name="{{ $name }}"
             id="{{ $name }}"
-            class="{{ config('library.css.form.input.input') }} @error($name) {{ config('library.css.error.inline.input') }} @enderror"
-            placeholder="{{ $placeholder }}"
+            class="{{ config('library.css.form.input.input') }}@error($name) {{ config('library.css.error.inline.input') }}@enderror"
+            @if($placeholder != '') placeholder="{{ $placeholder }}"@endif
             {{ $inputAttributes }}
-        >{{ old($name, $value) }}</textarea>
+        >@isset($value)value="{{ $value }}"@endisset</textarea>
 
     </x-form-input-group>
 

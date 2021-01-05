@@ -6,10 +6,6 @@
     @foreach($options as $i => $option)
 
         @php
-            /**
-             * @var bool $optionsAreAssoc
-             * @var $loop
-             */
             $key = $optionsAreAssoc ? $i : $loop->iteration
         @endphp
 
@@ -25,7 +21,7 @@
     {{ $slot }}
 
     @if(config('library.inline_errors') && $type === 'radio')
-        <input type="hidden" class="{{ config('library.css.form.input.input') }} @error($name) {{ config('library.css.error.inline.input') }} @enderror" />
+        <input type="hidden" class="{{ config('library.css.form.input.input') }}@error($name) {{ config('library.css.error.inline.input') }}@enderror" />
         @error($name)
             <div class="invalid-feedback">
                 {{ $message }}

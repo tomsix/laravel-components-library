@@ -2,7 +2,7 @@
 
     <button name="{{ $name }}"
             type="{{ $type }}"
-            value="{{ $value }}"
+            @isset($value) value="{{ $value }}"@endisset
             class="{{ config('library.css.form.button') }} {{ config('library.css.form.button') . '-' . $color }}"
             {{ $inputAttributes }}
     >

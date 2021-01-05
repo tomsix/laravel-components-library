@@ -26,8 +26,6 @@ abstract class BaseInput extends FormComponent
      * @param string|null $label
      * @param array|string $inputAttributes
      * @param mixed $value
-     * @param string $placeholder
-     * @param string $type
      * @param string|null $prepend
      * @param string|null $append
      */
