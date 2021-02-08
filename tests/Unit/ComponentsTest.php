@@ -2,33 +2,39 @@
 
 namespace TomSix\Components\Test\Unit;
 
+use Illuminate\Support\Facades\Blade;
 use TomSix\Components\Test\TestCase;
 
 class ComponentsTest extends TestCase
 {
-    /** @test */
-    public function it_find_all_form_components()
-    {
-        $this->blade->compileString('<x-form-input  />');
-        $this->blade->compileString('<x-form-input-group  />');
-        $this->blade->compileString('<x-form-select  />');
-        $this->blade->compileString('<x-form-model-select  />');
-        $this->blade->compileString('<x-form-textarea  />');
-        $this->blade->compileString('<x-form-checkboxes  />');
-        $this->blade->compileString('<x-form-checkbox  />');
-        $this->blade->compileString('<x-form-errors  />');
-        $this->blade->compileString('<x-form-error  />');
-        $this->blade->compileString('<x-form-file  />');
+    protected array $aliases;
 
-        $this->assertTrue(true);
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->aliases = Blade::getClassComponentAliases();
+    }
+
+    /** @test */
+    public function form_components_are_loaded()
+    {
+        $this->assertTrue(isset($this->aliases['form-input']));
+        $this->assertTrue(isset($this->aliases['form-input-group']));
+        $this->assertTrue(isset($this->aliases['form-select']));
+        $this->assertTrue(isset($this->aliases['form-model-select']));
+        $this->assertTrue(isset($this->aliases['form-textarea']));
+        $this->assertTrue(isset($this->aliases['form-checkboxes']));
+        $this->assertTrue(isset($this->aliases['form-checkbox']));
+        $this->assertTrue(isset($this->aliases['form-errors']));
+        $this->assertTrue(isset($this->aliases['form-error']));
+        $this->assertTrue(isset($this->aliases['form-file']));
     }
 
     /** @test */
     public function it_find_all_navigation_components()
     {
-        $this->blade->compileString('<x-navigation-item  />');
-        $this->blade->compileString('<x-navigation-label  />');
-
-        $this->assertTrue(true);
+        $this->assertTrue(isset($this->aliases['navigation-item']));
+        $this->assertTrue(isset($this->aliases['navigation-label']));
     }
 }

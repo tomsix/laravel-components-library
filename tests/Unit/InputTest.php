@@ -1,8 +1,6 @@
 <?php
 
-
-namespace TomSix\Components\Test\Unit;
-
+namespace TomSix\Components\Tests\Unit;
 
 use TomSix\Components\Test\TestCase;
 use TomSix\Components\View\Components\Form\Input;

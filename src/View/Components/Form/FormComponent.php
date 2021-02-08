@@ -1,48 +1,46 @@
 <?php
 
-
 namespace TomSix\Components\View\Components\Form;
-
 
 use Illuminate\View\Component;
 
 abstract class FormComponent extends Component
 {
     /**
-     * Specifies the name
+     * Specifies the name.
      *
-     * @var string $name
+     * @var string
      */
     public string $name;
 
     /**
-     * The label text. There will no label rendered if it isn't provided
+     * The label text. There will no label rendered if it isn't provided.
      *
-     * @var string|null $label
+     * @var string|null
      */
     public ?string $label;
 
     /**
-     * Define a default value
+     * Define a default value.
      *
-     * @var mixed $value
+     * @var mixed
      */
     public $value;
 
     /**
-     * All extra HTML-tag attributes
+     * All extra HTML-tag attributes.
      *
-     * @var string $inputAttributes
+     * @var string
      */
     public string $inputAttributes;
 
     /**
      * Create a new component instance.
      *
-     * @param string $name
-     * @param string|null $label
+     * @param string       $name
+     * @param string|null  $label
      * @param array|string $inputAttributes
-     * @param mixed $value
+     * @param mixed        $value
      */
     public function __construct(string $name, ?string $label = null, $inputAttributes = [], $value = null)
     {
@@ -53,7 +51,7 @@ abstract class FormComponent extends Component
     }
 
     /**
-     * Get the name without brackets when using multiple values
+     * Get the name without brackets when using multiple values.
      *
      * @return string|string[]
      */
@@ -66,9 +64,8 @@ abstract class FormComponent extends Component
     {
         $attributeStrings = [];
 
-        foreach ($attributes as $attribute => $value)
-        {
-            if(is_int($attribute)) {
+        foreach ($attributes as $attribute => $value) {
+            if (is_int($attribute)) {
                 $attributeStrings[] = $value;
                 continue;
             }

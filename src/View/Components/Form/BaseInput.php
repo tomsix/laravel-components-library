@@ -1,6 +1,5 @@
 <?php
 
-
 namespace TomSix\Components\View\Components\Form;
 
 abstract class BaseInput extends FormComponent
@@ -22,12 +21,12 @@ abstract class BaseInput extends FormComponent
     /**
      * Create a new component instance.
      *
-     * @param string $name
-     * @param string|null $label
+     * @param string       $name
+     * @param string|null  $label
      * @param array|string $inputAttributes
-     * @param mixed $value
-     * @param string|null $prepend
-     * @param string|null $append
+     * @param mixed        $value
+     * @param string|null  $prepend
+     * @param string|null  $append
      */
     public function __construct(string $name, ?string $label = null, $inputAttributes = [], $value = null, ?string $prepend = null, ?string $append = null)
     {

@@ -1,8 +1,6 @@
 <?php
 
-
 namespace TomSix\Components\View\Components\Form;
-
 
 use Illuminate\Support\Str;
 
@@ -14,37 +12,37 @@ class Checkbox extends FormComponent
     public string $idName;
 
     /**
-     * Add the bootstrap inline class when enabled
+     * Add the bootstrap inline class when enabled.
      *
-     * @var string $inline
+     * @var string
      */
     public string $inline;
 
     /**
-     * Set the 'checked' attribute if checked
+     * Set the 'checked' attribute if checked.
      *
      * @var string
      */
     public string $checked;
 
     /**
-     * Set the type of the input
+     * Set the type of the input.
      *
-     * @var string $type
+     * @var string
      */
     public string $type;
 
     /**
      * Create a new component instance.
      *
-     * @param string $name
-     * @param string|null $idName
-     * @param string|null $label
+     * @param string       $name
+     * @param string|null  $idName
+     * @param string|null  $label
      * @param array|string $inputAttributes
-     * @param mixed $value
-     * @param bool $inline
-     * @param string $type
-     * @param bool $checked
+     * @param mixed        $value
+     * @param bool         $inline
+     * @param string       $type
+     * @param bool         $checked
      */
     public function __construct(string $name, ?string $idName = null, ?string $label = null, $inputAttributes = [], $value = null, bool $inline = false, string $type = 'checkbox', ?bool $checked = false)
     {
@@ -52,7 +50,7 @@ class Checkbox extends FormComponent
 
         $this->idName = $idName ? $idName : $this->name;
         $this->value = $value;
-        $this->inline = $inline ? ' ' . config('library.css.form.checkbox.inline') : '';
+        $this->inline = $inline ? ' '.config('library.css.form.checkbox.inline') : '';
         $this->checked = $checked ? 'checked' : '';
         $this->type = $type;
     }
@@ -69,24 +67,24 @@ class Checkbox extends FormComponent
 
     public function errorName(): string
     {
-        if(Str::endsWith($this->name, '[]'))
-        {
-            return $this->nameWithoutBrackets() . '.' . $this->value;
+        if (Str::endsWith($this->name, '[]')) {
+            return $this->nameWithoutBrackets().'.'.$this->value;
         }
 
         return $this->idName;
     }
 
     /**
-     * Renders the classes
+     * Renders the classes.
      *
      * @return string
      */
     public function cssClass(): string
     {
-        if($this->type === 'checkbox')
-            return config('library.css.form.checkbox.group') . $this->inline;
+        if ($this->type === 'checkbox') {
+            return config('library.css.form.checkbox.group').$this->inline;
+        }
 
-        return config('library.css.form.checkbox.radio') . $this->inline;
+        return config('library.css.form.checkbox.radio').$this->inline;
     }
 }

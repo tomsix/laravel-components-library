@@ -20,11 +20,11 @@ use TomSix\Components\View\Components\Navigation\Label;
 
 class LibraryServiceProvider extends ServiceProvider
 {
-    /** @var string  */
+    /** @var string */
     private const CONFIG_FILE = __DIR__.'/../config/library.php';
 
-    /** @var string  */
-    private const PATH_VIEWS = __DIR__ . '/../resources/views';
+    /** @var string */
+    private const PATH_VIEWS = __DIR__.'/../resources/views';
 
     /**
      * Bootstrap the application services.
@@ -35,7 +35,7 @@ class LibraryServiceProvider extends ServiceProvider
     {
         if (function_exists('config_path')) { // function not available and 'publish' not relevant in Lumen
             $this->publishes([
-                self::CONFIG_FILE => config_path('library.php')
+                self::CONFIG_FILE => config_path('library.php'),
             ], 'config');
         }
 
@@ -58,46 +58,46 @@ class LibraryServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the Blade form components
+     * Register the Blade form components.
      *
      * @return $this
      */
     private function registerFormComponents(): self
     {
         $this->loadViewComponentsAs('form', [
-            'input' => Input::class,
-            'input-group' => InputGroup::class,
-            'select' => Select::class,
+            'input'        => Input::class,
+            'input-group'  => InputGroup::class,
+            'select'       => Select::class,
             'model-select' => ModelSelect::class,
-            'textarea' => Textarea::class,
-            'checkboxes' => Checkboxes::class,
-            'checkbox' => Checkbox::class,
-            'file' => File::class,
-            'button' => Button::class,
-            'errors' => Errors::class,
-            'error' => Error::class
+            'textarea'     => Textarea::class,
+            'checkboxes'   => Checkboxes::class,
+            'checkbox'     => Checkbox::class,
+            'file'         => File::class,
+            'button'       => Button::class,
+            'errors'       => Errors::class,
+            'error'        => Error::class,
         ]);
 
         return $this;
     }
 
     /**
-     * Register the Blade navigation components
+     * Register the Blade navigation components.
      *
      * @return $this
      */
     private function registerNavigationComponents(): self
     {
         $this->loadViewComponentsAs('navigation', [
-            'item' => Item::class,
-            'label' => Label::class
+            'item'  => Item::class,
+            'label' => Label::class,
         ]);
 
         return $this;
     }
 
     /**
-     * Register the publishers of the component resources
+     * Register the publishers of the component resources.
      *
      * @return $this
      */
@@ -108,23 +108,17 @@ class LibraryServiceProvider extends ServiceProvider
         ], 'components');
 
         $this->publishes([
-            self::PATH_VIEWS . '/form' => resource_path('views/vendor/laravel-components-library/form'),
+            self::PATH_VIEWS.'/form' => resource_path('views/vendor/laravel-components-library/form'),
         ], 'form-components');
 
         $this->publishes([
-            self::PATH_VIEWS . '/navigation' => resource_path('views/vendor/laravel-components-library/navigation'),
+            self::PATH_VIEWS.'/navigation' => resource_path('views/vendor/laravel-components-library/navigation'),
         ], 'navigation-components');
 
         return $this;
     }
 
-    /**
-     * Register the given view components with a custom prefix and alias.
-     *
-     * @param  string  $prefix
-     * @param  array  $components
-     * @return void
-     */
+    /** @inheritDoc */
     protected function loadViewComponentsAs($prefix, array $components)
     {
         $this->callAfterResolving(BladeCompiler::class, function ($blade) use ($prefix, $components) {

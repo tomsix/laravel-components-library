@@ -1,19 +1,21 @@
 <?php
 
-
 namespace TomSix\Components\View\Components\Form;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\View\View;
 
 class File extends Input
 {
     /**
      * Create a new component instance.
      *
-     * @param string $name
-     * @param string|null $label
+     * @param string       $name
+     * @param string|null  $label
      * @param array|string $inputAttributes
-     * @param string|null $prepend
-     * @param string|null $append
+     * @param string|null  $prepend
+     * @param string|null  $append
      */
     public function __construct(string $name, ?string $label = null, $inputAttributes = [], ?string $prepend = null, ?string $append = null)
     {
@@ -23,7 +25,7 @@ class File extends Input
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
+     * @return Application|Factory|View|string
      */
     public function render()
     {
