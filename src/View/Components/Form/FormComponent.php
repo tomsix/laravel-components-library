@@ -47,7 +47,7 @@ abstract class FormComponent extends Component
         $this->name = $name;
         $this->label = $label;
         $this->inputAttributes = is_string($inputAttributes) ? $inputAttributes : $this->renderAttributes($inputAttributes);
-        $this->value = old($this->nameWithoutBrackets(), $value) ?? '';
+        $this->value = old($this->nameWithoutBrackets(), $value) ?? null;
     }
 
     /**

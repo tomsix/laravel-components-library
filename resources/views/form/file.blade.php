@@ -7,7 +7,7 @@
         <input type="file"
                name="{{ $name }}"
                id="{{ $name }}"
-               class="{{ config('library.css.form.file.input') }} @error($name) {{ config('library.css.error.inline.input') }} @enderror"
+               class="{{ config('library.css.form.file.input') }}@error($name) {{ config('library.css.error.inline.input') }}@enderror"
             {{ $inputAttributes }}
         />
 
