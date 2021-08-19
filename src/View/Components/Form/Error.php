@@ -12,6 +12,8 @@ class Error extends Component
 
     public function __construct(string $name, string $bag = 'default')
     {
+		parent::__construct('form');
+
         $this->name = $this->convertBracketsToDots(Str::before($name, '[]'));
         $this->bag = $bag;
     }

@@ -30,7 +30,7 @@ class LibraryServiceProvider extends ServiceProvider
 
         $this
             ->registerComponents()
-            ->registerComponetsPublishers();
+            ->registerComponentsPublishers();
     }
 
     /**
@@ -62,18 +62,18 @@ class LibraryServiceProvider extends ServiceProvider
      *
      * @return $this
      */
-    public function registerComponetsPublishers(): self
+    public function registerComponentsPublishers(): self
     {
         $this->publishes([
             self::PATH_VIEWS => resource_path('views/vendor/laravel-components-library'),
         ], 'components');
 
         $this->publishes([
-            self::PATH_VIEWS.'/form' => resource_path('views/vendor/laravel-components-library/form'),
+            self::PATH_VIEWS . '/form' => resource_path('views/vendor/laravel-components-library/form'),
         ], 'form-components');
 
         $this->publishes([
-            self::PATH_VIEWS.'/navigation' => resource_path('views/vendor/laravel-components-library/navigation'),
+            self::PATH_VIEWS . '/navigation' => resource_path('views/vendor/laravel-components-library/navigation'),
         ], 'navigation-components');
 
         return $this;

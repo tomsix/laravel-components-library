@@ -39,6 +39,8 @@ class InputGroup extends Component
      */
     public function __construct(string $name, ?string $prepend = null, ?string $append = null, ?bool $showErrors = null)
     {
+    	parent::__construct('form');
+
         $this->name = $name;
         $this->prepend = $prepend;
         $this->append = $append;

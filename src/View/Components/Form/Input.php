@@ -23,7 +23,7 @@ class Input extends FormComponent
      *
      * @param  string  $name
      * @param  string|null  $label
-     * @param  array|string  $inputAttributes
+
      * @param  mixed  $value
      * @param  string|null  $prepend
      * @param  string|null  $append
@@ -32,13 +32,12 @@ class Input extends FormComponent
     public function __construct(
         string $name,
         ?string $label = null,
-        $inputAttributes = [],
         $value = null, ?string
         $prepend = null,
         ?string $append = null,
         ?bool $showErrors = null
     ) {
-        parent::__construct($name, $label, $inputAttributes, $value, $showErrors);
+        parent::__construct($name, $label, $value, $showErrors);
 
         $this->prepend = $prepend;
         $this->append = $append;

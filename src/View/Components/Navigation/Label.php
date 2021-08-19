@@ -2,7 +2,7 @@
 
 namespace TomSix\Components\View\Components\Navigation;
 
-use Illuminate\View\Component;
+use TomSix\Components\View\Components\Component;
 
 class Label extends Component
 {
@@ -12,17 +12,9 @@ class Label extends Component
 
     public function __construct(string $text = null, string $icon = null)
     {
+		parent::__construct('navigation');
+
         $this->text = $text;
         $this->icon = $icon;
-    }
-
-    /**
-     * Renders the classes.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
-     */
-    public function render()
-    {
-        return view('laravel-components-library::navigation.label');
     }
 }

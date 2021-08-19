@@ -24,6 +24,7 @@ return [
     'css' => [
         'form' => [
             'group' => 'form-group',
+			'floating' => 'form-floating',
             'input' => [
                 'group'   => 'input-group',
                 'input'   => 'form-control',
