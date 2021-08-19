@@ -5,7 +5,7 @@ namespace TomSix\Components\View\Components\Form;
 use Illuminate\View\View;
 use Illuminate\Support\Collection;
 
-class Select extends BaseInput
+class Select extends Input
 {
     /**
      * A list with the value and text of the select options.

@@ -19,16 +19,16 @@ class ComponentsTest extends TestCase
     /** @test */
     public function form_components_are_loaded()
     {
-        $this->assertTrue(isset($this->aliases['form-input']));
-        $this->assertTrue(isset($this->aliases['form-input-group']));
-        $this->assertTrue(isset($this->aliases['form-select']));
-        $this->assertTrue(isset($this->aliases['form-model-select']));
-        $this->assertTrue(isset($this->aliases['form-textarea']));
-        $this->assertTrue(isset($this->aliases['form-checkboxes']));
-        $this->assertTrue(isset($this->aliases['form-checkbox']));
-        $this->assertTrue(isset($this->aliases['form-errors']));
-        $this->assertTrue(isset($this->aliases['form-error']));
-        $this->assertTrue(isset($this->aliases['form-file']));
+        $this->assertTrue(isset($this->aliases['form::input']));
+        $this->assertTrue(isset($this->aliases['form::input-group']));
+        $this->assertTrue(isset($this->aliases['form::select']));
+        $this->assertTrue(isset($this->aliases['form::model-select']));
+        $this->assertTrue(isset($this->aliases['form::textarea']));
+        $this->assertTrue(isset($this->aliases['form::checkboxes']));
+        $this->assertTrue(isset($this->aliases['form::checkbox']));
+        $this->assertTrue(isset($this->aliases['form::errors']));
+        $this->assertTrue(isset($this->aliases['form::error']));
+        $this->assertTrue(isset($this->aliases['form::file']));
     }
 
     /** @test */

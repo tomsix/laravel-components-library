@@ -9,7 +9,7 @@ class Checkbox extends FormComponent
     /**
      * @var string
      */
-    public string $idName;
+    public string $parentName;
 
     /**
      * Add the bootstrap inline class when enabled.
@@ -35,56 +35,43 @@ class Checkbox extends FormComponent
     /**
      * Create a new component instance.
      *
-     * @param string       $name
-     * @param string|null  $idName
-     * @param string|null  $label
-     * @param array|string $inputAttributes
-     * @param mixed        $value
-     * @param bool         $inline
-     * @param string       $type
-     * @param bool         $checked
+     * @param  string  $name
+     * @param  string|null  $parentName
+     * @param  string|null  $label
+     * @param  array|string  $inputAttributes
+     * @param  mixed  $value
+     * @param  bool  $inline
+     * @param  string  $type
+     * @param  bool  $checked
+     * @param  bool|null  $showErrors
      */
-    public function __construct(string $name, ?string $idName = null, ?string $label = null, $inputAttributes = [], $value = null, bool $inline = false, string $type = 'checkbox', ?bool $checked = false)
+    public function __construct(
+        string $name,
+        ?string $parentName = null,
+        ?string $label = null,
+        $inputAttributes = [],
+        $value = null,
+        bool $inline = false,
+        string $type = 'checkbox',
+        ?bool $checked = false,
+        ?bool $showErrors = null
+    )
     {
-        parent::__construct($name, $label, $inputAttributes, $value);
+        parent::__construct($name, $label, $inputAttributes, $value, $showErrors);
 
-        $this->idName = $idName ? $idName : $this->name;
+        $this->parentName = $parentName ?? $this->name;
         $this->value = $value;
         $this->inline = $inline ? ' '.config('library.css.form.checkbox.inline') : '';
         $this->checked = $checked ? 'checked' : '';
         $this->type = $type;
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\View\View|string
-     */
-    public function render()
-    {
-        return view('laravel-components-library::form.checkbox');
-    }
-
     public function errorName(): string
     {
         if (Str::endsWith($this->name, '[]')) {
-            return $this->nameWithoutBrackets().'.'.$this->value;
+            return $this->convertBracketsToDots($this->name);
         }
 
-        return $this->idName;
-    }
-
-    /**
-     * Renders the classes.
-     *
-     * @return string
-     */
-    public function cssClass(): string
-    {
-        if ($this->type === 'checkbox') {
-            return config('library.css.form.checkbox.group').$this->inline;
-        }
-
-        return config('library.css.form.checkbox.radio').$this->inline;
+        return $this->parentName;
     }
 }

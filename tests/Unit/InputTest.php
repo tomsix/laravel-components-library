@@ -13,7 +13,7 @@ class InputTest extends TestCase
         $component = new Input('email', 'Email Address', '', 'Tom', 'Type your email', 'email', '@', '#');
 
         self::assertEquals('email', $component->name);
-        self::assertEquals('Email Address', $component->label);
+        self::assertEquals('Email Address', $component->labelText);
         self::assertEquals('Tom', $component->value);
         self::assertEquals('Type your email', $component->placeholder);
         self::assertEquals('@', $component->prepend);

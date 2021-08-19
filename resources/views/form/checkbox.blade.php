@@ -1,14 +1,15 @@
-<div {{ $attributes->merge(['class' => $cssClass]) }}>
-
-    <input class="{{ config('library.css.form.checkbox.input') }}@error($errorName()) {{ config('library.css.error.inline.input') }}@enderror"
-           type="{{ $type }}" name="{{ $name }}" id="{{ $idName }}" value="{{ $value }}" {{ $checked }} {{ $inputAttributes }}
+<div {{ $attributes->class([config('library.css.form.multi.checkbox') => $type === 'checkbox', config('library.css.form.multi.radio') => $type === 'radio']) }}>
+    <input class="{{ config('library.css.form.multi.input') }}@if($hasError($name)) {{ config('library.css.error.inline.input') }}@endif"
+            type="{{ $type }}" name="{{ $parentName }}" id="{{ $name }}" value="{{ $value }}" {{ $checked }} {{ $inputAttributes }}
     />
 
-    @isset($label)
-        <label class="{{ config('library.css.form.checkbox.label') }}" for="{{ $idName }}">
-            {{ $label }}
-        </label>
+    @isset($labelText)
+        <label class="{{ config('library.css.form.multi.label') }}" for="{{ $name }}">{{ $labelText }}</label>
     @endisset()
 
-    <x-form-error :name="$errorName" />
+    {!! $label ?? null !!}
+
+    @if($showErrors && $hasError($parentName))
+        <x-form::error :name="$parentName"/>
+    @endif
 </div>

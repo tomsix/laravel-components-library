@@ -6,6 +6,7 @@ return [
      * Whether to add the form errors inline in each component
      * When activated a div will render at the bottom of a component.
      * To disable the red coller of the input. Change the class name in the css settings.
+     * It is possible to override this value for a component. Use `show-errors` with true or false.
      */
     'inline_errors' => true,
 
@@ -32,9 +33,9 @@ return [
                 'text'    => 'input-group-text',
             ],
             'label'    => 'form-label',
-            'select'   => 'custom-select', // style="flex: 1 1 0"; is added in the select-tag because of a fault in het Bootstrap class. Changing this class wil disable the style attribute
-            'checkbox' => [
-                'group'  => 'custom-control custom-checkbox',
+            'select'   => 'custom-select', // style="flex: 1 1 0"; is added in the select-tag because of a fault in the Bootstrap class. Changing this class wil disable the style attribute
+            'multi' => [
+                'checkbox'  => 'custom-control custom-checkbox',
                 'radio'  => 'custom-control custom-radio',
                 'input'  => 'custom-control-input',
                 'label'  => 'custom-control-label',

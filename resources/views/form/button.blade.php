@@ -6,7 +6,7 @@
             class="{{ config('library.css.form.button') }} {{ config('library.css.form.button') . '-' . $color }}"
             {{ $inputAttributes }}
     >
-        {{ $label ?? ($value ? $value : $name) }}
+        {{ $labelText ?? ($value ? $value : $name) }}
     </button>
 
 </div>

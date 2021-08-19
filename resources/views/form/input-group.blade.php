@@ -1,4 +1,4 @@
-<div {{ $attributes->merge(['class' => config('library.css.form.input.group')]) }} >
+<div {{ $attributes->class(config('library.css.form.input.group')) }} >
 
     @isset($prepend)
         <div class="{{ config('library.css.form.input.prepend') }}">
@@ -14,6 +14,7 @@
         </div>
     @endisset
 
-    <x-form-error :name="$name" />
-
+    @if($showErrors && $hasError($name))
+        <x-form::error :name="$name" />
+    @endif
 </div>

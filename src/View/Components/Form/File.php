@@ -11,15 +11,16 @@ class File extends Input
     /**
      * Create a new component instance.
      *
-     * @param string       $name
-     * @param string|null  $label
-     * @param array|string $inputAttributes
-     * @param string|null  $prepend
-     * @param string|null  $append
+     * @param  string  $name
+     * @param  string|null  $label
+     * @param  array|string  $inputAttributes
+     * @param  string|null  $prepend
+     * @param  string|null  $append
+     * @param  bool|null  $showErrors
      */
-    public function __construct(string $name, ?string $label = null, $inputAttributes = [], ?string $prepend = null, ?string $append = null)
+    public function __construct(string $name, ?string $label = null, $inputAttributes = [], ?string $prepend = null, ?string $append = null, ?bool $showErrors = null)
     {
-        parent::__construct($name, $label, $inputAttributes, null, '', 'file', $prepend, $append);
+        parent::__construct($name, $label, $inputAttributes, null, '', 'file', $prepend, $append, $showErrors);
     }
 
     /**

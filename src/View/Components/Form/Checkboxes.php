@@ -5,7 +5,6 @@ namespace TomSix\Components\View\Components\Form;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Illuminate\View\View;
 
 class Checkboxes extends FormComponent
 {
@@ -59,16 +58,6 @@ class Checkboxes extends FormComponent
     }
 
     /**
-     * Get the view / contents that represent the component.
-     *
-     * @return View|string
-     */
-    public function render()
-    {
-        return view('laravel-components-library::form.checkboxes');
-    }
-
-    /**
      * Determine if the value is checked.
      *
      * @param $option
@@ -93,16 +82,12 @@ class Checkboxes extends FormComponent
      *
      * @return string
      */
-    public function getIdName($key): string
+    public function getChildName($key): string
     {
         if (Str::endsWith($this->name, '[]')) {
-            $result = $this->nameWithoutBrackets();
+            $name = Str::before($this->name, '[]');
 
-            if (is_int($key)) {
-                return $result.'['.$key.']';
-            }
-
-            return $result.'[\''.$key.'\']';
+            return $name . '[' . $key . ']';
         }
 
         return $this->name.$key;

@@ -2,53 +2,45 @@
 
 namespace TomSix\Components\View\Components\Form;
 
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\View\View;
-
-class Input extends BaseInput
+class Input extends FormComponent
 {
     /**
-     * Specifies the placeholder.
+     * Set a Bootstrap prepend to the input
      *
-     * @var string
+     * @var string|null $prepend
      */
-    public string $placeholder;
+    public ?string $prepend;
 
     /**
-     * Set the type of the input.
+     * Set a Bootstrap append to the input
      *
-     * @var string
+     * @var string|null $append
      */
-    public string $type;
+    public ?string $append;
 
     /**
      * Create a new component instance.
      *
-     * @param string       $name
-     * @param string|null  $label
-     * @param array|string $inputAttributes
-     * @param mixed        $value
-     * @param string       $placeholder
-     * @param string       $type
-     * @param string|null  $prepend
-     * @param string|null  $append
+     * @param  string  $name
+     * @param  string|null  $label
+     * @param  array|string  $inputAttributes
+     * @param  mixed  $value
+     * @param  string|null  $prepend
+     * @param  string|null  $append
+     * @param  bool|null  $showErrors
      */
-    public function __construct(string $name, ?string $label = null, $inputAttributes = [], $value = null, string $placeholder = '', string $type = 'text', ?string $prepend = null, ?string $append = null)
-    {
-        parent::__construct($name, $label, $inputAttributes, $value, $prepend, $append);
+    public function __construct(
+        string $name,
+        ?string $label = null,
+        $inputAttributes = [],
+        $value = null, ?string
+        $prepend = null,
+        ?string $append = null,
+        ?bool $showErrors = null
+    ) {
+        parent::__construct($name, $label, $inputAttributes, $value, $showErrors);
 
-        $this->placeholder = $placeholder;
-        $this->type = $type;
-    }
-
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return Application|Factory|View|string
-     */
-    public function render()
-    {
-        return view('laravel-components-library::form.input');
+        $this->prepend = $prepend;
+        $this->append = $append;
     }
 }

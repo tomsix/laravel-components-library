@@ -1,0 +1,17 @@
+{
+  "$schema": "https://laravel-ide.com/schema/laravel-ide-v1.json",
+  "blade": {
+    "components": {
+      "viewPaths": [
+        {
+          "path": "resources/views/form",
+          "namespace": "form"
+        },
+        {
+          "path": "resources/views/navigation",
+          "namespace": "navigation"
+        }
+      ]
+    }
+  }
+}

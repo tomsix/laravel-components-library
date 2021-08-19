@@ -2,7 +2,7 @@
 
 namespace TomSix\Components\View\Components\Form;
 
-class Textarea extends BaseInput
+class Textarea extends Input
 {
     /**
      * Specifies the placeholder.
