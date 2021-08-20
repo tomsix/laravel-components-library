@@ -1,6 +1,6 @@
-<div {{ $attributes->merge(['class' => config('library.css.form.group')]) }}>
+<div class="{{ config('library.css.form.group') }}">
     @isset($labelText)
-        <label class="{{ config('library.css.form.input.label') }}" for="{{ $name }}">{{ $labelText }}</label>
+        <p class="{{ config('library.css.form.input.label') }}" for="{{ $attributes->get('id', $name) }}">{{ $labelText }}</p>
     @endisset
 
     {!! $label ?? null !!}
@@ -16,7 +16,8 @@
                          :value="$key"
                          :label="$option"
                          :checked="$isChecked($key)"
-                         :inline="$inline" :input-attributes="$inputAttributes" :type="$type"
+                         :inline="$inline" :type="$type"
+                          {{ $attributes }}
         />
     @endforeach
 

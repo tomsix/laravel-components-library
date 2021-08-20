@@ -12,11 +12,11 @@ class Checkbox extends FormComponent
     public string $parentName;
 
     /**
-     * Add the bootstrap inline class when enabled.
+     * Show the checkboxes inline
      *
-     * @var string
+     * @var bool
      */
-    public string $inline;
+    public bool $inline;
 
     /**
      * Set the 'checked' attribute if checked.
@@ -26,22 +26,12 @@ class Checkbox extends FormComponent
     public string $checked;
 
     /**
-     * Set the type of the input.
-     *
-     * @var string
-     */
-    public string $type;
-
-    /**
      * Create a new component instance.
      *
      * @param  string  $name
      * @param  string|null  $parentName
      * @param  string|null  $label
-     * @param  array|string  $inputAttributes
-     * @param  mixed  $value
      * @param  bool  $inline
-     * @param  string  $type
      * @param  bool  $checked
      * @param  bool|null  $showErrors
      */
@@ -49,21 +39,15 @@ class Checkbox extends FormComponent
         string $name,
         ?string $parentName = null,
         ?string $label = null,
-        $inputAttributes = [],
-        $value = null,
         bool $inline = false,
-        string $type = 'checkbox',
         ?bool $checked = false,
         ?bool $showErrors = null
-    )
-    {
-        parent::__construct($name, $label, $inputAttributes, $value, $showErrors);
+    ) {
+        parent::__construct($name, $label, $showErrors);
 
         $this->parentName = $parentName ?? $this->name;
-        $this->value = $value;
-        $this->inline = $inline ? ' '.config('library.css.form.checkbox.inline') : '';
+        $this->inline = $inline;
         $this->checked = $checked ? 'checked' : '';
-        $this->type = $type;
     }
 
     public function errorName(): string

@@ -1,10 +1,15 @@
-<div {{ $attributes->class([config('library.css.form.multi.checkbox') => $type === 'checkbox', config('library.css.form.multi.radio') => $type === 'radio']) }}>
-    <input class="{{ config('library.css.form.multi.input') }}@if($hasError($name)) {{ config('library.css.error.inline.input') }}@endif"
-            type="{{ $type }}" name="{{ $parentName }}" id="{{ $name }}" value="{{ $value }}" {{ $checked }} {{ $inputAttributes }}
+<div class="{{ config('library.css.form.checkbox.div') }}@if($inline) {{ config('library.css.form.checkbox.inline') }}@endif">
+    <input {{ $attributes->merge(['type' => 'checkbox', 'name' => $parentName, 'id' => $name])
+                ->class([
+                    config('library.css.form.checkbox.input'),
+                    config('library.css.error.inline.input') => $hasError($name)
+                ])
+            }}
+            {{ $checked }}
     />
 
     @isset($labelText)
-        <label class="{{ config('library.css.form.multi.label') }}" for="{{ $name }}">{{ $labelText }}</label>
+        <label class="{{ config('library.css.form.checkbox.label') }}" for="{{ $name }}">{{ $labelText }}</label>
     @endisset()
 
     {!! $label ?? null !!}

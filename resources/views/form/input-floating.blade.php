@@ -9,7 +9,7 @@
     />
 
     @isset($labelText)
-        <label class="{{ config('library.css.form.input.label') }}" for="{{ $attributes(['id' => $name]) }}">{{ $labelText }}</label>
+        <label class="{{ config('library.css.form.input.label') }}" for="{{ $attributes->get('id', $name) }}">{{ $labelText }}</label>
     @endisset
 
     {!! $label ?? null !!}

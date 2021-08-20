@@ -35,17 +35,11 @@ return [
             ],
             'label'    => 'form-label',
             'select'   => 'custom-select', // style="flex: 1 1 0"; is added in the select-tag because of a fault in the Bootstrap class. Changing this class wil disable the style attribute
-            'multi' => [
-                'checkbox'  => 'custom-control custom-checkbox',
-                'radio'  => 'custom-control custom-radio',
-                'input'  => 'custom-control-input',
-                'label'  => 'custom-control-label',
-                'inline' => 'custom-control-inline',
-            ],
-            'file' => [
-                'group' => 'form-group',
-                'input' => 'form-control form-control-file',
-                'label' => 'form-label',
+            'checkbox' => [
+                'input'  => 'form-check-input',
+                'div'  => 'form-check',
+                'label'  => 'form-check-label',
+                'inline' => 'form-check-inline',
             ],
             'button' => 'btn',
         ],

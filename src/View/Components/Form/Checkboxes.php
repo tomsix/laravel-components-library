@@ -23,7 +23,7 @@ class Checkboxes extends FormComponent
     public array $options;
 
     /**
-     * Checks if the options ar a associative array.
+     * Checks if the options ar an associative array.
      *
      * @var bool
      */
@@ -43,13 +43,12 @@ class Checkboxes extends FormComponent
      * @param string|null         $label
      * @param array|Collection    $options
      * @param bool                $inline
-     * @param array|string        $inputAttributes
      * @param iterable|string|int $value
      * @param string              $type
      */
-    public function __construct(string $name, ?string $label = null, $options = [], bool $inline = false, $inputAttributes = [], $value = null, string $type = 'checkbox')
+    public function __construct(string $name, ?string $label = null, $options = [], bool $inline = false, $value = null, string $type = 'checkbox')
     {
-        parent::__construct($name, $label, $inputAttributes, $value);
+        parent::__construct($name, $label, $value);
 
         $this->inline = $inline;
         $this->options = $options instanceof Collection ? $options->toArray() : $options;
