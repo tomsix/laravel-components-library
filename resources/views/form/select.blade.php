@@ -9,7 +9,7 @@
         <select
             name="{{ $name }}"
             id="{{ $name }}"
-            class="{{ config('library.css.form.select') }}@error($name) {{ config('library.css.error.inline.input') }}@enderror"
+            class="{{ config('library.css.form.select') }} @error($name) {{ config('library.css.error.inline.input') }}@enderror"
             @if(config('library.css.form.select') === 'custom-select') style="flex: 1 1 0;"@endif
             {{ $inputAttributes }}
         >

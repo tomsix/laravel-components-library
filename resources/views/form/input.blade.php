@@ -10,7 +10,7 @@
             type="{{ $type }}"
             name="{{ $name }}"
             id="{{ $name }}"
-            class="{{ config('library.css.form.input.input') }}@error($name) {{ config('library.css.error.inline.input') }}@enderror"
+            class="{{ config('library.css.form.input.input') }} @error($name) {{ config('library.css.error.inline.input') }}@enderror"
             @if($placeholder != '') placeholder="{{ $placeholder }}"@endif
             @isset($value) value="{{ $value }}"@endisset
             {{ $inputAttributes }}
