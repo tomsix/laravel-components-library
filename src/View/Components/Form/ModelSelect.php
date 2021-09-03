@@ -5,6 +5,7 @@ namespace TomSix\Components\View\Components\Form;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Illuminate\View\View;
 
 class ModelSelect extends Select
 {
@@ -12,7 +13,7 @@ class ModelSelect extends Select
      * Create a new component instance.
      *
      * @param string                $name
-     * @param EloquentCollection|Collection|null       $models
+     * @param EloquentCollection|Collection|null $models
      * @param string|null           $label
      * @param array|string          $inputAttributes
      * @param Model|string|int|null $value
@@ -34,4 +35,14 @@ class ModelSelect extends Select
 
         parent::__construct($name, $options, $label, $inputAttributes, $value, $prepend, $append);
     }
+
+	/**
+	 * Get the view / contents that represent the component.
+	 *
+	 * @return View
+	 */
+	public function render(): View
+	{
+		return view('laravel-components-library::form.model-select');
+	}
 }
