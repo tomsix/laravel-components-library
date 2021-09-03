@@ -1,5 +1,5 @@
 @if ($errors->any())
-    <div class="{{ config('library.css.error.component.group') }} {{ config('library.css.error.component.group') . '-' . $color }}">
+    <div {{ $attributes->class([config('library.css.error.component.group'), config('library.css.error.component.group') . '-' . $color]) }}>
         @isset($title)
             <h4 class="{{ config('library.css.error.component.header') }}">{{ $title }}</h4>
         @endisset
