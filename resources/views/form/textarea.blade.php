@@ -1,23 +1,31 @@
-<div {{ $attributes->merge(['class' => config('library.css.form.group')]) }} >
+<div class="{{ config('library.css.form.group') }}" >
 
     @isset($labelText)
-        <label class="{{ config('library.css.form.file.label') }}" for="{{ $name }}">{{ $labelText }}</label>
+        <label class="{{ config('library.css.form.input.label') }}" for="{{ $attributes->get('id', $name) }}">{{ $labelText }}</label>
     @endisset
 
-    @isset($label)
-        {!! $label !!}
-    @endisset
+    {{ $label ?? null }}
 
-    <x-form::input-group :name="$name" :prepend="$prepend" :append="$append">
+    <x-form::input-group :name="$name" :prepend="$prependText" :append="$appendText">
 
-        <textarea
-            name="{{ $name }}"
-            id="{{ $name }}"
-            class="{{ config('library.css.form.input.input') }}@error($name) {{ config('library.css.error.inline.input') }}@enderror"
-            @if($placeholder != '') placeholder="{{ $placeholder }}"@endif
-            {{ $inputAttributes }}
+        @isset($prepend)
+            <x-slot name="prepend">
+                {{ $prepend }}
+            </x-slot>
+        @endisset
+
+        <textarea {{ $attributes->merge(['name' => $name, 'id' => $name])
+                            ->class([
+                            	config('library.css.form.input.input'),
+                            	config('library.css.error.inline.input') => $hasError($name)
+                            ]) }}
         >@isset($value){{ $value }}@endisset</textarea>
 
-    </x-form::input-group>
+        @isset($append)
+            <x-slot name="append">
+                {{ $append }}
+            </x-slot>
+        @endisset
 
+    </x-form::input-group>
 </div>

@@ -33,16 +33,6 @@ class Select extends Input
     }
 
     /**
-     * Get the view / contents that represent the component.
-     *
-     * @return View|string
-     */
-    public function render()
-    {
-        return view('laravel-components-library::form.select');
-    }
-
-    /**
      * Determine if the given option is the current selected option.
      *
      * @param string|int $option
