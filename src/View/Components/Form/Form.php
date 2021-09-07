@@ -24,7 +24,7 @@ class Form extends Component
      */
     public function __construct(string $method = 'POST')
     {
-    	parent::__construct('form');
+		parent::__construct('form');
 
         $this->method = strtoupper($method);
 

@@ -1,7 +1,4 @@
 <div class="{{ config('library.css.form.group') }}">
-    @isset($labelText)
-        <p class="{{ config('library.css.form.input.label') }}" for="{{ $attributes->get('id', $name) }}">{{ $labelText }}</p>
-    @endisset
 
     {!! $label ?? null !!}
 

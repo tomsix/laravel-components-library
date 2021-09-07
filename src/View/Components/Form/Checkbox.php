@@ -6,6 +6,11 @@ use Illuminate\Support\Str;
 
 class Checkbox extends FormComponent
 {
+	/**
+	 * @var string
+	 */
+	public string $type;
+
     /**
      * @var string
      */
@@ -25,18 +30,20 @@ class Checkbox extends FormComponent
      */
     public string $checked;
 
-    /**
-     * Create a new component instance.
-     *
-     * @param  string  $name
-     * @param  string|null  $parentName
-     * @param  string|null  $label
-     * @param  bool  $inline
-     * @param  bool  $checked
-     * @param  bool|null  $showErrors
-     */
+	/**
+	 * Create a new component instance.
+	 *
+	 * @param string $name
+	 * @param string $type
+	 * @param string|null $parentName
+	 * @param string|null $label
+	 * @param bool $inline
+	 * @param bool $checked
+	 * @param bool|null $showErrors
+	 */
     public function __construct(
         string $name,
+		string $type = 'checkbox',
         ?string $parentName = null,
         ?string $label = null,
         bool $inline = false,
@@ -45,6 +52,7 @@ class Checkbox extends FormComponent
     ) {
         parent::__construct($name, $label, $showErrors);
 
+		$this->type = $type;
         $this->parentName = $parentName ?? $this->name;
         $this->inline = $inline;
         $this->checked = $checked ? 'checked' : '';

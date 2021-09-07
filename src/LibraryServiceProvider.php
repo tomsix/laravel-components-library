@@ -50,9 +50,9 @@ class LibraryServiceProvider extends ServiceProvider
      */
     private function registerComponents(): self
     {
-        Blade::componentNamespace('TomSix\\Components\\View\\Components\\Form', 'form');
+        Blade::componentNamespace('TomSix\\Components\\View\\Components\\Form', config('library.prefix.form'));
 
-        Blade::componentNamespace('TomSix\\Components\\View\\Components\\Navigation', 'navigation');
+        Blade::componentNamespace('TomSix\\Components\\View\\Components\\Navigation', config('library.prefix.navigation'));
 
         return $this;
     }

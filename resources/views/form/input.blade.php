@@ -4,7 +4,7 @@
         <label class="{{ config('library.css.form.input.label') }}" for="{{ $attributes->get('id', $name) }}">{{ $labelText }}</label>
     @endisset
 
-    {!! $label ?? null !!}
+    {{ $label ?? null }}
 
     <x-form::input-group :name="$name" :prepend="$prepend" :append="$append">
 

@@ -1,10 +1,16 @@
-<div class="{{ config('library.css.form.checkbox.div') }}@if($inline) {{ config('library.css.form.checkbox.inline') }}@endif">
-    <input {{ $attributes->merge(['type' => 'checkbox', 'name' => $parentName, 'id' => $name])
+<div @class([
+                config('library.css.form.checkbox.div'),
+                config('library.css.form.checkbox.inline') => $inline,
+                config('library.css.form.checkbox.' . $type)
+     ])
+>
+    <input {{ $attributes->merge(['name' => $parentName, 'id' => $name])
                 ->class([
                     config('library.css.form.checkbox.input'),
                     config('library.css.error.inline.input') => $hasError($name)
                 ])
             }}
+            type="{{ $type === 'radio' ?: 'checkbox' }}"
             {{ $checked }}
     />
 
@@ -14,7 +20,7 @@
 
     {!! $label ?? null !!}
 
-    @if($showErrors && $hasError($parentName))
+    @if($showErrors && $hasError($name))
         <x-form::error :name="$parentName"/>
     @endif
 </div>

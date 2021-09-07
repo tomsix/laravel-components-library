@@ -1,15 +1,16 @@
 <?php
 
-namespace TomSix\Components\View\Components\Form;
+namespace TomSix\Components\View\Components\Traits;
 
 use Illuminate\Contracts\Support\MessageBag;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 use Illuminate\Support\ViewErrorBag;
+use function request;
 
 trait HandlesValidationErrors
 {
-    public bool $showErrors = true;
+    public bool $showErrors;
 
     /**
      * Getter for the ErrorBag.

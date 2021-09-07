@@ -2,9 +2,7 @@
 
 namespace TomSix\Components\View\Components\Navigation;
 
-use TomSix\Components\View\Components\Component;
-
-class Label extends Component
+class Label extends NavigationComponent
 {
     public ?string $text;
 
@@ -12,7 +10,7 @@ class Label extends Component
 
     public function __construct(string $text = null, string $icon = null)
     {
-		parent::__construct('navigation');
+		parent::__construct();
 
         $this->text = $text;
         $this->icon = $icon;

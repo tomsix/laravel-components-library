@@ -2,6 +2,12 @@
 
 return [
 
+	'prefix' => [
+		'form' => 'form',
+		'navigation' => 'navigation'
+	],
+
+
     /*
      * Whether to add the form errors inline in each component
      * When activated a div will render at the bottom of a component.
@@ -28,7 +34,7 @@ return [
             'input' => [
                 'group'   => 'input-group',
                 'input'   => 'form-control',
-                'label'   => 'form-label',
+                'label'   => '',
                 'prepend' => 'input-group-prepend',
                 'append'  => 'input-group-append',
                 'text'    => 'input-group-text',
@@ -36,10 +42,13 @@ return [
             'label'    => 'form-label',
             'select'   => 'custom-select', // style="flex: 1 1 0"; is added in the select-tag because of a fault in the Bootstrap class. Changing this class wil disable the style attribute
             'checkbox' => [
-                'input'  => 'form-check-input',
-                'div'  => 'form-check',
-                'label'  => 'form-check-label',
-                'inline' => 'form-check-inline',
+                'input'  => 'custom-control-input',
+                'div'  => 'custom-control',
+				'checkbox' => 'custom-checkbox',
+				'radio' => 'custom-radio',
+				'switch' => 'custom-switch',
+                'label'  => 'custom-control-label',
+                'inline' => 'custom-control-inline',
             ],
             'button' => 'btn',
         ],

@@ -40,15 +40,14 @@ class Checkboxes extends FormComponent
      * Create a new component instance.
      *
      * @param string              $name
-     * @param string|null         $label
      * @param array|Collection    $options
      * @param bool                $inline
      * @param iterable|string|int $value
      * @param string              $type
      */
-    public function __construct(string $name, ?string $label = null, $options = [], bool $inline = false, $value = null, string $type = 'checkbox')
+    public function __construct(string $name, $options = [], bool $inline = false, $value = null, string $type = 'checkbox')
     {
-        parent::__construct($name, $label, $value);
+        parent::__construct($name, null, $value);
 
         $this->inline = $inline;
         $this->options = $options instanceof Collection ? $options->toArray() : $options;

@@ -3,6 +3,7 @@
 namespace TomSix\Components\View\Components\Form;
 
 use TomSix\Components\View\Components\Component;
+use TomSix\Components\View\Components\Traits\HandlesValidationErrors;
 
 class InputGroup extends Component
 {
@@ -39,7 +40,7 @@ class InputGroup extends Component
      */
     public function __construct(string $name, ?string $prepend = null, ?string $append = null, ?bool $showErrors = null)
     {
-    	parent::__construct('form');
+		parent::__construct('form');
 
         $this->name = $name;
         $this->prepend = $prepend;

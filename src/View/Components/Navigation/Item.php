@@ -3,9 +3,8 @@
 namespace TomSix\Components\View\Components\Navigation;
 
 use Illuminate\Support\Str;
-use TomSix\Components\View\Components\Component;
 
-class Item extends Component
+class Item extends NavigationComponent
 {
     public string $href;
 
@@ -13,9 +12,9 @@ class Item extends Component
 
     public function __construct(?string $href = null)
     {
-    	parent::__construct('navigation');
+    	parent::__construct();
 
-        $this->href ??='javascript:void(0)';
+        $this->href ??= 'javascript:void(0)';
         $this->class = config('library.css.navigation.item').Str::startsWith(request()->url(), $href) ? config('library.css.navigation.active') : '';
     }
 }
