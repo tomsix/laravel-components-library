@@ -38,7 +38,7 @@ abstract class FormComponent extends Component
 	 * @param mixed $value
 	 * @param bool|null $showErrors
 	 */
-    public function __construct(string $name, ?string $label = null, $value = null, ?bool $showErrors = null)
+    public function __construct(string $name, ?string $label = null, $value = null, bool $showErrors = null)
     {
 		parent::__construct('form');
 

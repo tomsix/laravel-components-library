@@ -4,23 +4,27 @@
                 config('library.css.form.checkbox.' . $type)
      ])
 >
-    <input {{ $attributes->merge(['name' => $parentName, 'id' => $name])
+    {{ $before ?? null  }}
+
+    <input {{ $attributes->merge(['id' => $name])
                 ->class([
                     config('library.css.form.checkbox.input'),
                     config('library.css.error.inline.input') => $hasError($name)
                 ])
             }}
-            type="{{ $type === 'radio' ?: 'checkbox' }}"
-            {{ $checked }}
+            name="{{ $name }}"
+            value="{{ $value }}"
+            type="{{ $type === 'radio' ? 'radio' : 'checkbox' }}"
+            {{ $checked  ? 'checked' : '' }}
     />
 
     @isset($labelText)
-        <label class="{{ config('library.css.form.checkbox.label') }}" for="{{ $name }}">{{ $labelText }}</label>
+        <label class="{{ config('library.css.form.checkbox.label') }}" for="{{ $attributes->get('id', $name) }}">{{ $labelText }}</label>
     @endisset()
 
-    {!! $label ?? null !!}
-
     @if($showErrors && $hasError($name))
-        <x-form::error :name="$parentName"/>
+        <x-form::error :name="$name" />
     @endif
+
+    {{ $after ?? null }}
 </div>

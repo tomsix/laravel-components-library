@@ -36,58 +36,23 @@ class Checkboxes extends FormComponent
      */
     public string $type;
 
-    /**
-     * Create a new component instance.
-     *
-     * @param string              $name
-     * @param array|Collection    $options
-     * @param bool                $inline
-     * @param iterable|string|int $value
-     * @param string              $type
-     */
-    public function __construct(string $name, $options = [], bool $inline = false, $value = null, string $type = 'checkbox')
+	/**
+	 * Create a new component instance.
+	 *
+	 * @param string $name
+	 * @param array|Collection $options
+	 * @param bool $inline
+	 * @param null $value
+	 * @param string $type
+	 * @param bool|null $showErrors
+	 */
+    public function __construct(string $name, $options = [], bool $inline = false, $value = null, string $type = 'checkbox', ?bool $showErrors = null)
     {
-        parent::__construct($name, null, $value);
+        parent::__construct($name, null, $value, $showErrors);
 
         $this->inline = $inline;
         $this->options = $options instanceof Collection ? $options->toArray() : $options;
         $this->optionsAreAssoc = Arr::isAssoc($this->options);
         $this->type = $type;
-    }
-
-    /**
-     * Determine if the value is checked.
-     *
-     * @param $option
-     *
-     * @return bool
-     */
-    public function isChecked($option): bool
-    {
-        if (is_string($this->value) || is_numeric($this->value)) {
-            return $option == $this->value;
-        }
-
-        if (is_array($this->value)) {
-            return in_array($option, $this->value);
-        }
-
-        return false;
-    }
-
-    /**
-     * @param string|int $key
-     *
-     * @return string
-     */
-    public function getChildName($key): string
-    {
-        if (Str::endsWith($this->name, '[]')) {
-            $name = Str::before($this->name, '[]');
-
-            return $name . '[' . $key . ']';
-        }
-
-        return $this->name.$key;
     }
 }

@@ -30,6 +30,6 @@ abstract class Component extends BaseComponent
 	 */
 	protected function convertBracketsToDots(string $name): string
 	{
-		return str_replace(['[', ']'], ['.', ''], $name);
+		return rtrim(str_replace(['[', ']'], ['.', ''], $name), '.');
 	}
 }

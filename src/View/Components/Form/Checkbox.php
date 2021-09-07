@@ -2,19 +2,12 @@
 
 namespace TomSix\Components\View\Components\Form;
 
-use Illuminate\Support\Str;
-
 class Checkbox extends FormComponent
 {
 	/**
 	 * @var string
 	 */
 	public string $type;
-
-    /**
-     * @var string
-     */
-    public string $parentName;
 
     /**
      * Show the checkboxes inline
@@ -34,8 +27,8 @@ class Checkbox extends FormComponent
 	 * Create a new component instance.
 	 *
 	 * @param string $name
+	 * @param string|int $value
 	 * @param string $type
-	 * @param string|null $parentName
 	 * @param string|null $label
 	 * @param bool $inline
 	 * @param bool $checked
@@ -43,27 +36,39 @@ class Checkbox extends FormComponent
 	 */
     public function __construct(
         string $name,
+		$value,
 		string $type = 'checkbox',
-        ?string $parentName = null,
         ?string $label = null,
         bool $inline = false,
-        ?bool $checked = false,
+        ?bool $checked = null,
         ?bool $showErrors = null
     ) {
-        parent::__construct($name, $label, $showErrors);
+        parent::__construct($name, $label, null, $showErrors);
 
+		$this->value = $value;
 		$this->type = $type;
-        $this->parentName = $parentName ?? $this->name;
         $this->inline = $inline;
-        $this->checked = $checked ? 'checked' : '';
+        $this->checked = $checked ?? $this->isChecked();
     }
 
-    public function errorName(): string
-    {
-        if (Str::endsWith($this->name, '[]')) {
-            return $this->convertBracketsToDots($this->name);
-        }
+	/**
+	 * Determine if the value is checked.
+	 *
+	 *
+	 * @return bool
+	 */
+	public function isChecked(): bool
+	{
+		$value = old($this->convertBracketsToDots($this->name));
 
-        return $this->parentName;
-    }
+		if (is_string($value) || is_numeric($value)) {
+			return $value == $this->value;
+		}
+
+		if (is_array($value)) {
+			return in_array($this->value, $value);
+		}
+
+		return false;
+	}
 }

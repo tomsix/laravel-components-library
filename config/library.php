@@ -40,7 +40,7 @@ return [
                 'text'    => 'input-group-text',
             ],
             'label'    => 'form-label',
-            'select'   => 'custom-select', // style="flex: 1 1 0"; is added in the select-tag because of a fault in the Bootstrap class. Changing this class wil disable the style attribute
+            'select'   => 'custom-select',
             'checkbox' => [
                 'input'  => 'custom-control-input',
                 'div'  => 'custom-control',

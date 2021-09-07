@@ -2,7 +2,6 @@
 
 namespace TomSix\Components\View\Components\Form;
 
-use Illuminate\View\View;
 use Illuminate\Support\Collection;
 
 class Select extends Input
@@ -20,14 +19,13 @@ class Select extends Input
      * @param string           $name
      * @param array|Collection $options
      * @param string|null      $label
-     * @param array|string     $inputAttributes
      * @param string|int|null  $value
      * @param string|null      $prepend
      * @param string|null      $append
      */
-    public function __construct(string $name, $options, ?string $label = null, $inputAttributes = [], $value = null, ?string $prepend = null, ?string $append = null)
+    public function __construct(string $name, $options = [], ?string $label = null, $value = null, ?string $prepend = null, ?string $append = null)
     {
-        parent::__construct($name, $label, $inputAttributes, $value, $prepend, $append);
+        parent::__construct($name, $label, $value, $prepend, $append);
 
         $this->options = $options instanceof Collection ? $options->toArray() : $options;
     }
@@ -37,10 +35,10 @@ class Select extends Input
      *
      * @param string|int $option
      *
-     * @return string
+     * @return bool
      */
-    public function isSelected($option): string
+    public function isSelected($option): bool
     {
-        return $option == old($this->name, $this->value) ? 'selected' : '';
+        return $option == old($this->name, $this->value);
     }
 }
