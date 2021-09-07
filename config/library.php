@@ -2,11 +2,13 @@
 
 return [
 
+	/*
+	 * Change te prefix of the blade components
+	 */
 	'prefix' => [
 		'form' => 'form',
 		'navigation' => 'navigation'
 	],
-
 
     /*
      * Whether to add the form errors inline in each component
@@ -50,7 +52,6 @@ return [
                 'label'  => 'custom-control-label',
                 'inline' => 'custom-control-inline',
             ],
-            'button' => 'btn',
         ],
         'error' => [
             'inline' => [
