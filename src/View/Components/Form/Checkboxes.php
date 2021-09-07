@@ -5,7 +5,6 @@ namespace TomSix\Components\View\Components\Form;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Illuminate\View\View;
 
 class Checkboxes extends FormComponent
 {
@@ -24,7 +23,7 @@ class Checkboxes extends FormComponent
     public array $options;
 
     /**
-     * Checks if the options ar a associative array.
+     * Checks if the options ar an associative array.
      *
      * @var bool
      */
@@ -37,74 +36,23 @@ class Checkboxes extends FormComponent
      */
     public string $type;
 
-    /**
-     * Create a new component instance.
-     *
-     * @param string              $name
-     * @param string|null         $label
-     * @param array|Collection    $options
-     * @param bool                $inline
-     * @param array|string        $inputAttributes
-     * @param iterable|string|int $value
-     * @param string              $type
-     */
-    public function __construct(string $name, ?string $label = null, $options = [], bool $inline = false, $inputAttributes = [], $value = null, string $type = 'checkbox')
+	/**
+	 * Create a new component instance.
+	 *
+	 * @param string $name
+	 * @param array|Collection $options
+	 * @param bool $inline
+	 * @param null $value
+	 * @param string $type
+	 * @param bool|null $showErrors
+	 */
+    public function __construct(string $name, $options = [], bool $inline = false, $value = null, string $type = 'checkbox', ?bool $showErrors = null)
     {
-        parent::__construct($name, $label, $inputAttributes, $value);
+        parent::__construct($name, null, $value, $showErrors);
 
         $this->inline = $inline;
         $this->options = $options instanceof Collection ? $options->toArray() : $options;
         $this->optionsAreAssoc = Arr::isAssoc($this->options);
         $this->type = $type;
-    }
-
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return View|string
-     */
-    public function render()
-    {
-        return view('laravel-components-library::form.checkboxes');
-    }
-
-    /**
-     * Determine if the value is checked.
-     *
-     * @param $option
-     *
-     * @return bool
-     */
-    public function isChecked($option): bool
-    {
-        if (is_string($this->value) || is_numeric($this->value)) {
-            return $option == $this->value;
-        }
-
-        if (is_array($this->value)) {
-            return in_array($option, $this->value);
-        }
-
-        return false;
-    }
-
-    /**
-     * @param string|int $key
-     *
-     * @return string
-     */
-    public function getIdName($key): string
-    {
-        if (Str::endsWith($this->name, '[]')) {
-            $result = $this->nameWithoutBrackets();
-
-            if (is_int($key)) {
-                return $result.'['.$key.']';
-            }
-
-            return $result.'[\''.$key.'\']';
-        }
-
-        return $this->name.$key;
     }
 }

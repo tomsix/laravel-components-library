@@ -2,10 +2,13 @@
 
 namespace TomSix\Components\View\Components\Form;
 
-use Illuminate\View\Component;
+use TomSix\Components\View\Components\Component;
+use TomSix\Components\View\Components\Traits\HandlesValidationErrors;
 
 class InputGroup extends Component
 {
+    use HandlesValidationErrors;
+
     /**
      * Specifies the name.
      *
@@ -18,36 +21,30 @@ class InputGroup extends Component
      *
      * @var string|null
      */
-    public ?string $prepend;
+    public ?string $prependText;
 
     /**
      * Set a Bootstrap append to the input.
      *
      * @var string|null
      */
-    public ?string $append;
+    public ?string $appendText;
 
     /**
      * Create a new component instance.
      *
-     * @param string      $name
-     * @param string|null $prepend
-     * @param string|null $append
+     * @param  string  $name
+     * @param  string|null  $prepend
+     * @param  string|null  $append
+     * @param  bool|null  $showErrors
      */
-    public function __construct(string $name, ?string $prepend = null, ?string $append = null)
+    public function __construct(string $name, ?string $prepend = null, ?string $append = null, ?bool $showErrors = null)
     {
-        $this->name = $name;
-        $this->prepend = $prepend;
-        $this->append = $append;
-    }
+		parent::__construct('form');
 
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
-     */
-    public function render()
-    {
-        return view('laravel-components-library::form.input-group');
+        $this->name = $name;
+        $this->prependText = $prepend;
+        $this->appendText = $append;
+        $this->showErrors = $showErrors ?? config('library.inline_errors');
     }
 }

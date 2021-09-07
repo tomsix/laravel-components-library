@@ -5,15 +5,11 @@
       "viewPaths": [
         {
           "path": "resources/views/form",
-          "namespace": "",
-          "prefix": "form-",
-          "viewNamespace": ""
+          "namespace": "form"
         },
         {
           "path": "resources/views/navigation",
-          "namespace": "",
-          "prefix": "navigation-",
-          "viewNamespace": ""
+          "namespace": "navigation"
         }
       ]
     }

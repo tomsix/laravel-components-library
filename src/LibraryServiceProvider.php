@@ -2,21 +2,8 @@
 
 namespace TomSix\Components;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\View\Compilers\BladeCompiler;
-use TomSix\Components\View\Components\Form\Button;
-use TomSix\Components\View\Components\Form\Checkbox;
-use TomSix\Components\View\Components\Form\Checkboxes;
-use TomSix\Components\View\Components\Form\Error;
-use TomSix\Components\View\Components\Form\Errors;
-use TomSix\Components\View\Components\Form\File;
-use TomSix\Components\View\Components\Form\Input;
-use TomSix\Components\View\Components\Form\InputGroup;
-use TomSix\Components\View\Components\Form\ModelSelect;
-use TomSix\Components\View\Components\Form\Select;
-use TomSix\Components\View\Components\Form\Textarea;
-use TomSix\Components\View\Components\Navigation\Item;
-use TomSix\Components\View\Components\Navigation\Label;
 
 class LibraryServiceProvider extends ServiceProvider
 {
@@ -42,9 +29,8 @@ class LibraryServiceProvider extends ServiceProvider
         $this->loadViewsFrom(self::PATH_VIEWS, 'laravel-components-library');
 
         $this
-            ->registerFormComponents()
-            ->registerNavigationComponents()
-            ->registerComponetsPublishers();
+            ->registerComponents()
+            ->registerComponentsPublishers();
     }
 
     /**
@@ -62,36 +48,11 @@ class LibraryServiceProvider extends ServiceProvider
      *
      * @return $this
      */
-    private function registerFormComponents(): self
+    private function registerComponents(): self
     {
-        $this->loadViewComponentsAs('form', [
-            'input'        => Input::class,
-            'input-group'  => InputGroup::class,
-            'select'       => Select::class,
-            'model-select' => ModelSelect::class,
-            'textarea'     => Textarea::class,
-            'checkboxes'   => Checkboxes::class,
-            'checkbox'     => Checkbox::class,
-            'file'         => File::class,
-            'button'       => Button::class,
-            'errors'       => Errors::class,
-            'error'        => Error::class,
-        ]);
+        Blade::componentNamespace('TomSix\\Components\\View\\Components\\Form', config('library.prefix.form'));
 
-        return $this;
-    }
-
-    /**
-     * Register the Blade navigation components.
-     *
-     * @return $this
-     */
-    private function registerNavigationComponents(): self
-    {
-        $this->loadViewComponentsAs('navigation', [
-            'item'  => Item::class,
-            'label' => Label::class,
-        ]);
+        Blade::componentNamespace('TomSix\\Components\\View\\Components\\Navigation', config('library.prefix.navigation'));
 
         return $this;
     }
@@ -101,30 +62,20 @@ class LibraryServiceProvider extends ServiceProvider
      *
      * @return $this
      */
-    public function registerComponetsPublishers(): self
+    public function registerComponentsPublishers(): self
     {
         $this->publishes([
             self::PATH_VIEWS => resource_path('views/vendor/laravel-components-library'),
         ], 'components');
 
         $this->publishes([
-            self::PATH_VIEWS.'/form' => resource_path('views/vendor/laravel-components-library/form'),
+            self::PATH_VIEWS . '/form' => resource_path('views/vendor/laravel-components-library/form'),
         ], 'form-components');
 
         $this->publishes([
-            self::PATH_VIEWS.'/navigation' => resource_path('views/vendor/laravel-components-library/navigation'),
+            self::PATH_VIEWS . '/navigation' => resource_path('views/vendor/laravel-components-library/navigation'),
         ], 'navigation-components');
 
         return $this;
-    }
-
-    /** @inheritDoc */
-    protected function loadViewComponentsAs($prefix, array $components)
-    {
-        $this->callAfterResolving(BladeCompiler::class, function ($blade) use ($prefix, $components) {
-            foreach ($components as $alias => $component) {
-                $blade->component($component, is_numeric($alias) ? null : $alias, $prefix);
-            }
-        });
     }
 }

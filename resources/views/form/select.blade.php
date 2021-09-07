@@ -1,30 +1,43 @@
-<div {{ $attributes->merge(['class' => config('library.css.form.group')]) }} >
+<div {{ $attributes->class([config('library.css.form.group')]) }} >
 
-    @isset($label)
-        <label class="{{ config('library.css.form.input.label') }}" for="{{ $name }}">{{ $label }}</label>
+    @isset($labelText)
+        <label class="{{ config('library.css.form.label') }}" for="{{ $attributes->get('id', $name) }}">{{ $labelText }}</label>
     @endisset
 
-    <x-form-input-group :name="$name" :prepend="$prepend" :append="$append">
+    @isset($label)
+        {!! $label !!}
+    @endisset
 
-        <select
-            name="{{ $name }}"
-            id="{{ $name }}"
-            class="{{ config('library.css.form.select') }} @error($name) {{ config('library.css.error.inline.input') }}@enderror"
-            @if(config('library.css.form.select') === 'custom-select') style="flex: 1 1 0;"@endif
-            {{ $inputAttributes }}
+    <x-form::input-group :name="$name" :prepend="$prependText" :append="$appendText">
+
+        @isset($prepend)
+            <x-slot name="prepend">
+                {{ $prepend }}
+            </x-slot>
+        @endisset
+
+        <select {{ $attributes->merge(['type' => 'text', 'name' => $name, 'id' => $name])
+                            ->class([
+                            	config('library.css.form.select'),
+                            	config('library.css.error.inline.input') => $hasError($name)
+                            ]) }}
         >
 
             {{ $slot }}
 
             @foreach ($options as $key => $option)
-                <option value="{{ $key }}" {{ $isSelected($key) }}>
+                <option value="{{ $key }}" {{ $isSelected($key) ? 'selected' : '' }}>
                     {{ $option }}
                 </option>
             @endforeach
 
         </select>
 
-    </x-form-input-group>
+        @isset($append)
+            <x-slot name="append">
+                {{ $append }}
+            </x-slot>
+        @endisset
 
-    <x-form-error :name="$name" />
+    </x-form::input-group>
 </div>

@@ -1,14 +1,30 @@
-<div {{ $attributes->merge(['class' => $cssClass]) }}>
+<div @class([
+                config('library.css.form.checkbox.div'),
+                config('library.css.form.checkbox.inline') => $inline,
+                config('library.css.form.checkbox.' . $type)
+     ])
+>
+    {{ $before ?? null  }}
 
-    <input class="{{ config('library.css.form.checkbox.input') }} @error($errorName()) {{ config('library.css.error.inline.input') }}@enderror"
-           type="{{ $type }}" name="{{ $name }}" id="{{ $idName }}" value="{{ $value }}" {{ $checked }} {{ $inputAttributes }}
+    <input {{ $attributes->merge(['id' => $name])
+                ->class([
+                    config('library.css.form.checkbox.input'),
+                    config('library.css.error.inline.input') => $hasError($name)
+                ])
+            }}
+            name="{{ $name }}"
+            value="{{ $value }}"
+            type="{{ $type === 'radio' ? 'radio' : 'checkbox' }}"
+            {{ $checked  ? 'checked' : '' }}
     />
 
-    @isset($label)
-        <label class="{{ config('library.css.form.checkbox.label') }}" for="{{ $idName }}">
-            {{ $label }}
-        </label>
+    @isset($labelText)
+        <label class="{{ config('library.css.form.checkbox.label') }}" for="{{ $attributes->get('id', $name) }}">{{ $labelText }}</label>
     @endisset()
 
-    <x-form-error :name="$errorName" />
+    @if($showErrors && $hasError($name))
+        <x-form::error :name="$name" />
+    @endif
+
+    {{ $after ?? null }}
 </div>

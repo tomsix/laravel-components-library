@@ -2,22 +2,19 @@
 
 namespace TomSix\Components\View\Components\Form;
 
-use Illuminate\View\Component;
+use Illuminate\Support\Str;
+use TomSix\Components\View\Components\Component;
 
 class Error extends Component
 {
-    /**
-     * @var string
-     */
     public string $name;
+    public string $bag;
 
-    public function __construct(string $name)
+    public function __construct(string $name, string $bag = 'default')
     {
-        $this->name = $name;
-    }
+		parent::__construct('form');
 
-    public function render()
-    {
-        return view('laravel-components-library::form.error');
+        $this->name = $this->convertBracketsToDots($name);
+        $this->bag = $bag;
     }
 }

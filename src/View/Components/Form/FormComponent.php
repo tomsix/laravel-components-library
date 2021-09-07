@@ -2,10 +2,13 @@
 
 namespace TomSix\Components\View\Components\Form;
 
-use Illuminate\View\Component;
+use TomSix\Components\View\Components\Component;
+use TomSix\Components\View\Components\Traits\HandlesValidationErrors;
 
 abstract class FormComponent extends Component
 {
+    use HandlesValidationErrors;
+
     /**
      * Specifies the name.
      *
@@ -18,7 +21,7 @@ abstract class FormComponent extends Component
      *
      * @var string|null
      */
-    public ?string $label;
+    public ?string $labelText;
 
     /**
      * Define a default value.
@@ -27,54 +30,21 @@ abstract class FormComponent extends Component
      */
     public $value;
 
-    /**
-     * All extra HTML-tag attributes.
-     *
-     * @var string
-     */
-    public string $inputAttributes;
-
-    /**
-     * Create a new component instance.
-     *
-     * @param string       $name
-     * @param string|null  $label
-     * @param array|string $inputAttributes
-     * @param mixed        $value
-     */
-    public function __construct(string $name, ?string $label = null, $inputAttributes = [], $value = null)
+	/**
+	 * Create a new component instance.
+	 *
+	 * @param string $name
+	 * @param string|null $label
+	 * @param mixed $value
+	 * @param bool|null $showErrors
+	 */
+    public function __construct(string $name, ?string $label = null, $value = null, bool $showErrors = null)
     {
+		parent::__construct('form');
+
         $this->name = $name;
-        $this->label = $label;
-        $this->inputAttributes = is_string($inputAttributes) ? $inputAttributes : $this->renderAttributes($inputAttributes);
-        $this->value = old($this->nameWithoutBrackets(), $value) ?? null;
-    }
-
-    /**
-     * Get the name without brackets when using multiple values.
-     *
-     * @return string|string[]
-     */
-    public function nameWithoutBrackets()
-    {
-        return str_replace('[]', '', $this->name);
-    }
-
-    private function renderAttributes(array $attributes): string
-    {
-        $attributeStrings = [];
-
-        foreach ($attributes as $attribute => $value) {
-            if (is_int($attribute)) {
-                $attributeStrings[] = $value;
-                continue;
-            }
-
-            $value = htmlentities($value, ENT_QUOTES, 'UTF-8', false);
-
-            $attributeStrings[] = "{$attribute}={$value}";
-        }
-
-        return implode(' ', $attributeStrings);
+        $this->labelText = $label;
+        $this->value = old($this->convertBracketsToDots($name), $value) ?? null;
+        $this->showErrors = $showErrors ?? config('library.inline_errors');
     }
 }

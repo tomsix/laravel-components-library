@@ -2,7 +2,7 @@
 
 namespace TomSix\Components\View\Components\Form;
 
-class Textarea extends Input
+class InputFloating extends FormComponent
 {
 
 }
