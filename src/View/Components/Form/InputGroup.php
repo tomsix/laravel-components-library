@@ -21,14 +21,14 @@ class InputGroup extends Component
      *
      * @var string|null
      */
-    public ?string $prepend;
+    public ?string $prependText;
 
     /**
      * Set a Bootstrap append to the input.
      *
      * @var string|null
      */
-    public ?string $append;
+    public ?string $appendText;
 
     /**
      * Create a new component instance.
@@ -43,8 +43,8 @@ class InputGroup extends Component
 		parent::__construct('form');
 
         $this->name = $name;
-        $this->prepend = $prepend;
-        $this->append = $append;
+        $this->prependText = $prepend;
+        $this->appendText = $append;
         $this->showErrors = $showErrors ?? config('library.inline_errors');
     }
 }

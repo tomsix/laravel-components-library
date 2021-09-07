@@ -9,14 +9,14 @@ class Input extends FormComponent
      *
      * @var string|null $prepend
      */
-    public ?string $prepend;
+    public ?string $prependText;
 
     /**
      * Set a Bootstrap append to the input
      *
      * @var string|null $append
      */
-    public ?string $append;
+    public ?string $appendText;
 
     /**
      * Create a new component instance.
@@ -39,7 +39,7 @@ class Input extends FormComponent
     ) {
         parent::__construct($name, $label, $value, $showErrors);
 
-        $this->prepend = $prepend;
-        $this->append = $append;
+        $this->prependText = $prepend;
+        $this->appendText = $append;
     }
 }

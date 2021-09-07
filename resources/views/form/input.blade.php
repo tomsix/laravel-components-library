@@ -6,7 +6,13 @@
 
     {{ $label ?? null }}
 
-    <x-form::input-group :name="$name" :prepend="$prepend" :append="$append">
+    <x-form::input-group :name="$name" :prepend="$prependText" :append="$appendText">
+
+        @isset($prepend)
+            <x-slot name="prepend">
+                {{ $prepend }}
+            </x-slot>
+        @endisset
 
         <input {{ $attributes->merge(['type' => 'text', 'name' => $name, 'id' => $name])
                             ->class([
@@ -15,6 +21,12 @@
                             ]) }}
             @isset($value) value="{{ $value }}"@endisset
         />
+
+        @isset($append)
+            <x-slot name="append">
+                {{ $append }}
+            </x-slot>
+        @endisset
 
     </x-form::input-group>
 </div>
