@@ -1,1 +1,1 @@
-@include('form.model-select')
+@include('laravel-components-library::form.select')
