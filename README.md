@@ -40,7 +40,7 @@ All other attributes wil be merged on the input html-tag
 The input, select and textarea components are rendered in an extra `div` with the Bootstrap `input-group`class. With this extra it's possible to add a prepend and append.
 
 ```blade
-<x-form-input name="username" label="Username" prepend="@" />
+<x-form::input name="username" label="Username" prepend="@" />
 ```
 With v2 is it possible to override de default prepend or append with a slot.
 
@@ -78,27 +78,27 @@ Each form component contains 2 extra slots: before and after.
 #### Input
 
 ```blade
-<x-form-input name="first-name" label="First Name" placeholder="Enter your first name" type="text" />
+<x-form::input name="first-name" label="First Name" placeholder="Enter your first name" type="text" />
 ```
 
 #### Textarea
     
 ```blade
-<x-form-textarea name="description" label="Description" placeholder="Typ here ..." />
+<x-form::textarea name="description" label="Description" placeholder="Typ here ..." />
 ```
     
 #### Select
 
 ```blade
-<x-form-select name="animal" :options="[1 => 'cat', 2 => 'dog', 4 => 'cow']" label="Favorite animal" />
+<x-form::select name="animal" :options="[1 => 'cat', 2 => 'dog', 4 => 'cow']" label="Favorite animal" />
 ```
     
 It is possible to add extra options or a default option with slots.
 
 ```blade
-<x-form-select name="animal" :options="[1 => 'cat', 2 => 'dog', 4 => 'cow']" label="Favorite animal">
+<x-form::select name="animal" :options="[1 => 'cat', 2 => 'dog', 4 => 'cow']" label="Favorite animal">
     <option value="">Choose an animal</option>
-</x-form-select>
+</x-form::select>
 ```
 
 #### Model Select
@@ -106,9 +106,9 @@ It is possible to add extra options or a default option with slots.
 With the `model-select` component you can use a collection of Eloquent models. The `models` attribute accepts the collection. It is also possible to use an Eloquent model as the selected value
 
 ```blade
-<x-form-model-select name="user" :models="$users" label="Your friend" key-attribute="id" value-attribute="full_name">
+<x-form::model-select name="user" :models="$users" label="Your friend" key-attribute="id" value-attribute="full_name">
     <option value="">Select your friend</option>
-</x-form-model-select>
+</x-form::model-select>
 ```
 
 By default, `id` and `name` are used for the option value and text. This can be changed with `key-attribute` and `value-attribute`. The default names can be changed in the config file.
@@ -118,13 +118,13 @@ By default, `id` and `name` are used for the option value and text. This can be 
 A group of checkboxes makes use of the checkboxes component. It is possible to give an array of options or use the single checkbox component within the slot.
 
 ```blade
-<x-form-checkbox name="terms" value="yes" label="Agree to terms and conditions" />
+<x-form::checkbox name="terms" value="yes" label="Agree to terms and conditions" />
 ```
 
 ##### Arrays
 
 ```blade
-<x-form-checkboxes name="actors[]" label="Favorite actors" :options="$options" type="checkbox" />
+<x-form::checkboxes name="actors[]" label="Favorite actors" :options="$options" type="checkbox" />
 ```
 
 Checkboxes need an array with options. The array key is used for the checkbox value attribute and the value of the array is used as label text. An array without keys will use numbers starting from 0 as a normal array.
@@ -193,9 +193,9 @@ The intention is to use these components inside a navigation bar
 The url must be included in the component. The 'active' class will be added automatically.
 
 ```blade
-<x-navigation-item :href="route('home')" >
+<x-navigation::item :href="route('home')" >
     <p>About</p>
-</x-navigation-item>
+</x-navigation::item>
 ```
 
 #### Navigation label
@@ -203,7 +203,7 @@ The url must be included in the component. The 'active' class will be added auto
 The label component provides text or an icon. Both props are optional.
 
 ```blade
-<x-navigation-label text="Home" icon="fas fa-globe" />
+<x-navigation::label text="Home" icon="fas fa-globe" />
 ```
 
 ## Customisation
