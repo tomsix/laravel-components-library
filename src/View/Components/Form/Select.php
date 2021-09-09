@@ -11,7 +11,7 @@ class Select extends Input
      *
      * @var array
      */
-    public array $options;
+    public iterable $options;
 
     /**
      * Create a new component instance.
@@ -23,11 +23,11 @@ class Select extends Input
      * @param string|null      $prepend
      * @param string|null      $append
      */
-    public function __construct(string $name, $options = [], ?string $label = null, $value = null, ?string $prepend = null, ?string $append = null)
+    public function __construct(string $name, iterable $options = [], ?string $label = null, $value = null, ?string $prepend = null, ?string $append = null)
     {
         parent::__construct($name, $label, $value, $prepend, $append);
 
-        $this->options = $options instanceof Collection ? $options->toArray() : $options;
+        $this->options = $options;
     }
 
     /**

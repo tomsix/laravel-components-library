@@ -61,14 +61,10 @@ class Checkbox extends FormComponent
 	{
 		$value = old($this->convertBracketsToDots($this->name));
 
-		if (is_string($value) || is_numeric($value)) {
-			return $value == $this->value;
-		}
-
 		if (is_array($value)) {
 			return in_array($this->value, $value);
 		}
 
-		return false;
+		return $value == $this->value;
 	}
 }

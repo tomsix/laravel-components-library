@@ -11,6 +11,7 @@
                           :inline="$inline"
                           :type="$type"
                           :show-errors="false"
+                          :checked="$isChecked($key)"
         />
     @endforeach
 
