@@ -2,9 +2,7 @@
 
 namespace TomSix\Components\View\Components\Form;
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
+use Illuminate\Support\Enumerable;
 
 class Checkboxes extends FormComponent
 {
@@ -20,14 +18,7 @@ class Checkboxes extends FormComponent
      *
      * @var array
      */
-    public array $options;
-
-    /**
-     * Checks if the options ar an associative array.
-     *
-     * @var bool
-     */
-    public bool $optionsAreAssoc;
+    public iterable $options;
 
     /**
      * Set the type of the input.
@@ -40,19 +31,37 @@ class Checkboxes extends FormComponent
 	 * Create a new component instance.
 	 *
 	 * @param string $name
-	 * @param array|Collection $options
+	 * @param iterable $options
 	 * @param bool $inline
 	 * @param null $value
 	 * @param string $type
 	 * @param bool|null $showErrors
 	 */
-    public function __construct(string $name, $options = [], bool $inline = false, $value = null, string $type = 'checkbox', ?bool $showErrors = null)
+    public function __construct(string $name, iterable $options = [], bool $inline = false, $value = null, string $type = 'checkbox', ?bool $showErrors = null)
     {
         parent::__construct($name, null, $value, $showErrors);
 
         $this->inline = $inline;
-        $this->options = $options instanceof Collection ? $options->toArray() : $options;
-        $this->optionsAreAssoc = Arr::isAssoc($this->options);
+        $this->options = $options;
         $this->type = $type;
     }
+
+	/**
+	 * Determine if the value is checked.
+	 * @param string|int $key
+	 *
+	 * @return bool
+	 */
+	public function isChecked($key): bool
+	{
+		if ($this->value instanceof Enumerable) {
+			return $this->value->contains($key);
+		}
+
+		if (is_array($this->value)) {
+			return in_array($key, $this->value);
+		}
+
+		return false;
+	}
 }

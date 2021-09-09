@@ -2,11 +2,7 @@
 
     {!! $before ?? null !!}
 
-    @foreach($options as $i => $option)
-
-        @php
-            $key = $optionsAreAssoc ? $i : $loop->iteration
-        @endphp
+    @foreach($options as $key => $option)
 
         <x-form::checkbox :id="$attributes->get('id', $name) . '-' . $key"
                           value="{{ $key }}"
@@ -15,6 +11,7 @@
                           :inline="$inline"
                           :type="$type"
                           :show-errors="false"
+                          :checked="$isChecked($key)"
         />
     @endforeach
 
