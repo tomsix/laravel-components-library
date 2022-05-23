@@ -39,6 +39,12 @@ class Select extends Input
      */
     public function isSelected($option): bool
     {
-        return $option == old($this->name, $this->value);
+		$old = old($this->name, $this->value);
+
+		if (is_array($old) && in_array($option, $old)) {
+			return true;
+		}
+
+		return $option == old($this->name, $this->value);
     }
 }
