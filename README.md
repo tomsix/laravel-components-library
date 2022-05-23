@@ -75,6 +75,16 @@ Each form component contains 2 extra slots: before and after.
 
 ### Form Components
 
+#### Form
+
+Since V2 there is a form component `x-form::form`. This will add the CSRF-token and will use the `@method` directive for PUT and DELETE. The default method is POST instead of GET.
+
+```blade
+<x-form::form method="PUT" :action="route('user.store')">
+    <!-- The form content -->
+</x-form:::form>
+```
+
 #### Input
 
 ```blade
@@ -170,9 +180,9 @@ It's also possible to add an error bag in a view.
 <x-form::errors title="There are some incorrect fields" color="warning"/>
 ```
 
-#### Boostrap 5
+### Boostrap 5
 
-
+More info comming soon
 
 ### Navigation components
 
