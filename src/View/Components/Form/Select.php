@@ -41,6 +41,10 @@ class Select extends Input
     {
 		$old = old($this->name, $this->value);
 
+		if ($old instanceof Collection) {
+			return $old->contains($option);
+		}
+
 		if (is_array($old) && in_array($option, $old)) {
 			return true;
 		}
