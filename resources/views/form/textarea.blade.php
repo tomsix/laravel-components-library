@@ -19,7 +19,7 @@
                             	config('library.css.form.input.input'),
                             	config('library.css.error.inline.input') => $hasError($name)
                             ]) }}
-        >@isset($value){{ $value }}@endisset</textarea>
+        >{{ $value ?? ''}}</textarea>
 
         @isset($append)
             <x-slot name="append">
