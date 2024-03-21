@@ -44,7 +44,9 @@ abstract class FormComponent extends Component
 
         $this->name = $name;
         $this->labelText = $label;
-        $this->value = old($this->convertBracketsToDots($name), $value) ?? null;
-        $this->showErrors = $showErrors ?? config('library.inline_errors');
+		$this->value = request()->hasSession()
+			? request()->old($this->convertBracketsToDots($name), $value)
+			: $value;
+		$this->showErrors = $showErrors ?? config('library.inline_errors');
     }
 }
