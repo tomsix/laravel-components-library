@@ -7,5 +7,5 @@
         @method($method)
     @endif
 
-    {!! $slot !!}
+    {!! $slot ?? null !!}
 </form>
