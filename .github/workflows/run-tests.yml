@@ -10,8 +10,8 @@ jobs:
 
     strategy:
       matrix:
-        php: [7.4, 8.0, 8.1, '8.2']
-        laravel: ['8.*', '9.*', '10.*', '11.*', '12.*']
+        php: ['7.4', '8.0', '8.1', '8.2', '8.3', '8.4', '8.5']
+        laravel: ['8.*', '9.*', '10.*', '11.*', '12.*', '13.*']
         dependency-version: [prefer-lowest, prefer-stable]
         exclude:
           - php: 7.4
@@ -32,6 +32,14 @@ jobs:
             php: 8.0
           - laravel: 12.*
             php: 8.1
+          - laravel: 13.*
+            php: '7.4'
+          - laravel: 13.*
+            php: '8.0'
+          - laravel: 13.*
+            php: '8.1'
+          - laravel: 13.*
+            php: '8.2'
         include:
           - laravel: 10.*
             testbench: ^8.0
@@ -43,18 +51,14 @@ jobs:
             testbench: ^9.0
           - laravel: 12.*
             testbench: ^10.0
+          - laravel: 13.*
+            testbench: ^11.0
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.composer/cache/files
-          key: dependencies-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+        uses: actions/checkout@v6
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -63,10 +67,23 @@ jobs:
           extensions: dom, fileinfo, filter, json, libxml, mbstring, openssl, pcre, phar, tokenizer, xml, xmlwriter, pcre
           coverage: none
 
-      - name: Install dependencies
+      - name: Setup Composer Cache Directory
+        id: composer-cache
+        shell: bash
         run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
-          composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
+          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
-      - name: Run Tests
-        run: vendor/bin/phpunit
+      - name: Load Composer Cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: dependencies-${{ runner.os }}-php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            dependencies-${{ runner.os }}-php-${{ matrix.php }}-composer-
+
+      - name: Install Composer dependencies
+        run: |
+          composer install --prefer-dist --no-interaction
+
+      - name: Execute tests
+        run: vendor/bin/phpunit --no-coverage
